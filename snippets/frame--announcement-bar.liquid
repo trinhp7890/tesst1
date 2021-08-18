@@ -1,0 +1,33 @@
+{% assign timing_in_ms = announcement_bar_timing | times: 1000 %}
+
+<section
+  class="announcement-bar-wrapper"
+  data-section-id="{{ id }}"
+  data-section-type="announcement-bar"
+  data-timing="{{ timing_in_ms }}"
+>
+  {% if announcement_bar_enabled %}
+
+    {% for block in blocks %}
+      <div
+        class="announcement-bar flex items-center justify-center"
+        style="
+          background-color: {{ block.settings.background_color }};
+          color: {{ block.settings.text_color }};
+        "
+        data-index="{{ forloop.index0 }}"
+        {{ block.shopify_attributes }}
+      >
+        <div class="announcement-bar__content">
+          {%- if block.settings.link != blank -%}
+            <a class="color-inherit" href="{{ block.settings.link }}">
+              {{ block.settings.text | escape }}
+            </a>
+          {%- else -%}
+            {{ block.settings.text | escape }}
+          {%- endif -%}
+        </div>
+      </div>
+    {% endfor %}
+  {% endif %}
+</section>

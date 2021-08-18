@@ -1,0 +1,197 @@
+{% assign modifiers = '' %}
+
+{% assign modifiers = modifiers | append: ' section--' | append: section_style %}
+
+{% unless section_style == 'contrast' %}
+  {% assign modifiers = modifiers | append: ' section--bordered' %}
+{% endunless %}
+
+{% assign current_variant = product.selected_or_first_available_variant %}
+{% assign featured_media = product.selected_or_first_available_variant.featured_media | default: product.featured_media %}
+{% assign media = product.selected_or_first_available_variant | default: product.media[0] %}
+
+{% assign show_price_comparison = false %}
+
+{% if current_variant.compare_at_price > current_variant.price %}
+  {% assign show_price_comparison = true %}
+{% endif %}
+
+{% capture product_heading %}
+  {% if show_vendor %}
+    <p class="featured-product__vendor overline mt0">
+      {% if product != blank %}
+        {{ product.vendor | link_to_vendor }}
+      {% else %}
+        {{ 'homepage.onboarding.product_vendor' | t }}
+      {% endif %}
+    </p>
+  {% endif %}
+
+  <h1 class="featured-product__title type-heading-1 mt0 mb1">
+    {% if product != blank %}
+      {{ product.title }}
+    {% else %}
+      {{ 'homepage.onboarding.product_title' | t }}
+    {% endif %}
+  </h1>
+
+  {% if product != blank %}
+    <div class="featured-product__price">
+      <s data-compare-price class="mr1 meta{% if show_price_comparison == false %} hide{% endif %}">
+        {% if show_price_comparison %}
+          {{ current_variant.compare_at_price | money }}
+        {% endif %}
+        <span class="visually-hidden" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
+      </s>
+      <span data-product-price>{{ current_variant.price | money }}</span>
+      {% render 'unit-price' item: current_variant %}
+    </div>
+  {%- endif -%}
+{% endcapture %}
+
+<section
+  data-section-id="{{ id }}"
+  data-section-type="featured-product"
+  class="section featured-product{{ modifiers }}"
+>
+  <div class="featured-product__mobile-header">
+    {{ product_heading }}
+  </div>
+
+  <div class="featured-product__media">
+    {% if product.media.size > 0 %}
+      {% render 'media', media: featured_media %}
+
+      {%- for media in product.media -%}
+        {% render 'media', media: media, classes: 'hidden' %}
+      {%- endfor -%}
+    {% else %}
+      {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+    {% endif %}
+  </div>
+
+  <div class="featured-product__meta">
+    <div class="featured-product__meta-inner">
+      <div class="featured-product__header">
+        {{ product_heading }}
+      </div>
+
+      {% if product != blank %}
+        {% render 'product-form' with
+          product: product,
+          show_vendor: show_vendor,
+          current_variant: current_variant,
+          show_dynamic_checkout: enable_payment_button,
+          show_swatches: show_swatches,
+          show_quantity_input: show_quantity_input,
+        %}
+      {% endif %}
+
+      {%- comment -%}
+        Live region for announcing updated price and availability to screen readers
+      {%- endcomment -%}
+      <p class="visually-hidden" data-product-status
+        aria-live="polite"
+        role="status"
+      ></p>
+
+      {%- comment -%}
+        Live region for announcing that the product form has been submitted and the
+        product is in the process being added to the cart
+      {%- endcomment -%}
+      <p class="visually-hidden" data-loader-status
+        aria-live="assertive"
+        role="alert"
+        aria-hidden="true"
+      >{{ 'products.product.loader_label' | t }}</p>
+
+        {% if product != blank %}
+          {% if product.description != blank and show_description %}
+            <div class="featured-product__description mt5 rte">
+              {{ product.description }}
+            </div>
+          {% endif %}
+        {% else %}
+          <div class="featured-product__description mt5 rte">
+            {{ 'homepage.onboarding.product_description' | t }}
+          </div>
+        {% endif %}
+
+
+      {% assign share_buttons_are_in_accordion = false %}
+      {% if product.description contains 'accordion__group' and show_description  %}
+        {% assign share_buttons_are_in_accordion = true %}
+      {% endif %}
+
+      {% if show_share_buttons %}
+        <div class="featured-product__social-sharing{% if share_buttons_are_in_accordion %} hidden{% endif %}">
+          {% render 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product.featured_media %}
+        </div>
+      {% endif %}
+
+      {% if product != blank %}
+        <a href="{{ product.url }}" class="featured-product__cta accent underline mt5">{{ 'sections.featured_product.view_product' | t }}</a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org/",
+  "@type": "Product",
+  "name": "{{ product.title | escape }}",
+  "url": "{{ shop.url }}{{ product.url }}",
+  {% if product.featured_image %}
+    {% assign image_size = product.featured_image.width | append: 'x' %}
+    "image": [
+      "https:{{ product.featured_image.src | img_url: image_size }}"
+    ],
+  {% endif %}
+  "description": "{{ product.description | strip_html | escape }}",
+  {% if current_variant.sku != blank %}
+    "sku": "{{ current_variant.sku }}",
+  {% endif %}
+  "brand": {
+    "@type": "Thing",
+    "name": "{{ product.vendor | escape }}"
+  },
+  {% if product.variants %}
+    "offers": [
+      {% for variant in product.variants %}
+        {
+          "@type" : "Offer",
+          "availability" : "http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}",
+          "price" : "{{ variant.price | divided_by: 100.00 }}",
+          "priceCurrency" : "{{ shop.currency }}",
+          "url" : "{{ shop.url }}{{ variant.url }}",
+          "itemOffered" :
+          {
+              "@type" : "Product",
+              {% if variant.image %}
+                {% assign variant_image_size = variant.image.width | append: 'x' %}
+                "image": "http:{{ variant.image.src | img_url: variant_image_size }}",
+              {% endif %}
+              {% if variant.title != blank %}
+                "name" : "{{ variant.title | escape }}",
+              {% endif %}
+              {% if variant.sku != blank %}
+                "sku": "{{ variant.sku }}",
+              {% endif %}
+              {% if variant.weight != blank %}
+                "weight": {
+                  "@type": "QuantitativeValue",
+                  {% if variant.weight_unit != blank %}
+                    "unitCode": "{{ variant.weight_unit }}",
+                  {% endif %}
+                  "value": "{{ variant.weight | weight_with_unit: variant.weight_unit }}"
+                },
+              {% endif %}
+              "url": "{{ shop.url }}{{ variant.url }}"
+          }
+        }{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    ]
+  {% endif %}
+}
+</script>

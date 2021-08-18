@@ -1,0 +1,56 @@
+{% assign modifiers = '' %}
+
+{% assign modifiers = modifiers | append: ' section--' | append: section_style %}
+{% assign modifiers = modifiers | append: ' section--spacing-tall' %}
+{% assign modifiers = modifiers | append: ' rich-text--' | append: alignment  %}
+
+{% unless section_style == 'contrast' %}
+  {% assign modifiers = modifiers | append: ' section--bordered' %}
+{% endunless %}
+
+<section
+  data-section-id="{{ section.id }}"
+  data-section-type="rich-text"
+  class="section rich-text{{ modifiers }}"
+>
+  <div class="rich-text__inner animation__staggered-children-fade-in">
+    {% unless overline == blank  %}
+      <div
+        class="rich-text__overline overline mb3"
+        data-theme-editor-setting="section.{{ id }}.overline/escape"
+      >
+        {{ overline }}
+      </div>
+    {% endunless %}
+
+    {%- unless title == blank -%}
+      <h2
+        class="rich-text__title type-heading-1 ma0 mb3"
+        data-theme-editor-setting="section.{{ id }}.title/escape"
+        {%- if text_max_width != blank -%} style="max-width: {{ text_max_width }}rem;"{%- endif -%}
+      >
+        {{ title }}
+      </h2>
+    {%- endunless -%}
+
+    {%- unless text == blank -%}
+      <div
+        class="rich-text__subheading type-body-regular rte"
+        data-theme-editor-setting="section.{{ id }}.text"
+        {%- if text_max_width != blank -%} style="max-width: {{ text_max_width }}rem;"{%- endif -%}
+      >
+        {{ text }}
+      </div>
+    {%- endunless -%}
+
+    {% if link != blank and link_text != blank %}
+      <a
+        href="{{ link }}"
+        class="bttn bttn--secondary bttn--inline mt4"
+        data-theme-editor-setting="section.{{ id }}.link_text/escape"
+      >
+        {{ link_text }}
+      </a>
+    {% endif %}
+  </div>
+</section>

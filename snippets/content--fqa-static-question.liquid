@@ -1,0 +1,24 @@
+{% assign modifiers = '' %}
+
+{% assign modifiers = modifiers | append: ' section--' | append: section_style %}
+
+{% unless section_style == 'contrast' %}
+  {% assign modifiers = modifiers | append: ' section--bordered' %}
+{% endunless %}
+
+{% assign modifiers = modifiers | append: ' text-columns--alignment-' | append: text_alignment  %}
+
+{% assign modifiers = modifiers | append: ' collection-list-grid--columns-' | append: columns  %}
+
+{% assign item_width = '' %}
+<section
+  data-section-id="{{ id }}"
+  data-section-type="text-columns-with-images"
+  class="fqa-section text-columns{{ modifiers }} bg-white"
+>
+<div class="max-w-1280">
+  <h1 class="fqa-accordion-title-question line ">{{heading}}</h1>
+  <h2 class="fqa-question">{{overline}}</h2>
+</div>
+ 
+</section>

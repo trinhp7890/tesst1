@@ -1,0 +1,106 @@
+{% assign time_in_ms = timer | times: 1000 %}
+{% capture current %}{% cycle 1, 2 %}{% endcapture %}
+{% assign proper_alpha = overlay_opacity | divided_by: 100.00 %}
+
+{% assign modifiers = '' %}
+
+{% assign modifiers = modifiers | append: ' slideshow-split--align-' | append: vertical_text_position %}
+{% assign modifiers = modifiers | append: ' slideshow-split--justify-' | append: horizontal_text_position %}
+
+{% if blocks.size == 1 %}
+  {% assign modifiers = modifiers | append: ' slideshow-split--is-single' %}
+{% endif %}
+
+{% assign show_nav_dots = true %}
+
+{% if blocks.size < 3 %}
+  {% assign show_nav_dots = false %}
+{% endif %}
+
+<section
+  data-section-id="{{ section.id }}"
+  data-section-type="slideshow-split"
+  class="slideshow-split{{ modifiers }}"
+  data-timer="{{ time_in_ms }}"
+  data-enable-navigation-dots={{ show_nav_dots }}
+>
+  <div
+    class="slideshow-split__underlay hide"
+    style="background-color: {{ overlay_color }};"
+  ></div>
+
+  <div class="slideshow-split__slideshow">
+    {% if blocks.size == 2 %}
+      {% for i in (1..2) %}
+        {% render 'slideshow-split-blocks' with
+          blocks: blocks,
+          current: current
+        %}
+      {% endfor %}
+    {% elsif blocks.size > 0 %}
+      {% render 'slideshow-split-blocks' with
+        blocks: blocks,
+        current: current
+      %}
+    {% else %}
+      {% for i in (i..3) %}
+        <div class="slideshow-split__slide">
+          <div class="slideshow__placeholder slideshow-split__image">{{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg image__img' }}</div>
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+
+  <ol class="slideshow-split__pseudo-dots{% if blocks.size != 2 %} hidden{% endif %}">
+    <li class="slideshow-split__pseudo-dot prev is-selected"></li>
+    <li class="slideshow-split__pseudo-dot next"></li>
+  </ol>
+
+  <div
+    class="slideshow-split__overlay"
+    style="background-color: {{ overlay_color | color_modify: 'alpha', proper_alpha }};"
+  ></div>
+
+  <div class="slideshow-split__content">
+    <div class="slideshow-split__content-inner animation__staggered-children-fade-in">
+      {% if overline != blank %}
+        <h2
+          class="slideshow-split__overline overline"
+          data-theme-editor-setting="section.{{ id }}.overline"
+          style="color: {{ text_color }};"
+        >
+          {{ overline }}
+        </h2>
+      {% endif %}
+      {% if title != blank %}
+        <h2
+          class="slideshow-split__heading type-heading-display"
+          data-theme-editor-setting="section.{{ id }}.title"
+          style="color: {{ text_color }}; max-width: {{ text_max_width }}rem;"
+        >
+          {{ title }}
+        </h2>
+      {% endif %}
+      {% if subheading != blank %}
+        <p
+          class="slideshow-split__subheading type-body-regular"
+          data-theme-editor-setting="section.{{ id }}.subheading"
+          style="color: {{ text_color }}; max-width: {{ text_max_width }}rem;"
+        >
+          {{ subheading }}
+        </p>
+      {% endif %}
+
+      {%- if link != blank and link_text != blank -%}
+        <a
+          href="{{ link }}"
+          class="slideshow-split__link bttn"
+          data-theme-editor-setting="section.{{ id }}.link_text"
+        >
+          {{ link_text }}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+
+</section>

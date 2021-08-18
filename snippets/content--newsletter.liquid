@@ -1,0 +1,71 @@
+{% assign modifiers = '' %}
+
+{% assign modifiers = modifiers | append: ' section--' | append: section_style %}
+{% assign modifiers = modifiers | append: ' section--spacing-tall' %}
+
+{% unless section_style == 'contrast' %}
+  {% assign modifiers = modifiers | append: ' section--bordered' %}
+{% endunless %}
+
+<section
+  data-section-id="{{ id }}"
+  data-section-type="newsletter"
+  class="section newsletter{{ modifiers }}"
+>
+  <div class="newsletter__inner animation__staggered-children-fade-in">
+    {% unless overline == blank  %}
+      <div
+        class="newsletter__overline overline mb3"
+        data-theme-editor-setting="section.{{ id }}.title"
+        {%- if text_max_width != blank -%} style="max-width: {{ text_max_width }}rem;"{%- endif -%}
+      >
+        {{ overline }}
+      </div>
+    {% endunless %}
+
+    {% if heading != blank %}
+      <h2
+        for="Email"
+        class="newsletter__heading type-heading-1"
+        data-theme-editor-setting="section.{{ id }}.heading/escape"
+        {%- if text_max_width != blank -%} style="max-width: {{ text_max_width }}rem;"{%- endif -%}
+      >
+        {{ heading | escape }}
+      </h2>
+    {% endif %}
+    {% if subheading != blank %}
+      <div
+        class="newsletter__subheading type-body-regular rte"
+        data-theme-editor-setting="section.{{ id }}.subheading"
+        {%- if text_max_width != blank -%} style="max-width: {{ text_max_width }}rem;"{%- endif -%}
+      >
+        {{ subheading }}
+      </div>
+    {% endif %}
+
+    <div class="newsletter__form{% if subheading == blank %} pt0point5{% endif %}">
+      {% form 'customer' %}
+        {{ form.errors | default_errors }}
+        {% if form.posted_successfully? %}
+          <p>{{ 'general.newsletter_form.confirmation' | t }}</p>
+        {% else %}
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          <div class="newsletter__input-container">
+            <input type="email"
+              class="input newsletter__input input-reset"
+              name="contact[email]"
+              id="Email"
+              value="{% if customer.email != blank %}{{ customer.email }}{% endif %}"
+              placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}"
+              autocorrect="off"
+              autocapitalize="off">
+            <label class="label--above" for="Email">{{ 'general.newsletter_form.email_placeholder' | t }}</label>
+            <button type="submit" name="commit" id="Subscribe" class="newsletter__submit-button">
+              {% render 'icon-arrow-forward' %}
+            </button>
+          </div>
+        {% endif %}
+      {% endform %}
+    </div>
+  </div>
+</section>

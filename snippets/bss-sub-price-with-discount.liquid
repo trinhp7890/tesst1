@@ -1,0 +1,44 @@
+{% assign enable_sub_extra_info = false %}{% if product and product.selling_plan_groups.size > 0 %}
+{%- liquid
+ assign current_variant = product.selected_or_first_available_variant
+ assign current_selling_plan_allocation = current_variant.selected_selling_plan_allocation
+ if current_selling_plan_allocation == nil and current_variant.requires_selling_plan
+  assign current_selling_plan_allocation = current_variant.selling_plan_allocations | first
+ endif
+ assign offer = current_selling_plan_allocation | default: current_variant
+-%}
+
+
+{% comment %}Start to show price with plan{% endcomment %}
+			<div class="bss-sub-price-with-discount" data-product-id="{{ product.id }}">
+              <span class="bss-sub-offer-price">{{ offer.price | money }}</span>
+
+              {%- assign infoExtraClass = "" -%}
+              {% if offer.compare_at_price > offer.price %}
+              	{% assign infoExtraClass = "bss-sub-show-info" %}
+              {% else %}
+              	{% assign infoExtraClass = "bss-sub-hide-info"%}
+              {% endif %}
+
+              {%- assign savingExtraClass = "" -%}
+
+              {% if offer.selling_plan %}
+              	{% assign savingExtraClass = "bss-sub-show-saving" %}
+              {% else %}
+              	{% assign savingExtraClass = "bss-sub-hide-saving" %}
+              {% endif %}
+              {% if enable_sub_extra_info %}
+              <span class="{{ infoExtraClass }}">
+                <s class="bss-sub-offer-compare-at-price">{{ offer.compare_at_price | money }}</s>
+              </span>
+              <span class="{{ infoExtraClass }} bss-sub-saving-wrapper">
+                <span class="bss-sub-plan-saving {{ savingExtraClass }}">
+                                  {%- assign bssSubSavingValue = offer.compare_at_price | minus: offer.price | times: 100.0 | divided_by: offer.compare_at_price | round: 2 -%}
+                                  <span><span class="bss-sub-saving-prefix">subscription - save </span><span class="bss-sub-saving-value">{{ bssSubSavingValue }}</span><span>%</span>
+                                </span>
+              </span>
+              {% endif %}
+			</div>
+{% comment %}End{% endcomment %}
+{% endif %}
+          

@@ -1,0 +1,164 @@
+{% assign modifiers = '' %}
+
+{% assign modifiers = modifiers | append: ' section--' | append: section_style %}
+
+{% unless section_style == 'contrast' %}
+  {% assign modifiers = modifiers | append: ' section--bordered' %}
+{% endunless %}
+
+{% assign modifiers = modifiers | append: ' carousel--columns-' | append: columns %}
+
+{% assign carousel_text_position = text_position | split: '_' | first %}
+{% assign carousel_text_alignment = text_position | split: '_' | last %}
+
+{% assign modifiers = modifiers | append: ' carousel--text-position-' | append: carousel_text_position %}
+{% assign modifiers = modifiers | append: ' carousel--text-alignment-' | append: carousel_text_alignment %}
+{% assign modifiers = modifiers | append: ' carousel--items-' | append: blocks.size %}
+{% assign modifiers = modifiers | append: ' carousel--aspect-ratio-' | append: aspect_ratio %}
+
+{% assign minimum_items_for_wrap_around = columns | plus: 2 %}
+{% assign items_needed = minimum_items_for_wrap_around | minus: blocks.size %}
+
+{% if carousel_text_position == 'top' and items_needed <= 0 or blocks.size == 0 %}
+  {% assign modifiers = modifiers | append: ' carousel--columns-wrap-around' %}
+{% endif %}
+
+{% assign image_is_constrained = true %}
+
+{% if aspect_ratio == 'natural' %}
+  {% assign image_is_constrained = false %}
+{% endif %}
+
+<section
+  data-section-id="{{ id }}"
+  data-section-type="testimonials"
+  class="section testimonials carousel{{ modifiers }}"
+  data-text-position={{ carousel_text_position }}
+  data-text-alignment={{ carousel_text_alignment }}
+>
+  {% render 'text-block' with
+    id: id,
+    modifiers: 'mb5 animation__staggered-children-fade-in',
+    heading_alignment: carousel_text_alignment,
+    text_max_width: text_max_width,
+    overline: overline,
+    heading: heading,
+    subheading: subheading,
+    link: link,
+    link_text: link_text
+  %}
+
+  {% render 'carousel-navigation' %}
+
+  <div class="testimonials__slides carousel__slides" data-carousel>
+    {% if blocks.size > 0 %}
+      {%- for block in blocks -%}
+        <div class="testimonials__slide carousel__slide animates">
+          <div class="testimonials__image carousel__slide-image">
+            {% if block.settings.product_image != blank %}
+              {%- assign product_item = all_products[block.settings.product_link] -%}
+
+              {% if block.settings.product_image != blank %}
+                {% if block.settings.product_link != blank %}
+                  {%- assign product_item = all_products[block.settings.product_link] -%}
+
+                  <a href="{{ product_item.url }}" class="db">
+                {% else %}
+                  <div class="db">
+                {% endif %}
+
+                {% render 'image' with
+                  image: block.settings.product_image,
+                  disable_style: image_is_constrained,
+                %}
+
+                {% if block.settings.product_link != blank %}
+                  </a>
+                {% else %}
+                  </div>
+                {% endif %}
+
+              {% endif %}
+            {% else %}
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+            </div>
+
+
+          {% if block.settings.reviewer_image != blank or block.settings.reviewer_name != blank %}
+            <div class="testimonials__reviewer-wrapper flex mb3 mt3">
+              {% if block.settings.reviewer_image != blank %}
+                <div class="testimonials__reviewer-image">
+                  {% render 'image' with
+                    image: block.settings.reviewer_image,
+                    disable_style: true
+                  %}
+                </div>
+              {% endif %}
+
+              {% if block.settings.reviewer_name != blank %}
+                <div class="flex flex-column overline">
+                  <span class="b">{{ 'sections.testimonials.reviewed_by' | t }}</span>
+                  <span data-theme-editor-setting="section.{{ id }}.block.{{ block.id }}.reviewer_name">{{ block.settings.reviewer_name }}</span>
+                </div>
+              {% endif %}
+            </div>
+          {% endif %}
+
+          {% unless block.settings.rating == 0 %}
+            <div class="testimonials__stars mb2">
+              {% assign max_star_rating = 5 %}
+              {% assign solid_star_rating = block.settings.rating | floor %}
+              {% assign remaining_stars = max_star_rating | minus: block.settings.rating %}
+
+              {% for star in (1..solid_star_rating) %}
+                {% render 'icon-star' %}
+              {% endfor %}
+
+              {% if remaining_stars > 0 %}
+                {% assign remaining_stars_includes_half_star = remaining_stars | modulo: 1 %}
+                {% if remaining_stars_includes_half_star != 0 %}
+                  {% render 'icon-star-half' %}
+                {% endif %}
+
+                {% assign remaining_empty_stars = remaining_stars | floor %}
+
+                {% if remaining_empty_stars > 0 %}
+                  {% for empty_star in (1..remaining_empty_stars) %}
+                    {% render 'icon-star-empty' %}
+                  {% endfor %}
+                {% endif %}
+              {% endif %}
+            </div>
+          {% endunless %}
+
+          {% if block.settings.review != blank %}
+            <p ma0>&#8220;<span data-theme-editor-setting="section.{{ id }}.block.{{ block.id }}.review">{{ block.settings.review }}</span>&#8221;</p>
+          {% endif %}
+        </div>
+      {%- endfor -%}
+    {% else %}
+
+      {% for i in (1..minimum_items_for_wrap_around) %}
+        <div class="testimonials__slide carousel__slide animates">
+          <div class="testimonials__image carousel__slide-image db mb3">
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+          </div>
+
+          <div class="testimonials__reviewer-wrapper flex mb3">
+            <div class="testimonials__reviewer-image testimonials__reviewer-placeholder">
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+
+            <div class="flex flex-column overline">
+              <span class="b">{{ 'sections.testimonials.reviewed_by' | t }}</span>
+              <span>{{ 'homepage.onboarding.testimonial_author' | t }}</span>
+            </div>
+          </div>
+
+          <p ma0>&#8220;{{ 'homepage.onboarding.testimonial_review' | t }}&#8221;</p>
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+</section>

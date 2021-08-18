@@ -1,0 +1,39 @@
+{% liquid
+  assign time_in_ms = timer | times: 1000
+  assign show_nav_dots = true
+
+  if slides.size < 3
+    assign show_nav_dots = false
+  endif
+%}
+
+<section
+  data-section-id="{{ section.id }}"
+  data-section-type="slideshow"
+  data-enable-navigation-dots={{ show_nav_dots }}
+  class="slideshow slideshow--{{ aspect_ratio }}"
+  data-timer="{{ time_in_ms }}"
+>
+  <div class="js-slideshow">
+    {% if slides.size == 2 %}
+      {% for i in (1..2) %}
+        {% render 'slideshow-blocks' with
+          id: id,
+          blocks: slides,
+          aspect_ratio: aspect_ratio
+        %}
+      {% endfor %}
+    {% else %}
+      {% render 'slideshow-blocks' with
+        id: id,
+        blocks: slides
+        aspect_ratio: aspect_ratio
+      %}
+    {% endif %}
+  </div>
+
+  <ol class="slideshow__pseudo-dots{% if slides.size != 2 %} hidden{% endif %}">
+    <li class="slideshow__pseudo-dot prev is-selected"></li>
+    <li class="slideshow__pseudo-dot next"></li>
+  </ol>
+</section>

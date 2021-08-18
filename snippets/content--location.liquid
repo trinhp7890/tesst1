@@ -1,0 +1,127 @@
+{% assign map_is_valid = false %}
+
+{% if api_key != blank and map_address != blank %}
+  {% assign map_is_valid = true %}
+{% endif %}
+
+{% assign modifiers = '' %}
+
+{% assign modifiers = modifiers | append: ' section--' | append: section_style %}
+
+{% unless section_style == 'contrast' %}
+  {% assign modifiers = modifiers | append: ' section--bordered' %}
+{% endunless %}
+
+{% assign modifiers = modifiers | append: ' location--alignment-' | append: heading_alignment %}
+
+{% if image %}
+  {% assign modifiers = modifiers | append: ' location--has-image' %}
+{% endif %}
+
+{% if map_is_valid %}
+  {% assign modifiers = modifiers | append: ' location--has-map' %}
+{% endif %}
+
+{% capture map_link %}
+  <div class="location__map-cta">
+    <a
+      target="_blank"
+      class="accent-link"
+      data-theme-editor-setting="section.{{ id }}.map_link_text"
+      rel="norefferer noopener"
+      href="https://www.google.com/maps/place/{{ map_address | url_encode }}"
+    >
+      {{ map_link_text }}
+    </a>
+  </div>
+{% endcapture %}
+
+<section
+  data-section-id="{{ id }}"
+  data-section-type="location"
+  class="section location{{ modifiers }}"
+>
+  <div class="location__intro animation__staggered-children-fade-in">
+    {% render 'text-block' with
+      id: id,
+      modifiers: 'mb5',
+      heading_alignment: heading_alignment,
+      text_max_width: text_max_width,
+      overline: overline,
+      heading: heading,
+      subheading: subheading,
+    %}
+
+    {% if hours != blank or address != blank %}
+      <div class="location__store-info mb5">
+        <div class="location__store-info-inner">
+          {% unless hours == blank %}
+            <div class="location__store-hours">
+              <div class="location__store-hours-title overline mb3">{{ 'general.store_information.hours' | t }}</div>
+              <div
+                class="type-body-regular rte"
+                data-theme-editor-setting="section.{{ id }}.hours"
+              >
+                {{ hours }}
+              </div>
+            </div>
+          {% endunless %}
+
+          {% unless address == blank %}
+            <div class="location__store-address">
+              <div class="location__store-address-title overline mb3">{{ 'general.store_information.address' | t }}</div>
+              <div
+                class="type-body-regular rte"
+                data-theme-editor-setting="section.{{ id }}.address"
+              >
+                {{ address }}
+              </div>
+            </div>
+          {% endunless %}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="location__map w-100">
+    <div class="location__image">
+      {% if image %}
+        {% render 'image',
+          image: image,
+          image_class: 'w-100',
+        %}
+      {% else %}
+        {% unless map_is_valid %}
+          <div class="location__map-placeholder">{{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}</div>
+        {% endunless %}
+      {% endif %}
+    </div>
+
+    {% if map_is_valid %}
+      <div
+        class="location__map-container"
+        data-api-key="{{ api_key }}"
+        data-address="{{ map_address | url_encode }}"
+      >
+        <div class="location__map-element-wrapper">
+          <div class="location__map-element" style="height: 100%;"></div>
+        </div>
+      </div>
+    {% endif %}
+
+    {% unless map_link_text == blank and map_address != blank %}
+      {{ map_link }}
+    {% endunless %}
+  </div>
+</section>
+
+<script id="map-styles-{{ id }}" type="application/json">
+  {
+    "styles":
+      {%- if map_json != blank -%}
+        {{ map_json }}
+      {% else %}
+        {}
+      {%- endif -%}
+  }
+</script>

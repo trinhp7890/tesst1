@@ -1,0 +1,64 @@
+{% assign modifiers = '' %}
+
+{% assign modifiers = modifiers | append: ' section--' | append: section_style %}
+
+{% unless section_style == 'contrast' %}
+  {% assign modifiers = modifiers | append: ' section--bordered' %}
+{% endunless %}
+
+<section
+  data-section-id="{{ id }}"
+  data-section-type="video"
+  data-video-type="{{ video.type }}"
+  data-video-id="{{ video.id }}"
+  data-component="video"
+  class="section video {{ modifiers }}"
+>
+  {% render 'text-block' with
+    id: id,
+    modifiers: 'mb5 animation__staggered-children-fade-in',
+    heading_alignment: heading_alignment,
+    overline: overline,
+    heading: heading,
+    subheading: subheading,
+    text_max_width: text_max_width,
+    link: link,
+    link_text: link_text
+  %}
+
+  <div class="video__wrapper">
+    <div class="video__overlay{% unless image == blank %} visible{% endunless %}">
+      <div class="z-5 absolute absolute--fill flex justify-around items-center">
+      {% if video != blank and image != blank %}
+        <a href="#" class="video__play-button" data-video-trigger>
+          {% render 'icon-play' %}
+        </a>
+      {% endif %}
+      </div>
+
+      {% unless image == blank %}
+        <div
+          class="video__image absolute absolute--fill lazyload"
+          data-bgset="{% render 'responsive-bg-image', image: image %}"
+          role="img"
+          aria-label="{{ image.alt }}"
+        ></div>
+      {% endunless %}
+
+      <div class="video__wash absolute absolute--fill o-{{ overlay_opacity }}" style="background: {{ overlay_color }};"></div>
+    </div>
+
+    {%- if video != blank -%}
+      <div class="video__container video__container--{{ section.id }}">
+        <div class="video__player video__player--{{ section.id }}"></div>
+      </div>
+    {% else %}
+      <div class="video__placeholder">
+        <div class="video__placeholder-image">
+          {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+        </div>
+      </div>
+    {% endif %}
+
+  </div>
+</section>

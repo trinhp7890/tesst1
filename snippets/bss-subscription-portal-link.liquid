@@ -1,0 +1,19 @@
+{% assign bss_sm_domain = shop.permanent_domain | url_encode %}
+{% assign bss_sm_timestamp = "now" | date: "%s" %}
+{% assign bss_sm_validity = 60 | times: 60 | times: 24 %}
+
+{% assign bss_sm_params = "customer_id=" | append: customer.id %}
+{% assign bss_sm_params = bss_sm_params | append: "&shop=" | append: bss_sm_domain %}
+{% comment %}
+{% assign bss_sm_params = bss_sm_params | append: "&timestamp=" | append: bss_sm_timestamp %}
+{% assign bss_sm_params = bss_sm_params | append: "&validity=" | append: bss_sm_validity %}
+{% endcomment %}
+
+{% assign bss_sm_signature = bss_sm_params | hmac_sha256: "bss_sm_app_2021" %}
+
+{% assign bss_sm_url = "/apps/subscription/contracts?" | append: bss_sm_params %}
+{% comment %}
+{% assign bss_sm_url = bss_sm_url | append: "&signature=" %}
+{% assign bss_sm_url = bss_sm_url | append: bss_sm_signature%}
+{% endcomment %}
+<h3><a href="{{ bss_sm_url }}" target="__blank" class="bss-sub-subscription-link">My Subscriptions</a></h3>

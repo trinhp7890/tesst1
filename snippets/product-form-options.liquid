@@ -1,0 +1,235 @@
+{% assign file_extension = 'png' %}
+{% assign chip_options = settings.chip_options | downcase | split: ', ' %}
+{% assign swatch_option_name = settings.swatch_option | downcase %}
+{% assign variant_popup_page = pages[settings.variant_popup_page] %}
+
+{% assign variant_popup_content_exists = false %}
+{% assign variant_popup_option = '' %}
+
+{% if settings.variant_popup_option != blank and settings.variant_popup_text != blank and variant_popup_page.content != blank %}
+  {% assign variant_popup_content_exists = true %}
+  {% assign variant_popup_option = settings.variant_popup_option | downcase %}
+{% endif %}
+
+{% capture guide_trigger %}
+  <a
+    href="#"
+    class="variant-popup__trigger accent type-body-small"
+    data-variant-popup-trigger
+    data-modal-content-id="modal-{{ settings.variant_popup_page }}"
+  >
+    {{ settings.variant_popup_text }}
+  </a>
+  <div id="modal-{{ settings.variant_popup_page }}" class="variant-popup__content modal-content">
+    <h2 class="type-heading-1 mt0 mb3">{{ variant_popup_page.title }}</h2>
+    {{ variant_popup_page.content }}
+  </div>
+{% endcapture %}
+
+{% if show_swatches %}
+  {% for option in product.options_with_values %}
+    {%- assign option_name = option.name | downcase -%}
+
+    {% if option_name == swatch_option_name %}
+      <div class="product-form__option product-form__option-swatches js-enabled">
+        <div class="product-form__color-swatches" data-product-swatches data-product-option="Option{{ option.position }}">
+          <label class="product-form__option-label label-above" for="Option{{ option.position }}">
+            {{ option.name }}
+          </label>
+          {% for value in option.values %}
+            {% if option.selected_value == value %}
+              <div class="product-form__color-swatches-selected">{{ value }}</div>
+            {% endif %}
+          {% endfor %}
+          {% for value in option.values %}
+            <a
+              href="#"
+              data-product-swatch
+              data-product-swatch-option="{{ value }}"
+              class="product-form__color-swatch {% if option.selected_value == value %}selected{% endif %}"
+              style="background-image: url({{ value | handle | append: '.' | append: file_extension | file_url }})"
+              tabindex="0"
+            >
+            </a>
+          {% endfor %}
+        </div>
+
+        <select
+          id="Option{{ option.position }}"
+          name="options[{{ option.name | escape }}]"
+          class="product-form__option-select"
+        >
+          {% for value in option.values %}
+            <option
+              value="{{ value | escape }}"
+              {% if option.selected_value == value %}selected="selected"{% endif %}>
+                {{ value }}
+            </option>
+          {% endfor %}
+        </select>
+      </div>
+    {% endif %}
+  {% endfor %}
+
+  {% for option in product.options_with_values %}
+    {%- assign option_name = option.name | downcase -%}
+
+    {% unless option_name == swatch_option_name %}
+      {% if chip_options contains option_name %}
+        <div class="product-form__option product-form__option-chip js-enabled">
+          <div class="product-form__chip-wrapper" data-product-chips>
+            <label class="product-form__option-label label-above" for="Option{{ option.position }}">
+              {{ option.name }}
+            </label>
+            {% for value in option.values %}
+              {% if option.selected_value == value %}
+                <div class="product-form__chip-selected">{{ value }}</div>
+              {% endif %}
+            {% endfor %}
+
+            {% for value in option.values %}
+              <div class="product-form__chip">
+                {% assign optionId = option_name | append: '-' | append: forloop.index %}
+                <input
+                  class="product-form__chip-input"
+                  type="radio"
+                  name="options[{{ option.name | escape }}]"
+                  id="{{ optionId }}"
+                  value="{{ value | escape }}"
+                  {% if option.selected_value == value %}checked{% endif %}
+                  />
+                <label
+                  class="product-form__chip-label"
+                  for="options[{{ option.name | escape }}]"
+                  id="{{ optionId }}"
+                >
+                  {{ value }}
+                </label>
+              </div>
+            {% endfor %}
+
+            {% if variant_popup_content_exists and option_name == variant_popup_option %}
+              {{ guide_trigger }}
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+    {% endunless %}
+  {% endfor %}
+
+  {% for option in product.options_with_values %}
+    {%- assign option_name = option.name | downcase -%}
+
+    {% unless option_name == swatch_option_name %}
+      {% unless chip_options contains option_name %}
+        <div class="product-form__option js-enabled">
+          <select
+            id="Option{{ option.position }}"
+            name="options[{{ option.name | escape }}]"
+            class="product-form__option-select">
+            {% for value in option.values %}
+              <option
+                value="{{ value | escape }}"
+                {% if option.selected_value == value %}selected="selected"{% endif %}>
+                  {{ value }}
+              </option>
+            {% endfor %}
+          </select>
+
+          <label class="product-form__option-label" for="Option{{ option.position }}">
+            {{ option.name }}
+          </label>
+
+          <div class="product-form__option-select-icon">
+            {% render 'icon-chevron-down' %}
+          </div>
+
+          {% if variant_popup_content_exists and option_name == variant_popup_option %}
+            {{ guide_trigger }}
+          {% endif %}
+        </div>
+      {% endunless %}
+    {% endunless %}
+  {% endfor %}
+
+{% else %}
+  {% for option in product.options_with_values %}
+    {%- assign option_name = option.name | downcase -%}
+
+    {% unless option_name == swatch_option_name %}
+      {% if chip_options contains option_name %}
+        <div class="product-form__option js-enabled">
+          <div class="product-form__chip-wrapper" data-product-chips>
+            <label class="product-form__option-label label-above" for="Option{{ option.position }}">
+              {{ option.name }}
+            </label>
+            {% for value in option.values %}
+              {% if option.selected_value == value %}
+                <div class="product-form__chip-selected">{{ value }}</div>
+              {% endif %}
+            {% endfor %}
+
+            {% for value in option.values %}
+              <div class="product-form__chip">
+                {% assign optionId = option_name | append: '-' | append: forloop.index %}
+                <input
+                  class="product-form__chip-input"
+                  type="radio"
+                  name="options[{{ option.name | escape }}]"
+                  id="{{ optionId }}"
+                  value="{{ value | escape }}"
+                  {% if option.selected_value == value %}checked{% endif %}
+                  />
+                <label
+                  class="product-form__chip-label"
+                  for="options[{{ option.name | escape }}]"
+                  id="{{ optionId }}"
+                >
+                  {{ value }}
+                </label>
+              </div>
+            {% endfor %}
+
+            {% if variant_popup_content_exists and option_name == variant_popup_option %}
+              {{ guide_trigger }}
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+    {% endunless %}
+  {% endfor %}
+
+  {% for option in product.options_with_values %}
+    {%- assign option_name = option.name | downcase -%}
+
+    {% unless chip_options contains option_name %}
+
+      <div class="product-form__option js-enabled">
+        <select
+          id="Option{{ option.position }}"
+          name="options[{{ option.name | escape }}]"
+          class="product-form__option-select">
+          {% for value in option.values %}
+            <option
+              value="{{ value | escape }}"
+              {% if option.selected_value == value %}selected="selected"{% endif %}>
+                {{ value }}
+            </option>
+          {% endfor %}
+        </select>
+
+        <label class="product-form__option-label" for="Option{{ option.position }}">
+          {{ option.name }}
+        </label>
+
+        <div class="product-form__option-select-icon">
+          {% render 'icon-chevron-down' %}
+        </div>
+
+        {% if variant_popup_content_exists and option_name == variant_popup_option %}
+          {{ guide_trigger }}
+        {% endif %}
+      </div>
+    {% endunless %}
+  {% endfor %}
+{% endif %}

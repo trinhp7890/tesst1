@@ -1,0 +1,229 @@
+<section data-section-id="{{ id }}" data-section-type="text-columns-with-images"
+  class="section text-columns{{ modifiers }}">
+  <div class="accordion-wrap">
+    <h3 class="accordion-menu active">
+      SERVICES
+      <span class="accordion-menu-arrow desktop"></span>
+    </h3>
+
+    <div class="services services-max-w esthys_holder-new accordion-menu-item" id="services">
+      <div class="top_services">
+        <div class="services_title">
+          <div class="service_column6">FACIALS FOR THE PEOPLE</div>
+          <div class="services_column5">
+            Welcome to our Haus,<br>
+            where we believe in giving great face<br>
+            to the entire human race.
+          </div>
+        </div>
+        <div class="dotteds_line"></div>
+        {% for block in blocks %}
+        {% assign check_value = forloop.index0 | modulo: 10 %}
+        {% assign check_value1 = forloop.index | modulo: 10 %}
+        {% if check_value == 0 %}
+        <div class="service_column">
+          {% endif %}
+          {% if block.settings.enable_special == false %}
+          <div id="serv{{forloop.index}}" class="services_block tooltip">
+            {{ block.settings.title | upcase }} <span class="serv_price">{{ block.settings.number_show }}</span>
+
+            <div class="serv_text">
+              {{ block.settings.subheading }}<span class="more_btn">(more)</span>
+            </div>
+          </div>
+          {% endif %}
+          {% if block.settings.enable_special == true %}
+          <div id="serv{{forloop.index}}" class="services_block_special tooltip">
+            {{ block.settings.title | upcase }} <span class="serv_price_special">{{ block.settings.number_show }}</span>
+
+            <div class="serv_text">
+              {{ block.settings.subheading }}<span class="more_btn">(more)</span>
+            </div>
+          </div>
+          {% endif %}
+          {% if check_value1 == 0 %}
+        </div>
+        {% endif %}
+        {% if forloop.last == true %}
+        {% if forloop.index > 2 and check_value1 > 0 %}
+      </div>
+      {% endif %}
+      {% endif %}
+      {% endfor %}
+      <div class="dotteds_line" style="margin-top: 0px;"></div>
+      <div class="bottom_services">
+        <div class="boost_column">
+          <div class="services_m_block gimme">
+            GIMME<br class="desktop2">
+            A<br class="desktop2">
+            BOOST!
+          </div>
+          <div class="serv_icons">
+            <div class="line1">
+              <div class="service_column3">
+                <div id="serv12" class="services_block_2 tooltip">
+                  <div class="serv_icon">
+                    <img src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/FH_MenuIcons2.jpg?v=1590585406"
+                      width="100%" alt="lip, laugh, love">
+                  </div>
+                  <div class="serv_text2">LIP, LAUGH, <br class="desktop2">LOVE<span class="serv_price">10</span>
+                    <div class="more_btn">(more)</div>
+                  </div>
+                </div>
+              </div>
+              <div class="service_column3">
+                <div id="serv11" class="services_block_2 tooltip">
+                  <div class="serv_icon">
+                    <img src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/FH_MenuIcons1.jpg?v=1590585436"
+                      width="100%" alt="eye rise">
+                  </div>
+                  <div class="serv_text2 ">EYE <br class="desktop2">RISE<span class="serv_price">15</span>
+                    <div class="more_btn">(more)</div>
+                  </div>
+                </div>
+              </div>
+              <div class="service_column3">
+                <div id="serv13" class="services_block_2 tooltip">
+                  <div class="serv_icon">
+                    <img src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/FH_MenuIcons5.jpg?v=1590585457"
+                      width="100%" alt="have a blast">
+                  </div>
+                  <div class="serv_text2">HAVE <br class="desktop2">A BLAST<span class="serv_price">15</span>
+                    <div class="more_btn">(more)</div>
+                  </div>
+                </div>
+              </div>
+              <div class="service_column3 laststs" style="margin-right: 0">
+                <div id="serv14" class="services_block_2 tooltip">
+                  <div class="serv_icon">
+                    <img src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/FH_MenuIcons8.jpg?v=1590585483"
+                      width="100%" alt="random wax of kindness">
+                  </div>
+                  <div class="serv_text2">RANDOM WAX <br>OF KINDNESS<span class="serv_price"></span>
+                    <div class="more_btn">(more)</div>
+                  </div>
+                </div>
+              </div>
+              <div class="serv_text2 wax_text serv_text2_block tooltip" style="margin-left: 47px">
+                LIP<span style="color:#007481;" class="serv_price">10</span>
+              </div>
+              <div class="serv_text2 wax_text serv_text2_block tooltip">
+                CHIN<span style="color:#007481;" class="serv_price">15</span>
+              </div>
+              <div class="serv_text2 wax_text serv_text2_block tooltip">
+                BROWS<span style="color:#007481;" class="serv_price">25</span>
+              </div>
+            </div>
+            <div class="line2">
+              <div class="service_column3">
+                <div id="serv15" class="services_block_2 tooltip">
+                  <div class="serv_icon">
+                    <img src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/FH_MenuIcons9.jpg?v=1590585512"
+                      width="100%" alt="universal a-peel">
+                  </div>
+                  <div class="serv_text2">UNIVERSAL <br class="desktop2">A-PEEL<span class="serv_price">25</span>
+                    <div class="more_btn">(more)</div>
+                  </div>
+                </div>
+              </div>
+              <div class="service_column3">
+                <div id="serv16" class="services_block_2 tooltip">
+                  <div class="serv_icon">
+                    <img src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/FH_MenuIcons3.jpg?v=1590585539"
+                      width="100%" alt="necks generation">
+                  </div>
+                  <div class="serv_text2">NECKS <br class="desktop2">GENERATION<span class="serv_price">25</span>
+                    <div class="more_btn">(more)</div>
+                  </div>
+                </div>
+              </div>
+              <div class="service_column3">
+                <div id="serv17" class="services_block_2 tooltip">
+                  <div class="serv_icon">
+                    <img src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/maskandyou2.jpg?v=1614244003"
+                      width="100%" alt="mask and you shall receive">
+                  </div>
+                  <div class="serv_text2">MASK AND YOU <br class="desktop2">SHALL RECEIVE <span
+                      class="serv_price">25</span>
+                    <div class="more_btn">(more)</div>
+                  </div>
+                </div>
+              </div>
+              <div class="service_column3">
+                <div id="serv19" class="services_block_2 tooltip">
+                  <div class="serv_icon">
+                    <img src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/FH_MenuIcons6.jpg?v=1590585599"
+                      width="100%" alt="buff love">
+                  </div>
+                  <div class="serv_text2">BUFF LOVE <br class="desktop2">(Microderm)<span class="serv_price">35</span>
+                    <div class="more_btn">(more)</div>
+                  </div>
+                </div>
+              </div>
+              <div class="service_column3">
+                <div id="serv20" class="services_block_2 tooltip">
+                  <div class="serv_icon">
+                    <img src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/currentaffair.png?v=1590585640"
+                      width="100%" alt="current affair">
+                  </div>
+                  <div class="serv_text2">CURRENT <br class="desktop2">AFFAIR<span class="serv_price">35</span>
+                    <div class="more_btn">(more)</div>
+                  </div>
+                </div>
+              </div>
+              <div class="service_column3">
+                <div id="serv21" class="services_block_2 tooltip">
+                  <div class="serv_icon">
+                    <img src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/FH_MenuIcons7.jpg?v=1590585663"
+                      width="100%" alt="beam me up">
+                  </div>
+                  <div class="serv_text2">BEAM ME UP <br class="desktop2">(LED)<span class="serv_price">50</span>
+                    <div class="more_btn">(more)</div>
+                  </div>
+                </div>
+              </div>
+              <!--Add 23/02/2021-->
+              <div class="service_column3">
+                <div id="serv22" class="services_block_2 tooltip">
+                  <div class="serv_icon">
+                    <img src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/stat.jpg?v=1614241218" width="100%"
+                      alt="Led packages">
+                  </div>
+                  <div class="serv_text2">LED <br class="desktop2"> PACKAGES
+                    <div class="more_btn">(more)</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dotteds_line" style="margin-top: 5px;"></div>
+        <div class="services-book-now">
+            <span>NEW Body Waxing in New York Upper East Side Only <span class="services-link-now">book now</span></span>
+        </div>
+        <div class="bottom_services">
+          <div class="service_column">
+            <div class="services_m_block_new package">
+              <span class="future_text">
+                Seriously great skin requires commitment!
+                <div class="future_text2" style="color: #007481">
+                  CHECK OUT OUR PACKAGES AND <span style="color: #a5e5d9">MINT MONTHLY</span>
+                  MEMBERSHIP!<span>&nbsp;<a href="{{shop.url}}/pages/packages">
+                      <img
+                        src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/twelve-pack_yellow-star.png?v=1590585694"
+                        width="45px" alt="learn more" style="margin-top:-3px;"></a></span>
+                </div>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-menu-line desktop"></div>
+  </div>
+  
+
+
+</section>

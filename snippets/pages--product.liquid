@@ -1,0 +1,164 @@
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+{%- assign enable_image_zoom = section.settings.enable_image_zoom -%}
+{%- assign compare_at_price = current_variant.compare_at_price -%}
+{%- assign price = current_variant.price -%}
+{%- assign featured_media = product.selected_or_first_available_variant.featured_media | default: product.featured_media -%}
+{%- assign first_3d_model = product.media | where: "media_type", "model" | first -%}
+
+{% assign show_price_comparison = false %}
+
+{% if current_variant.compare_at_price > current_variant.price %}
+  {% assign show_price_comparison = true %}
+{% endif %}
+
+{% capture product_heading %}
+  {% if show_vendor %}
+    <p class="product__vendor overline mt0">{{ product.vendor | link_to_vendor }}</p>
+  {% endif %}
+
+  <h1 class="mt0 mb1 product-title">{{ product.title }}</h1>
+
+  <div class="product__price">
+    <s data-compare-price class="mr1 meta{% if show_price_comparison == false %} hide{% endif %}">
+      {% if show_price_comparison %}
+        {{ current_variant.compare_at_price | money }}
+      {% endif %}
+      <span class="visually-hidden" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
+    </s>
+    <span data-product-price class="product-title-price">$<span data-product-price class="product__price-money product-title">{{current_variant.price | money| replace: "$", "" }}</span></span>
+    
+    {% render 'unit-price' item: current_variant %}
+  </div>
+
+  <div class="product__reviews hidden mb3">
+    <span class="product__reviews-stars hidden"></span>
+    <a href="#" class="product__reviews-trigger accent"></a>
+  </div>
+{% endcapture %}
+
+<section
+  class="product max-w-1280"
+  data-section-id="{{ section.id }}"
+  data-section-type="product"
+>
+  {% if product.media.size > 0 and product.media[0].media_type == 'image' %}
+    <div class="product__media-action">
+      <button type="button" class="product__media-action-button">
+        {% render 'icon-plus' %}
+      </button>
+    </div>
+  {% endif %}
+
+  <div class="product__mobile-header">
+    {{ product_heading }}
+  </div>
+
+  <div class="product__media">
+    {% if product.media[0].size > 0 %}
+      
+        <div class="product__media-wrapper" data-media-id="{{ product.media[0].id }}">
+          {% render 'media', media: product.media[0], featured_media: featured_media %}
+        </div>
+    {% else %}
+      <div class="product__image">
+        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+      </div>
+    {% endif %}
+  </div>
+  <div class="product-gallary-carousel">
+    {% if product.media.size > 0 %}
+      {%- for media in product.media -%}
+        <div class="slide" data-media-id="{{ media.id }}">
+          {% render 'media', media: media, featured_media: featured_media, type:'thumbs' %}
+        </div>
+      {%- endfor -%}
+    {% else %}
+      <div class="product-gallary">
+        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+      </div>
+    {% endif %}
+  </div> 
+
+
+  {%- if first_3d_model -%}
+    <button
+      aria-label="{{ 'products.product.view_in_space_label' | t }}"
+      class="product__view-in-space bttn bttn--full"
+      data-in-your-space
+      data-shopify-xr
+      data-shopify-model3d-id="{{ first_3d_model.id }}"
+      data-shopify-title="{{ product.title | escape }}"
+      data-shopify-xr-hidden
+    >
+      <span>
+        {% render 'icon-3d' %}
+        <span class='product-single__view-in-space-text'>{{ 'products.product.view_in_space' | t }}</span>
+      </span>
+    </button>
+  {%- endif -%}
+
+  <div class="product__meta">
+    <div class="product__meta-inner">
+
+      <div class="product__header">
+        {{ product_heading }}
+      </div>
+
+      {% render 'product-form' with
+        product: product,
+        show_vendor: show_vendor,
+        current_variant: current_variant,
+        show_dynamic_checkout: enable_payment_button,
+        show_swatches: show_swatches,
+        show_quantity_input: show_quantity_input,
+      %}
+
+      {%- comment -%}
+        Live region for announcing updated price and availability to screen readers
+      {%- endcomment -%}
+      <p class="visually-hidden" data-product-status
+        aria-live="polite"
+        role="status"
+      ></p>
+
+      {%- comment -%}
+        Live region for announcing that the product form has been submitted and the
+        product is in the process being added to the cart
+      {%- endcomment -%}
+      <p class="visually-hidden" data-loader-status
+        aria-live="assertive"
+        role="alert"
+        aria-hidden="true"
+      >{{ 'products.product.loader_label' | t }}</p>
+      <div class="product__description mt5 rte">
+        <span class="product-sku">SKU {{ current_variant.sku }}</span><br>
+        {{ product.description }}
+      </div>
+      {% render 'content--product-full-of'%}
+      {%if product.metafields.global.content-full-of != blank %}
+         <div class="product__description mt5">
+           {{product.metafields.global.content-full-of}}
+         </div>
+      {%endif%}  
+      {% if show_share_buttons %}
+        <div class="product__social-sharing{% if product.description contains 'accordion__group' %} hidden{% endif %}">
+          {% render 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product.featured_media %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- {%- assign images = product.media | where: 'media_type', 'image' -%} -->
+  {%- assign images = product.media[0] | where: 'media_type', 'image' -%}
+  {% render 'lightbox' with images: images %}
+  {% render 'reviews-drawer' with product: product %}
+</section>
+
+{% unless product == empty %}
+  <script type="application/json" id="ProductJson-{{ section.id }}">
+    {{ product | json }}
+  </script>
+  <script type="application/json" id="ModelJson-{{ section.id }}">
+    {{ product.media | where: 'media_type', 'model' | json }}
+  </script>
+{% endunless %}

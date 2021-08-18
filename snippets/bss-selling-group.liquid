@@ -1,0 +1,205 @@
+{% if product and product.selling_plan_groups.size > 0 %}
+{% assign lastSellingPlanId = "" %}
+
+{% for group in product.selling_plan_groups %}
+     {% if forloop.last == true and product.requires_selling_plan == true %}
+        {% assign lastSellingPlanId = group.selling_plans[0].id %}
+     {% endif %}
+{% endfor %}
+
+<input type="hidden" name="selling_plan" value="{{ lastSellingPlanId }}" />
+<div class="bss-sub-purchase-wrapper">
+    <p class="bss-sub-purchase-title">Purchase options</p>
+    <div class="bss-sub-plan-selector">
+
+      {% unless product.requires_selling_plan %}
+        <div class="bss-sub-otp">
+            <input type="radio" id="bss-sub-one-time-purchase" name="purchase_option"/><label for="bss-sub-one-time-purchase">One-time purchase</label>
+        </div>
+      {% endunless %}
+       {% for group in product.selling_plan_groups %}
+        <div class="bss-sub-group">
+          <div class="bss-sub-group-name">
+            {% if forloop.last == true and product.requires_selling_plan == true %}
+                <input type="radio" id="bss-sub-purchase-option-{{forloop.index}}" checked name="purchase_option"/><label for="bss-sub-purchase-option-{{forloop.index}}">{{ group.name}}</label>
+            {% else %}
+                 <input type="radio" id="bss-sub-purchase-option-{{forloop.index}}" name="purchase_option"/><label for="bss-sub-purchase-option-{{forloop.index}}">{{ group.name}}</label>
+            {% endif %}
+          </div>
+          <div class="bss-sub-options">
+             <label>{{ group.options[0].name }}</label>
+             <select name="selling_plan_select">
+
+                  {% for plan in group.selling_plans %}
+                  <option value={{ plan.id }}>{{ plan.options[0].value }}</option>
+                {% endfor %}
+
+              </select>
+          </div>
+
+       </div>
+      {% endfor %}
+       <div class="bss-sub-plan-description bss-sub-plan-description-hide"></div>
+    </div>
+</div>
+<style>
+
+.bss-sub-purchase-title {
+  text-align: left;
+}
+.bss-sub-plan-selector {
+  border: 1px solid #ececec;
+  text-align: left;
+}
+
+.bss-sub-plan-selector .bss-sub-group-name,
+.bss-sub-plan-selector .bss-sub-otp,
+.bss-sub-plan-selector .bss-sub-options,
+.bss-sub-plan-description
+{
+  padding: 10px 15px;
+}
+
+.bss-sub-plan-selector .bss-sub-group-name,
+.bss-sub-plan-selector .bss-sub-otp
+{
+  display: flex;
+  align-items: center;
+}
+.bss-sub-plan-selector .bss-sub-group-name label,
+.bss-sub-plan-selector .bss-sub-otp label
+ {
+  margin: 0 0 0 5px;
+}
+
+.bss-sub-plan-selector .bss-sub-otp,
+.bss-sub-plan-selector .bss-sub-group
+  {
+    border-bottom: 1px solid #ececec;
+}
+
+.bss-sub-price-with-discount {
+  text-transform: uppercase;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.bss-sub-price-with-discount .bss-sub-offer-price {
+  color: red;
+}
+.bss-sub-price-with-discount .bss-sub-offer-price,
+.bss-sub-price-with-discount .bss-sub-offer-compare-at-price {
+  font-size: 1.125em;
+  margin-right: 5px;
+}
+.bss-sub-price-with-discount .bss-sub-plan-saving {
+  font-size: 0.7em;
+  letter-spacing: 1px;
+  color: red;
+  border: 1px red solid;
+  padding: 1px 5px;
+}
+
+.bss-sub-price-with-discount .bss-sub-show-info.bss-sub-saving-wrapper {
+  flex-basis: 100%;
+}
+
+[data-price-container],
+.product-single__meta-list,
+.shopify-section .product__price,
+.product-template-section .inline-list,
+.product-single__prices,
+ #shopify-section-product [data-price]
+ {
+  display: none;
+}
+.bss-sub-hide-info,
+.bss-sub-hide-saving,
+.bss-sub-plan-description-hide
+{
+  display: none;
+}
+@media only screen and (max-width: 480px) {
+  .bss-sub-price-with-discount .bss-sub-plan-saving {
+    font-size: 0.5em;
+    margin-left: 5px;
+  }
+
+  .bss-sub-price-with-discount .bss-sub-offer-price,
+  .bss-sub-price-with-discount .bss-sub-offer-compare-at-price {
+    font-size: 0.9em;
+  }
+}
+</style>
+<script>
+  (function() {
+    var bssSubProduct = {{ product | json }};
+
+    bssSubProduct.page_type = {{ request.page_type | json }};
+    bssSubProduct.selected_selling_plan = {{ product.selected_selling_plan | json }};
+
+    bssSubProduct.sellingPlans = (function() {
+      var item = {};
+
+      for (group of bssSubProduct.selling_plan_groups) {
+        for (plan of group.selling_plans) {
+          item[plan.id] = JSON.parse(JSON.stringify(plan));
+          item[plan.id].selling_plan_group_id = group.id;
+        }
+      }
+
+      return item;
+    })();
+
+    bssSubProduct.variantIdArrayMap = (function() {
+      var item = {};
+
+      {% for variant in product.variants %}
+        {% assign variant_id = variant.id %}
+        item[{{ variant_id }}] = {{ variant | json }};
+        item[{{ variant_id }}].price_formatted = {{ variant.price | money | json }};
+        item[{{ variant_id }}].price_formatted_without_trailing_zeros = {{ variant.price | money_without_trailing_zeros | json }};
+        item[{{ variant_id }}].compare_at_price_formatted = {{ variant.compare_at_price | money | json }};
+        item[{{ variant_id }}].compare_at_price_formatted_without_trailing_zeros = {{ variant.compare_at_price | money_without_trailing_zeros | json }};
+        item[{{ variant_id }}].available_group_ids = {};
+        item[{{ variant_id }}].selling_plan_allocations_by_id = {};
+        item[{{ variant_id }}].product_id = {{ product.id | json }}
+
+        {% for alloc in variant.selling_plan_allocations %}
+          item[{{ variant_id }}].available_group_ids[{{ alloc.selling_plan_group_id | json }}] = true;
+          item[{{ variant_id }}].selling_plan_allocations_by_id[{{ alloc.selling_plan.id }}] = {};
+          item[{{ variant_id }}].selling_plan_allocations_by_id[{{ alloc.selling_plan.id }}].price = {{ alloc.price | json }};
+          item[{{ variant_id }}].selling_plan_allocations_by_id[{{ alloc.selling_plan.id }}].price_formatted = {{ alloc.price | money | json }};
+          item[{{ variant_id }}].selling_plan_allocations_by_id[{{ alloc.selling_plan.id }}].price_formatted_without_trailing_zeros = {{ alloc.price | money_without_trailing_zeros | json }};
+          item[{{ variant_id }}].selling_plan_allocations_by_id[{{ alloc.selling_plan.id }}].compare_at_price = {{ alloc.compare_at_price | json }};
+          item[{{ variant_id }}].selling_plan_allocations_by_id[{{ alloc.selling_plan.id }}].compare_at_price_formatted = {{ alloc.compare_at_price | money | json }};
+          item[{{ variant_id }}].selling_plan_allocations_by_id[{{ alloc.selling_plan.id }}].compare_at_price_formatted_without_trailing_zeros = {{ alloc.compare_at_price | money_without_trailing_zeros | json }};
+       	  item[{{ variant_id }}].selling_plan_allocations_by_id[{{ alloc.selling_plan.id }}].saving_value = {{ alloc.compare_at_price | minus: alloc.price | times: 100.0 | divided_by: alloc.compare_at_price | round: 2 | json }};
+       {% endfor %}
+      {% endfor %}
+
+      return item;
+    })();
+    bssSubHandlePlanSelector(bssSubProduct);
+  })();
+</script>
+
+{% else %}
+
+<script>
+(function() {
+  // {{ product.selling_plan_groups }} is an empty array in Liquid
+  // even in eligible stores. It only disappears after encoding as JSON
+
+  var product = {{ product | json }};
+
+  if (typeof product.selling_plan_groups === 'undefined') {
+    console.log("This shop is not eligible for subscriptions. Please make sure to be using Shopify Payments");
+  }
+})();
+</script>
+
+{% endif %}
+
+

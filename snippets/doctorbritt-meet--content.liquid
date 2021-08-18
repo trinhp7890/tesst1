@@ -1,0 +1,37 @@
+<section data-section-id="{{ id }}" data-section-type="title-header" class="home-hero">
+    <div class="doctormeet-content">
+        {% unless title == blank %}
+        <div class="doctormeet-title-header__heading max-w-1280">
+            <h1 class="doctormeet-title-header pd1 titel-hp" data-theme-editor-setting="section.{{ id }}.title">
+                <span style="display: block;">{{ title }}</span>
+                <span class="doctormeet-title-header_small titel-hp"
+                    data-theme-editor-setting="section.{{ id }}.overline">{{ overline }}</span>
+                
+            </h1>
+       
+            <img class="doctorbritt-img1 max-w-725" src="{{link_text}}" loading="lazy" alt="hero" />
+            <div class="doctormeet-text_content-meet max-w-725">
+                
+                 <span class="doctormeet-text_content-titile">
+                    <span>@DERMDOCTORBRITT </span>
+                    <span>
+                        <a href="#">
+                            <img class="icon-comment-pro"
+                            src="https://cdn.shopify.com/s/files/1/0526/2570/3065/files/icons_instagram.svg?v=1618123414" alt="instagram"/>   
+                            </a>
+                            <a href="#">
+                            <img class="icon-comment-pro"
+                            src="https://cdn.shopify.com/s/files/1/0526/2570/3065/files/icons_facebook.svg?v=1618123414" alt="facebook"/>
+                            </a>
+                    </span>
+                </span>
+                
+                <p data-theme-editor-setting="section.{{ id }}.text">
+                    {{ text }}
+                </p>
+            </div>
+        </div>
+
+    {% endunless %}
+    </div>
+</section>

@@ -1,0 +1,26 @@
+
+  <section
+  data-section-id="{{ id }}"
+  data-section-type="text-content"
+  class="bg-white"
+>
+  <div class="ingredients_inner bg-white max-w-725">
+    {% unless title == blank %}
+      <div class="ingredients-text"></div>
+        <p
+          class="ingredients-text_title titel-hp"
+          data-theme-editor-setting="section.{{ id }}.title"
+        >
+          {{ title }}
+        </p>
+          <p
+            class="ingredients-text_content titel-hp-content"
+            data-theme-editor-setting="section.{{ id }}.overline"
+          >
+            {{ overline }}
+          </p>
+      </div>
+    {% endunless %}
+    
+  </div>
+</section>

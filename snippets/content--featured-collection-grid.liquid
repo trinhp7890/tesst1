@@ -1,0 +1,75 @@
+{% assign total_products = total_row | times: products_per_row %}
+{% assign item_width = '' %}
+
+{% assign modifiers = '' %}
+{% assign modifiers = modifiers | append: ' section--' | append: section_style %}
+
+{% unless section_style == 'contrast' %}
+  {% assign modifiers = modifiers | append: ' section--bordered' %}
+{% endunless %}
+
+{%- case products_per_row -%}
+  {%- when 2 -%}
+    {%- assign item_width = 'one-half' -%}
+  {%- when 3 -%}
+    {%- assign item_width = 'one-third' -%}
+  {%- when 4 -%}
+    {%- assign item_width = 'one-quarter' -%}
+{%- endcase -%}
+
+{% assign grid_modifiers = '' %}
+
+{% assign grid_modifiers = grid_modifiers | append: ' grid-display--' | append: item_width %}
+{% assign grid_modifiers = grid_modifiers | append: ' grid-display--has-products' %}
+{% assign grid_modifiers = grid_modifiers | append: ' grid-display--' | append: aspect_ratio %}
+
+
+<section
+  data-section-id="{{ id }}"
+  data-section-type="featured-collection-grid"
+  class="section featured-collection-grid{{ modifiers }}"
+>
+
+  {% render 'text-block' with
+    id: id,
+    modifiers: 'mb5 animation__staggered-children-fade-in',
+    heading_alignment: heading_alignment,
+    text_max_width: text_max_width,
+    overline: overline,
+    heading: heading,
+    subheading: subheading,
+    link: featured_collection.url,
+    link_text: link_text
+  %}
+
+  <div class="grid-display{{ grid_modifiers }}">
+    {% if featured_collection != blank %}
+      {%- for product in featured_collection.products limit: total_products -%}
+        <div class="grid-display__item animates">
+          {%
+            render 'product-item', product: product,
+            aspect_ratio: aspect_ratio
+          %}
+        </div>
+      {%- endfor -%}
+
+    {% else %}
+      {% for i in (1..total_products) %}
+        <div class="featured-collection__item animates featured-collection__item--{{ products_per_row }}">
+          <div class="w-100">
+            {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+            <div class="product-item__placeholder">
+              {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+
+            <h2 class="type-body-regular mt3">
+              {{ 'homepage.onboarding.product_title' | t }}
+            </h2>
+            <p class="price-item price-item--regular ma0 meta">{{ 2000 | money }}</p>
+          </div>
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+</section>
+

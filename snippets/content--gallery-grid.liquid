@@ -1,0 +1,68 @@
+{% if enabled %}
+
+  {% assign item_width = '' %}
+  {% assign max_blocks = columns | times: 2 %}
+
+  {%- case columns -%}
+    {%- when 1 -%}
+      {%- assign item_width = 'full' -%}
+    {%- when 2 -%}
+      {%- assign item_width = 'one-half' -%}
+    {%- when 3 -%}
+      {%- assign item_width = 'one-third' -%}
+    {%- when 4 -%}
+      {%- assign item_width = 'one-quarter' -%}
+  {%- endcase -%}
+
+  {% assign grid_modifiers = '' %}
+
+  {% assign grid_modifiers = grid_modifiers | append: ' grid-display--' | append: item_width %}
+  {% assign grid_modifiers = grid_modifiers | append: ' grid-display--no-products' %}
+  {% assign grid_modifiers = grid_modifiers | append: ' grid-display--' | append: aspect_ratio %}
+
+  <section
+    data-section-id="{{ id }}"
+    data-section-type="gallery-grid"
+    class="gallery-grid max-w-1280"
+  >
+    {% unless heading == blank %}
+      <div class="gallery-grid__heading">
+        <h2
+          class="type-heading-1-small mt0 mb3"
+          data-theme-editor-setting="section.{{ id }}.title"
+        >
+          {{ heading }}
+        </h2>
+      </div>
+    {% endunless %}
+
+    <div class="gallery-grid__image-wrapper grid-display{{ grid_modifiers }}">
+      {% if blocks.size > 0 %}
+        {% for block in blocks %}
+          <div class="gallery-grid__image grid-display__image">
+            {% if block.settings.image != blank %}
+              {% render 'image' with image: block.settings.image %}
+            {% else %}
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+          </div>
+        {% endfor %}
+      {% else %}
+        {% for i in (1..max_blocks) %}
+          <div class="gallery-grid__image grid-display__image">
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+
+    {%- unless text == blank -%}
+      <div
+        class="static-text__footer type-body-regular rte"
+        data-theme-editor-setting="section.{{ id }}.text"
+      >
+        {{ text }}
+      </div>
+    {%- endunless -%}
+  </section>
+{% endif %}

@@ -1,0 +1,98 @@
+<article class="article section">
+
+  {% if show_date or show_title or show_author %}
+    <div class="article__header mb5">
+      {% if show_date %}
+        <div class="article__published-date overline tc center">{{ article.published_at | time_tag: format: 'date' }}</div>
+      {% endif %}
+
+      {% if show_title %}
+        <h1 class="article__heading type-heading-1 tc center mt3">{{ article.title }}</h1>
+      {% endif %}
+
+      {% if show_author %}
+        <div class="article__author tc center">{{ article.author }}</div>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  {% if article.image and show_featured_image %}
+    <div class="article__image mb5">
+      {% render 'image' with image: article.image %}
+    </div>
+  {% endif %}
+
+  <div class="article__content rte center mb5">{{ article.content }}</div>
+
+  {% if article.tags.size > 0 %}
+    <div class="article__tags center mt0 mb3">
+    <span>{{ 'blogs.general.categories' | t }}&#58;</span>
+      {% for tag in article.tags %}
+        <a href="{{ blog.url }}/tagged/{{ tag.handle }}">{{ tag }}</a>
+        {%- unless forloop.last == true -%}
+          &#44;
+        {% endunless %}
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <div class="article__pagination center flex">
+    {% if blog.previous_article %}
+      <a href="{{ blog.previous_article }}" class="article__pagination-prev">
+        {{ 'blogs.pagination.previous' | t }}
+      </a>
+    {% endif %}
+    {% if blog.next_article %}
+      <a href="{{ blog.next_article }}" class="article__pagination-next">
+        {{ 'blogs.pagination.next' | t }}
+      </a>
+    {% endif %}
+  </div>
+
+  {% if blog.comments_enabled? %}
+    <div class="article__comments center">
+      {% render 'comments' with article: article %}
+    </div>
+  {% endif %}
+</article>
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "articleBody": {{ article.content | strip_html | json }},
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": {{ shop.url | append: page.url | json }}
+    },
+    "headline": {{ article.title | json }},
+    {% if article.excerpt != blank %}
+      "description": {{ article.excerpt | strip_html | json }},
+    {% endif %}
+    {% if article.image %}
+      {% assign image_size = article.image.width | append: 'x' %}
+      "image": [
+        {{ article | img_url: image_size | prepend: "https:" | json }}
+      ],
+    {% endif %}
+    "datePublished": {{ article.published_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
+    "dateCreated": {{ article.created_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
+    "author": {
+      "@type": "Person",
+      "name": {{ article.author | json }}
+    },
+    "publisher": {
+      "@type": "Organization",
+      {% if settings.share_image %}
+        {% assign image_size = settings.share_image.width | append: 'x' %}
+        "logo": {
+          "@type": "ImageObject",
+          "height": {{ settings.share_image.height | json }},
+          "url": {{ settings.share_image | img_url: image_size | prepend: "https:" | json }},
+          "width": {{ settings.share_image.width | json }}
+        },
+      {% endif %}
+      "name": {{ shop.name | json }}
+    }
+  }
+</script>

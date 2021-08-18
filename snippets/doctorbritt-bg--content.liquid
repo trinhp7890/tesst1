@@ -1,0 +1,16 @@
+<section data-section-id="{{ id }}" data-section-type="title-header" class="home-hero">
+    <div class="doctormeet-content bg-blue">
+        {% unless title == blank %}
+        <div class="max-w-1280">
+            <h1 class="doctormeet-title-header pd2 titel-hp pd-15" data-theme-editor-setting="section.{{ id }}.title">
+                <span style="display: block;">{{ title }}</span>
+                <span class="doctormeet-title-header_small titel-hp"
+                    data-theme-editor-setting="section.{{ id }}.overline">{{ overline }}</span>
+            </h1>
+       
+            <img class="doctorbritt-img" src="{{link_text}}" loading="lazy" alt="hero" />
+
+        </div>
+        {% endunless %}
+    </div>
+</section>

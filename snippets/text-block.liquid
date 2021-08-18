@@ -1,0 +1,12 @@
+{% if overline != blank or heading != blank or subheading != blank or link_text != blank %}
+
+  {% assign alignment = ' text-block--' | append: heading_alignment %}
+
+  <div class="accordion-wrap bottom">   
+    {%- unless heading == blank -%}    
+      <h3 class="accordion-menu">
+        {{ heading }}
+         <span class="accordion-menu-arrow desktop"></span>
+      </h3>
+    {%- endunless -%}
+{% endif %}

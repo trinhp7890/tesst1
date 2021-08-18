@@ -1,0 +1,109 @@
+{% assign modifiers = '' %}
+
+{% assign modifiers = modifiers | append: ' section--' | append: section_style %}
+
+{% if section_style == 'full-height' %}
+  {% assign modifiers = modifiers | append: ' section--contrast' %}
+{% endif %}
+
+{% if section_style != 'full-height' and section_style != 'contrast' %}
+  {% assign modifiers = modifiers | append: ' section--bordered' %}
+{% endif %}
+
+{% assign modifiers = modifiers | append: ' image-with-text--image-width-' | append: image_width %}
+{% assign modifiers = modifiers | append: ' image-with-text--image-position-' | append: image_position %}
+{% assign modifiers = modifiers | append: ' image-with-text--text-alignment-' | append: text_alignment %}
+
+
+{% assign background = true %}
+
+{% if text_container_color == blank or text_container_color == 'rgba(0,0,0,0)' %}
+  {% assign background = false %}
+  {% assign modifiers = modifiers | append: ' image-with-text--background-transparent' %}
+{% endif %}
+
+<section
+  data-section-id="{{ id }}"
+  data-section-type="image-with-text"
+  data-animation-enabled="{{ enable_animation }}"
+  class="section image-with-text{{ modifiers }}"
+>
+  <div class="image-with-text__inner">
+    {% if link != blank %}
+      <a href="{{ link }}" class="image-with-text__image db">
+    {% else %}
+      <div class="image-with-text__image db">
+    {% endif %}
+
+      {% if image != blank or video_url != blank %}
+        {% if video_url != blank %}
+          <div class="image-with-text__video">
+            <video class="image" autoplay playsinline loop muted src="{{ video_url }}" />
+          </div>
+        {% elsif image != blank %}
+          {% render 'image' with image: image %}
+        {% endif %}
+      {% else %}
+        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+      {% endif %}
+
+    {% if link != blank %}
+      </a>
+    {% else %}
+      </div>
+    {% endif %}
+
+    {% if overline != blank or heading != blank or subheading != blank or link_text != blank %}
+      <div class="image-with-text__text-container">
+        <div class="image-with-text__text">
+
+          <div
+            class="image-with-text__text-block image-with-text__text-block--{{ text_alignment }} animation__staggered-children-fade-in{% if background %} pa3{% endif %}"
+            style="background-color: {{ text_container_color }}; color: {{ text_color }};"
+          >
+            {% unless overline == blank  %}
+              <div
+                class="text-block__overline overline mb3"
+                data-theme-editor-setting="section.{{ id }}.overline"
+              >
+                {{ overline }}
+              </div>
+            {% endunless %}
+
+            {%- unless heading == blank -%}
+              <h2
+                class="text-block__heading type-heading-1 ma0 mb3"
+                data-theme-editor-setting="section.{{ id }}.heading"
+                {%- if text_max_width != blank -%} style="max-width: {{ text_max_width }}rem;"{%- endif -%}
+              >
+                {{ heading }}
+              </h2>
+            {%- endunless -%}
+
+            {%- unless subheading == blank -%}
+              <div
+                class="text-block__subheading type-body-regular rte"
+                data-theme-editor-setting="section.{{ id }}.subheading"
+                {%- if text_max_width != blank -%} style="max-width: {{ text_max_width }}rem;"{%- endif -%}
+              >
+                {{ subheading }}
+              </div>
+            {%- endunless -%}
+
+            {% if link != blank and link_text != blank %}
+              <a
+                href="{{ link }}"
+                class="text-block__button bttn bttn--secondary bttn--inline mt4"
+                data-theme-editor-setting="section.{{ id }}.link_text"
+                style="color: {{ button_text_color }}; border-color: {{ button_border_color }};"
+              >
+                {{ link_text }}
+              </a>
+            {% endif %}
+          </div>
+
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</section>

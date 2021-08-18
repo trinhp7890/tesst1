@@ -1,0 +1,221 @@
+<script type="text/javascript" id="bss-sub-scripts">
+function bssSubChangeSubscriptionPrice(bssSubProduct, variantId, bssPlanSelect) {
+    var variant = bssSubProduct.variantIdArrayMap[variantId];
+
+    if (bssPlanSelect && variant) {
+
+        let selectedPlanId = bssPlanSelect.value;
+
+        let planPriceInfo = variant.selling_plan_allocations_by_id[selectedPlanId];
+
+        if (planPriceInfo) {
+            let priceElement = document.querySelector('.bss-sub-price-with-discount[data-product-id="' + variant.product_id + '"]')
+            if (priceElement) {
+                let bssSubOfferPrice = priceElement.querySelector('.bss-sub-offer-price');
+                let bssSubOfferCompareAtPrice = priceElement.querySelector('.bss-sub-offer-compare-at-price');
+                let bssSubSavingValue = priceElement.querySelector('.bss-sub-saving-value');
+                if (bssSubOfferPrice) {
+                    bssSubOfferPrice.innerHTML = planPriceInfo.price_formatted;
+
+                }
+
+                if (bssSubOfferCompareAtPrice) {
+
+                    bssSubOfferCompareAtPrice.innerHTML = planPriceInfo.compare_at_price_formatted;
+
+                }
+
+                if (bssSubSavingValue) {
+                    bssSubSavingValue.innerHTML = planPriceInfo.saving_value;
+                }
+
+
+
+            }
+
+           return true;
+
+        } else {
+
+          bssSubRevertToNormalPrice(bssSubProduct, variantId)
+
+        }
+
+
+
+
+    } else {
+
+        console.log("Could not found plan selector");
+    }
+
+	return false;
+}
+
+function handleSellingPlanEvents(bssSubProduct, bssPlanClosestForm) {
+    setTimeout(function() {
+        let bssSellingPlanHiddenInput = bssPlanClosestForm.querySelector('input[type="hidden"][name="selling_plan"]')
+        let bssVariantInput = bssPlanClosestForm.querySelector('select[name="id"], input[name="id"]');
+        let purchaseOptionChecked = bssPlanClosestForm.querySelectorAll('.bss-sub-group-name input[name="purchase_option"]:checked');
+        if (purchaseOptionChecked.length == 0)
+        {
+          bssSellingPlanHiddenInput.value = null;
+          bssSubRevertToNormalPrice(bssSubProduct, bssVariantInput.value)
+
+
+        } else {
+
+          let closestSubgroup = purchaseOptionChecked[0].closest('.bss-sub-group');
+          let bssPlanSelect = closestSubgroup.querySelector('select[name="selling_plan_select"]');
+          bssSellingPlanHiddenInput.value = bssPlanSelect.value;
+          if (bssVariantInput) {
+
+              let variantId =  bssVariantInput.value;
+              let isChanged = bssSubChangeSubscriptionPrice(bssSubProduct, variantId, bssPlanSelect);
+              if (!isChanged) {
+                  let bssSubShowSaving = bssPlanClosestForm.parentNode.querySelector('.bss-sub-show-saving');
+                  if (bssSubShowSaving) {
+                      bssSubShowSaving.classList.add('bss-sub-hide-saving');
+                      bssSubShowSaving.classList.remove('bss-sub-show-saving');
+                  }
+                  return;
+              }
+
+          }
+
+          let bssSubHideInfo = bssPlanClosestForm.parentNode.querySelector('.bss-sub-hide-info');
+          let bssSubHideSaving = bssPlanClosestForm.parentNode.querySelector('.bss-sub-hide-saving');
+
+          if (bssSubHideInfo) {
+              bssSubHideInfo.classList.add('bss-sub-show-info')
+              bssSubHideInfo.classList.remove('bss-sub-hide-info');
+          }
+
+          if (bssSubHideSaving) {
+              bssSubHideSaving.classList.add('bss-sub-show-saving');
+              bssSubHideSaving.classList.remove('bss-sub-hide-saving')
+          }
+
+          let planInfo = bssSubProduct.sellingPlans[bssPlanSelect.value];
+
+          let bssSubPlanDescription = bssPlanClosestForm.querySelector('.bss-sub-plan-description');
+
+          if (bssSubPlanDescription) {
+
+            if (planInfo.description != "null" && planInfo.description != "undefined" && planInfo.description != undefined) {
+              bssSubPlanDescription.innerHTML = unescape(planInfo.description);
+              bssSubPlanDescription.classList.remove('bss-sub-plan-description-hide');
+            }
+          }
+        }
+
+
+    }, 200)
+}
+
+function bssSubRevertToNormalPrice(bssSubProduct, variantId) {
+    var variant = bssSubProduct.variantIdArrayMap[variantId];
+    let planPriceInfo = variant;
+
+    if (planPriceInfo) {
+
+        let priceElement = document.querySelector('.bss-sub-price-with-discount[data-product-id="' + variant.product_id + '"]')
+        if (priceElement) {
+            let bssSubOfferPrice = priceElement.querySelector('.bss-sub-offer-price');
+            let bssSubOfferCompareAtPrice = priceElement.querySelector('.bss-sub-offer-compare-at-price');
+            if (bssSubOfferPrice) {
+                bssSubOfferPrice.innerHTML = planPriceInfo.price_formatted;
+
+            }
+
+            if (bssSubOfferCompareAtPrice) {
+
+                bssSubOfferCompareAtPrice.innerHTML = planPriceInfo.compare_at_price_formatted;
+
+            }
+
+        }
+
+    } else {
+
+        console.log("Could not found plan price info for variant");
+    }
+
+
+
+}
+
+function handleOneTimePurchaseClick(bssSubProduct, bssPlanClosestForm) {
+    setTimeout(function() {
+      let bssSellingPlanHiddenInput = bssPlanClosestForm.querySelector('input[type="hidden"][name="selling_plan"]')
+         bssSellingPlanHiddenInput.value = null;
+        let bssVariantInput = bssPlanClosestForm.querySelector('select[name="id"], input[name="id"]');
+        if (bssVariantInput) {
+            let variantId =  bssVariantInput.value;
+            bssSubRevertToNormalPrice(bssSubProduct, variantId);
+
+        }
+
+        let bssSubShowInfo = bssPlanClosestForm.parentNode.querySelector('.bss-sub-show-info');
+        let bssSubShowSaving = bssPlanClosestForm.parentNode.querySelector('.bss-sub-show-saving');
+
+        if (bssSubShowSaving) {
+            bssSubShowSaving.classList.add('bss-sub-hide-saving');
+            bssSubShowSaving.classList.remove('bss-sub-show-saving')
+        }
+
+        let bssSubPlanDescription = bssPlanClosestForm.parentNode.querySelector('.bss-sub-plan-description');
+
+        if (bssSubPlanDescription) {
+            bssSubPlanDescription.classList.add('bss-sub-plan-description-hide');
+        }
+    }, 200)
+}
+
+function bssSubHandlePlanSelector(bssSubProduct) {
+    setTimeout(function() {
+        var bssPlanSelector = document.querySelectorAll(".bss-sub-plan-selector");
+        if (bssPlanSelector) {
+            bssPlanSelector = bssPlanSelector[0];
+            let bssPlanClosestForm = bssPlanSelector.closest('form[action*="/cart/add"]');
+            if (bssPlanClosestForm) {
+                let bssVariantSelector = bssPlanClosestForm.querySelectorAll('select, input.single-option-selector__radio, input.product-form__single-selector');
+                if (bssVariantSelector) {
+                    bssVariantSelector.forEach(function(item, index) {
+                        item.addEventListener("change", (event) => {
+                            handleSellingPlanEvents(bssSubProduct, bssPlanClosestForm);
+                        })
+
+                    })
+
+                    let bssSellingPlanPurchaseOption = bssPlanClosestForm.querySelectorAll('.bss-sub-group-name input[name="purchase_option"]');
+                    if (bssSellingPlanPurchaseOption) {
+                        bssSellingPlanPurchaseOption.forEach(function(item, index) {
+                            item.addEventListener("click", (event) => {
+
+                                handleSellingPlanEvents(bssSubProduct, bssPlanClosestForm);
+
+                            })
+                        })
+                    }
+
+                    let bssOneTimePurchaseOption = bssPlanClosestForm.querySelectorAll('.bss-sub-otp input[name="purchase_option"] ');
+
+                    if (bssOneTimePurchaseOption) {
+                        bssOneTimePurchaseOption.forEach(function(item, index) {
+                            item.addEventListener("click", (event) => {
+
+                                handleOneTimePurchaseClick(bssSubProduct, bssPlanClosestForm);
+
+                            })
+                        })
+                    }
+
+                } else {
+                    console.log("Could not found product variant selector!")
+                }
+            }
+        }
+    }, 300);
+}
+</script>  

@@ -1,0 +1,10 @@
+<section data-section-id="{{ id }}" data-section-type="title-header" class="home-hero">
+  <div class="doctormeet-content max-w-725">
+    {% unless title == blank %}
+    <div class="doctormeet-text_content-info">
+      <span class="doctormeet-text_content-titile-info">{{title}}</span>
+        {{ text }}
+    </div>
+    {% endunless %}
+  </div>
+</section>

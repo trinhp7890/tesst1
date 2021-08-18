@@ -1,0 +1,93 @@
+{% assign modifiers = '' %}
+
+{% assign modifiers = modifiers | append: ' section--' | append: section_style %}
+
+{% unless section_style == 'contrast' %}
+  {% assign modifiers = modifiers | append: ' section--bordered' %}
+{% endunless %}
+
+{% assign modifiers = modifiers | append: ' carousel--columns-' | append: columns %}
+
+{% assign carousel_text_position = text_position | split: '_' | first %}
+{% assign carousel_text_alignment = text_position | split: '_' | last %}
+
+{% assign modifiers = modifiers | append: ' carousel--text-position-' | append: carousel_text_position %}
+{% assign modifiers = modifiers | append: ' carousel--text-alignment-' | append: carousel_text_alignment %}
+{% assign modifiers = modifiers | append: ' carousel--items-' | append: blocks.size %}
+{% assign modifiers = modifiers | append: ' gallery--' | append: aspect_ratio %}
+
+{% assign minimum_items_for_wrap_around = columns | plus: 2 %}
+{% assign items_needed = minimum_items_for_wrap_around | minus: blocks.size %}
+
+{% if carousel_text_position == 'top' and items_needed <= 0 or blocks.size == 0 %}
+  {% assign modifiers = modifiers | append: ' carousel--columns-wrap-around' %}
+{% endif %}
+
+
+<section
+  data-section-id="{{ id }}"
+  data-section-type="gallery"
+  class="section gallery carousel{{ modifiers }}"
+  data-text-position={{ carousel_text_position }}
+  data-text-alignment={{ carousel_text_alignment }}
+>
+  {% render 'text-block' with
+    id: id,
+    modifiers: 'mb5 animation__staggered-children-fade-in',
+    heading_alignment: carousel_text_alignment,
+    text_max_width: text_max_width,
+    overline: overline,
+    heading: heading,
+    subheading: subheading,
+    link: link,
+    link_text: link_text
+  %}
+
+  {% render 'carousel-navigation' %}
+
+  <div class="gallery__slides carousel__slides" data-carousel>
+    {% if blocks.size > 0 %}
+      {%- for block in blocks -%}
+        <div class="gallery__slide carousel__slide animates" {{ block.shopify_attributes }} data-index="{{ forloop.index0 }}">
+
+          {% if block.settings.link != blank %}
+            <a href="{{ block.settings.link }}" class="gallery__image">
+          {% else %}
+            <div class="gallery__image">
+          {% endif %}
+
+            {% if block.settings.image != blank %}
+              {% render 'image' with
+                image: block.settings.image
+              %}
+            {% else %}
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+
+          {% if block.settings.link != blank %}
+            </a>
+          {% else %}
+            </div>
+          {% endif %}
+
+          {% unless block.settings.description == blank %}
+            <div
+              class="gallery__description type-body-regular mt3 mb0"
+              data-theme-editor-setting="section.{{ id }}.block.{{ block.id }}.description"
+            >
+              {{ block.settings.description }}
+            </div>
+          {% endunless %}
+        </div>
+      {%- endfor -%}
+    {% else %}
+      {% for i in (1..minimum_items_for_wrap_around) %}
+        <div class="gallery__slide carousel__slide animates">
+          <div class="gallery__image">
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+          </div>
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+</section>

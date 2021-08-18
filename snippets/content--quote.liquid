@@ -1,0 +1,46 @@
+{% assign time_in_ms = timer | times: 1000 %}
+
+{% assign modifiers = '' %}
+
+{% assign modifiers = modifiers | append: ' section--' | append: section_style %}
+{% assign modifiers = modifiers | append: ' section--spacing-tall' %}
+
+{% unless section_style == 'contrast' %}
+  {% assign modifiers = modifiers | append: ' section--bordered' %}
+{% endunless %}
+
+{% if blocks.size > 0 %}
+  <section
+    data-section-id="{{ id }}"
+    data-section-type="quote"
+    class="section{{ modifiers }} quote"
+    data-timer="{{ time_in_ms }}"
+  >
+    <div
+      class="quote__container"
+    >
+      {% for block in blocks %}
+        <div
+          class="quote__item"
+          {{ block.shopify_attributes }}
+          data-index="{{ forloop.index0 }}"
+        >
+          {% unless block.settings.quote == blank %}
+            <h3
+              class="quote__text mt0 mb4 center"
+              {%- if max_width != blank -%} style="max-width: {{ max_width }}em;"{%- endif -%}
+            >
+              &ldquo;<span data-theme-editor-setting="section.{{ id }}.block.{{ block.id }}.quote">{{ block.settings.quote }}</span>&rdquo;
+            </h3>
+          {% endunless %}
+
+          {% unless block.settings.author == blank %}
+            <span class="quote__author overline">
+              &mdash;<span data-theme-editor-setting="section.{{ id }}.block.{{ block.id }}.author">{{ block.settings.author }}</span>
+            </span>
+          {% endunless %}
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+{% endif %}

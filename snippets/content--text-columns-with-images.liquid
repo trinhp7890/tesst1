@@ -1,0 +1,91 @@
+{% assign modifiers = '' %}
+
+{% assign modifiers = modifiers | append: ' section--' | append: section_style %}
+
+{% unless section_style == 'contrast' %}
+  {% assign modifiers = modifiers | append: ' section--bordered' %}
+{% endunless %}
+
+{% assign modifiers = modifiers | append: ' text-columns--alignment-' | append: text_alignment  %}
+
+{% assign modifiers = modifiers | append: ' collection-list-grid--columns-' | append: columns  %}
+
+{% assign item_width = '' %}
+
+{%- case columns -%}
+  {%- when 1 -%}
+    {%- assign item_width = 'full' -%}
+  {%- when 2 -%}
+    {%- assign item_width = 'one-half' -%}
+  {%- when 3 -%}
+    {%- assign item_width = 'one-third' -%}
+  {%- when 4 -%}
+    {%- assign item_width = 'one-quarter' -%}
+{%- endcase -%}
+
+<section
+  data-section-id="{{ id }}"
+  data-section-type="text-columns-with-images"
+  class="section text-columns{{ modifiers }}"
+>
+  {% render 'text-block' with
+    id: id,
+    modifiers: 'text-columns__intro animation__staggered-children-fade-in',
+    heading_alignment: text_alignment,
+    text_max_width: text_max_width,
+    overline: overline,
+    heading: heading,
+    text_max_width: text_max_width,
+    subheading: subheading,
+    link: link,
+    link_text: link_text
+  %}
+
+  <div class="text-columns__content grid-display grid-display--{{ item_width }} max-w-1280">
+    {% for block in blocks %}
+      <div class="text-columns__feature animates">
+        {%- if block.settings.image != blank -%}
+          {% if block.settings.link != blank %}
+            <a href="{{ block.settings.link }}" class="mb3 w-100 text-columns__image db" style="max-width: {{ block.settings.image_max_width }}%;">
+          {% else %}
+            <div class="mb3 w-100 text-columns__image db" style="max-width: {{ block.settings.image_max_width }}%;">
+          {% endif %}
+
+          {% render 'image' with image: block.settings.image %}
+
+          {% if block.settings.link != blank %}
+            </a>
+          {% else %}
+            </div>
+          {%- endif -%}
+        {%- endif -%}
+        {%- if block.settings.title != blank -%}
+          <h3
+            class="type-heading-1-small mb3 mt0"
+            data-theme-editor-setting="section.{{ id }}.block.{{ block.id }}.title"
+            style="max-width: {{ block.settings.text_max_width }}em;"
+          >
+            {{ block.settings.title }}</h3>
+        {%- endif -%}
+        {%- if block.settings.subheading != blank -%}
+          <p
+            class="type-body-regular mt0 mb0 type-body-text"
+            data-theme-editor-setting="section.{{ id }}.block.{{ block.id }}.subheading"
+            style="max-width: {{ block.settings.text_max_width }}em;"
+          >
+            {{ block.settings.subheading }}
+          </p>
+        {%- endif -%}
+        {%- if block.settings.link != blank and block.settings.link_text != blank -%}
+          <a
+            href="{{ block.settings.link }}"
+            class="bttn bttn--secondary bttn--inline mt4"
+            data-theme-editor-setting="section.{{ id }}.block.{{ block.id }}.link_text"
+          >
+            {{ block.settings.link_text }}
+          </a>
+        {%- endif -%}
+      </div>
+    {% endfor %}
+  </div>
+</section>

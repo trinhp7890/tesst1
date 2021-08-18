@@ -1,0 +1,89 @@
+{% assign mobile_timeout_in_ms = 10000 %}
+
+<div
+  class="exit-intent exit-intent--{{ exit_intent_position }}"
+  data-section-id="{{ id }}"
+  data-section-type="exit-intent"
+  data-mobile-landing-timeout="{{ mobile_timeout_in_ms }}"
+>
+  <div class="exit-intent__content">
+
+    {% if exit_intent_image != blank %}
+      <div
+        class="exit-intent__image responsive__img lazyload"
+        data-bgset="{% render 'responsive-bg-image', image: exit_intent_image %}"
+        style="background-image: url({{ exit_intent_image | img_url }});"
+        role="img"
+      ></div>
+    {% endif %}
+    <div class="exit-intent__inner">
+      {% unless exit_intent_heading == blank %}
+        <div class="exit-intent__heading">
+          {{ exit_intent_heading }}
+        </div>
+      {% endunless %}
+
+      {% unless exit_intent_text == blank %}
+        <div class="exit-intent__message">
+          {{ exit_intent_text }}
+        </div>
+      {% endunless %}
+
+      <div class="exit-intent__form">
+        {% form 'customer' %}
+          {% if form.posted_successfully? %}
+            <p>{{ 'general.newsletter_form.confirmation' | t }}</p>
+          {% else %}
+            <input type="hidden" name="contact[tags]" value="newsletter">
+            <input type="email"
+              class="exit-intent__input input-reset input w-100"
+              name="contact[email]"
+              id="Email"
+              value="{% if customer.email != blank %}{{ customer.email }}{% endif %}"
+              placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}"
+              autocorrect="off"
+              autocapitalize="off"
+            >
+            <label class="label--above" for="Email">{{ 'general.newsletter_form.email_placeholder' | t }}</label>
+            <button type="submit" name="commit" id="Subscribe" class="exit-intent__button">
+              {% render 'icon-arrow-forward' %}
+            </button>
+
+          {% endif %}
+        {% endform %}
+      </div>
+
+      <a href="#" class="exit-intent__close" data-close-icon>
+        {% render 'icon-close' %}
+      </a>
+    </div>
+  </div>
+</div>
+
+{% assign input_text_lightened = input_text_color | color_modify: 'alpha', 0.7 %}
+
+<style>
+  .exit-intent__content {
+    background-color: {{ bg_color }};
+    color: {{ text_color }};
+  }
+
+  .exit-intent__content input {
+    border-color: {{ border_color }};
+    background-color: {{ bg_color }};
+    color: {{ input_text_color }};
+  }
+
+  .exit-intent__content input::placeholder {
+    color: {{ input_text_lightened }} !important;
+  }
+
+  .exit-intent__content label {
+    background-color: {{ bg_color }} !important;
+    color: {{ input_text_lightened }} !important;
+  }
+
+  .exit-intent__button {
+    color: {{ text_color }};
+  }
+</style>

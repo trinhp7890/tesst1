@@ -1,0 +1,118 @@
+{%- assign locale_selector = false -%}
+{%- assign currency_selector = false -%}
+
+{%- if show_locale_selector and shop.published_locales.size > 1 -%}
+{%- assign locale_selector = true -%}
+{%- endif -%}
+
+{%- if show_currency_selector and shop.enabled_currencies.size > 1 -%}
+{%- assign currency_selector = true -%}
+{%- endif -%}
+
+{% assign modifiers = '' %}
+
+{% unless show_headings %}
+{% assign modifiers = modifiers | append: ' footer--hide-titles' %}
+{% endunless %}
+
+<div class="section-4-home max-w-1280">
+  <div class="title-section-4">
+    <h2 class="title-section-4-header">
+      JOIN OUR FACEBOOK COMMUNITY
+    </h2>
+  </div>
+  <div class="section-4-content">
+    <div class="section-3-content-1 mb-0 pd-l-0" style="text-align: center;">
+      <p class="text-section-4"> Learn more and connect with our private community </p>
+      <div class="section-4-btn">
+        <div class="sc-4-face-img">
+          <img src="https://cdn.shopify.com/s/files/1/0526/2570/3065/files/icons_facebook.svg?v=1618123414"
+            alt="facebook">
+        </div>
+        <div class="sc-4-btn">
+          <div class="btn-sextion-4">
+            LEARN MORE
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer data-section-id="{{ id }}" data-section-type="footer" class="footer{{ modifiers }} footer-section">
+
+  <div class="footer__container">
+
+    {% if blocks.size > 0 or show_newsletter_signup %}
+    <section class="footer__cols">
+      <div class="footer__col-text">
+        <img class="img-footer-left float-left"
+          src="https://cdn.shopify.com/s/files/1/0526/2570/3065/files/calmon_footerlockup1_1.svg?v=1627548831"
+          alt="img footer" />
+        <img class="img-footer-pro float-left img-footer-2 pd-top-50 desktop"
+          src="https://cdn.shopify.com/s/files/1/0526/2570/3065/files/Screen_Shot_2021-03-16_at_12.57.57_AM.png?v=1615870690"
+          alt="img footer" />
+      </div>
+      <div class="footer__col-text">
+        <img class="img-footer-pro float-left img-footer-2 mobi"
+          src="https://cdn.shopify.com/s/files/1/0526/2570/3065/files/Screen_Shot_2021-03-16_at_12.57.57_AM.png?v=1615870690"
+          alt="img footer" />
+
+      </div>
+      <div class="footer__col-list">
+        <ul class="list ma0 pa0">
+          <li class="list-item ma0 item-footer"><a href="#">ABOUT US</a></li>
+          <li class="list-item ma0 item-footer"><a href="#">ECZEMA RESOURCES</a></li>
+          <li class="list-item ma0 item-footer"><a href="#">CUSTOMER SERVICE</a></li>
+          <li class="list-item ma0 item-footer"><a href="#">PRESS / AWARDS</a></li>
+          <li class="list-item ma0 item-footer"><a href="#">REVIEWS</a></li>
+        </ul>
+      </div>
+      <div class="footer__newsletter">
+        <a href="#">
+          <img class="icon-comment-pro"
+            src="https://cdn.shopify.com/s/files/1/0526/2570/3065/files/icons_instagram.svg?v=1618123414"
+            alt="instagram" />
+        </a>
+        <a href="#">
+          <img class="icon-comment-pro"
+            src="https://cdn.shopify.com/s/files/1/0526/2570/3065/files/icons_facebook.svg?v=1618123414"
+            alt="facebook" />
+        </a>
+        <div class="footer__signup-text">
+          <p class="item-footer"> SIGN UP FOR EMAIL</p>
+        </div>
+        <div class="footer__input-wrap">
+          {% form 'customer' %}
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          <div class="newsletter__input-container">
+            <input type="email" class="input-reset input" name="contact[email]" id="Email"
+              value="{% if customer.email != blank %}{{ customer.email }}{% endif %}"
+              placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}" autocorrect="off"
+              autocapitalize="off">
+            <button class="footer__newsletter-button">
+              SUBMIT
+            </button>
+          </div>
+          {% endform %}
+
+        </div>
+      </div>
+    </section>
+    {% endif %}
+  </div>
+</footer>
+<div class="footer__copyright">
+  <div class="footer__container  container_copyright">
+    <p>&copy; 2021 CALMON. ALL RIGHT RESERVED</p>
+    <ul>
+      <a href="#">
+        <li>SITE MAP</li>
+      </a>
+      <a href="#">
+        <li> PRIVACY POLICY</li>
+      </a>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,102 @@
+{% assign modifiers = '' %}
+
+{% assign modifiers = modifiers | append: ' section--' | append: section_style %}
+
+{% unless section_style == 'contrast' %}
+  {% assign modifiers = modifiers | append: ' section--bordered' %}
+{% endunless %}
+
+{% assign modifiers = modifiers | append: ' carousel--columns-' | append: columns %}
+
+{% assign carousel_text_position = text_position | split: '_' | first %}
+{% assign carousel_text_alignment = text_position | split: '_' | last %}
+
+{% assign modifiers = modifiers | append: ' carousel--text-position-' | append: carousel_text_position %}
+{% assign modifiers = modifiers | append: ' carousel--text-alignment-' | append: carousel_text_alignment %}
+{% assign modifiers = modifiers | append: ' carousel--items-' | append: blocks.size %}
+{% assign modifiers = modifiers | append: ' carousel--aspect-ratio-' | append: aspect_ratio %}
+
+{% assign minimum_items_for_wrap_around = columns | plus: 2 %}
+{% assign items_needed = minimum_items_for_wrap_around | minus: blocks.size %}
+
+{% if carousel_text_position == 'top' and items_needed <= 0 or blocks.size == 0 %}
+  {% assign modifiers = modifiers | append: ' carousel--columns-wrap-around' %}
+{% endif %}
+
+{% assign image_is_constrained = true %}
+
+{% if aspect_ratio == 'natural' %}
+  {% assign image_is_constrained = false %}
+{% endif %}
+
+<section
+  data-section-id="{{ id }}"
+  data-section-type="collection-list"
+  class="section collection-list carousel{{ modifiers }}"
+  data-text-position={{ carousel_text_position }}
+  data-text-alignment={{ carousel_text_alignment }}
+>
+  {% render 'text-block' with
+    id: id,
+    modifiers: 'mb5 animation__staggered-children-fade-in',
+    heading_alignment: carousel_text_alignment,
+    overline: overline,
+    heading: heading,
+    subheading: subheading,
+    text_max_width: text_max_width,
+    link_text: link_text
+  %}
+
+  {% render 'carousel-navigation' %}
+
+  <div class="collection-list__slides carousel__slides" data-carousel>
+    {% if blocks.size > 0 %}
+      {% for block in blocks %}
+        {% assign featured_collection = collections[block.settings.collection] %}
+        {% if featured_collection != empty %}
+          <a href="{{ featured_collection.url }}" class="collection-list__slide carousel__slide animates" {{ block.shopify_attributes }} data-index="{{ forloop.index0 }}">
+
+            {%- assign image_object = featured_collection.image | default: featured_collection.products.first.featured_media.preview_image -%}
+
+            {% unless image_object == blank %}
+              <div class="collection-list__image carousel__slide-image">
+                {% render 'image' with
+                  image: image_object,
+                  disable_style: image_is_constrained
+                %}
+              </div>
+            {% endunless %}
+
+            <h2 class="collection-list__title type-body-regular mt3 mb0">{{ featured_collection.title }}</h2>
+            <div class="collection-list__product-count meta">{{ featured_collection.products_count }} {{ featured_collection.products_count | pluralize: 'sections.featured_collections.count_text_singular', 'sections.featured_collections.count_text' | t }}</div>
+          </a>
+        {% else %}
+          {% capture current %}{% cycle 1, 2, 3, 4 %}{% endcapture %}
+          {% capture product_count %}{% cycle 9, 18, 6, 21 %}{% endcapture %}
+
+          <div class="collection-list__slide carousel__slide animates">
+            <div class="collection-list__collection-placeholder carousel__slide-image">
+              {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+            <h2 class="collection-list__title type-body-regular mt3 mb0">{{ 'homepage.onboarding.collection_title' | t }}</h2>
+            <div class="collection-list__product-count meta">{{ product_count }} {{ 'sections.featured_collections.count_text' | t }}</div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    {% else %}
+      {% for i in (1..minimum_items_for_wrap_around) %}
+        {% capture current %}{% cycle 1, 2, 3, 4 %}{% endcapture %}
+        {% capture product_count %}{% cycle 9, 18, 6, 21 %}{% endcapture %}
+
+        <div class="collection-list__slide carousel__slide animates">
+          <div class="collection-list__collection-placeholder carousel__slide-image">
+            {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+          </div>
+          <h2 class="collection-list__title type-body-regular mt3 mb0">{{ 'homepage.onboarding.collection_title' | t }}</h2>
+          <div class="collection-list__product-count meta">{{ product_count }} {{ 'sections.featured_collections.count_text' | t }}</div>
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+</section>
+

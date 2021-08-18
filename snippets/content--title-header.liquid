@@ -1,0 +1,39 @@
+{% if enabled %}
+  <section
+    data-section-id="{{ id }}"
+    data-section-type="title-header"
+    class="home-hero"
+  >
+    <div class="title-header__inner max-w-1280">
+      {% unless title == blank %}
+        <div class="title-header__heading">
+          <h1
+            class="title-header titel-hp"
+            data-theme-editor-setting="section.{{ id }}.title"
+          >
+            {{ title }}
+          </h1>
+        </div>
+        
+        <div class="hero-text-desktop">
+          <img class="img-hero" src="https://cdn.shopify.com/s/files/1/0526/2570/3065/files/home-img-up_67bf6209-3c6e-443b-b7c9-709621c78e42.png?v=1621259292" loading="lazy" alt="hero"/> 
+		  <div class="hero-titel">
+				<div class="hero-titel-cell">
+					<h2 class="hero-titel-text">
+						CALM SKIN IS HAPPY SKIN.
+					</h2>
+				
+				</div>
+				<a  href="/collections/all">
+					<div class="btn-shopnow">
+						SHOP NOW
+					</div>
+				</a>
+			</div>          
+                   
+        </div>
+        
+      {% endunless %}
+    </div>
+  </section>
+{% endif %}

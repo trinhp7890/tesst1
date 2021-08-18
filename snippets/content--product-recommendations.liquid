@@ -1,0 +1,38 @@
+{% if enabled %}
+  {% assign product_count = 6 %}
+
+  <section
+    data-section-id="{{ id }}"
+    data-section-type="product-recommendations"
+    class="product-recommendations product-recommendations--column-{{ columns }}"
+  >
+    <div
+      class="product-recommendations__inner border-top-none"
+      data-product-id="{{ product.id }}"
+      data-limit="{{ product_count }}"
+    >
+      {%- if recommendations.products_count > 0 -%}
+        <div class="product-recommendations__content">
+          <!-- {% unless heading == blank %}
+            <div class="product-recommendations__heading">
+              <h2
+                class="type-heading-1-small mt0 mb3"
+                data-theme-editor-setting="section.{{ id }}.heading"
+              >
+                {{ heading }}
+              </h2>
+            </div>
+          {% endunless %} -->
+
+          <div class="product-recommendations__products" data-slider>
+            {%- for product in recommendations.products -%}
+              <div class="product-recommendations__product">
+                {% render 'product-item', product: product %}
+              </div>
+            {%- endfor -%}
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+  </section>
+{% endif %}

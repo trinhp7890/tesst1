@@ -1,0 +1,43 @@
+{% assign modifiers = '' %}
+
+{% assign modifiers = modifiers | append: ' section--' | append: section_style %}
+
+{% unless section_style == 'contrast' %}
+  {% assign modifiers = modifiers | append: ' section--bordered' %}
+{% endunless %}
+
+{% assign modifiers = modifiers | append: ' text-columns--alignment-' | append: text_alignment  %}
+
+{% assign modifiers = modifiers | append: ' collection-list-grid--columns-' | append: columns  %}
+
+{% assign item_width = '' %}
+<section
+  data-section-id="{{ id }}"
+  data-section-type="text-columns-with-images"
+  class="fqa-section text-columns{{ modifiers }} bg-white pd-t-25"
+>
+  <div class="bg-grey max-w-1280">
+  <div class="fqa-accordion-header">
+    <h2 class="fqa-accordion-title">SKIN SCIENCE</h2>
+  </div>
+  <div class="text-columns__content accordion-display grid-display--{{ item_width }}">
+    {% for block in blocks %}
+      <div class="text-columns__feature animates"> 
+        {%- if block.settings.title != blank -%}
+            <div class="under-line"> </div>
+            <div class="accordion-menu fqa-type-heading-1-small fqa-accordion-menu-title">
+               <div class="fqa-accordion-menu-title-text">{{block.settings.title}}</div>
+              <div class="accordion-menu-arrow"></div> 
+            </div>
+            {%- if block.settings.subheading != blank -%}
+            <div class="accordion-menu-item">
+              {{block.settings.subheading}}
+            </div>
+          {%- endif -%}
+        {%- endif -%}
+      </div>
+    {% endfor %}
+    <div class="under-line-last"> </div>
+  </div>
+</div>
+</section>

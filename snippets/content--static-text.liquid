@@ -1,0 +1,92 @@
+{% if enabled %}
+  <section
+    data-section-id="{{ id }}"
+    data-section-type="static-text"
+    class="static-text"
+  >
+    <div class="static-text__inner">
+      <div class="accordion-menu-wrap">
+        <div class="accordion-wrap  max-w-1280">       
+        <!-- Ingredients -->
+        {%if product.metafields.global.ingredients != blank%}
+        <div class="under-line"> </div>
+        <div class="accordion-menu type-heading-1-small active accordion-menu-title">
+          INGREDIENTS
+           <span class="accordion-menu-arrow"></span>
+        </div>
+        <div class="accordion-menu-item-view">
+           {{product.metafields.global.ingredients}}
+        </div>
+        {%endif%}
+        <!-- How to Use -->
+        {%if product.metafields.global.how-to-use != blank %}
+        <div class="under-line"> </div>
+        <div class="accordion-menu type-heading-1-small active accordion-menu-title">
+          HOW TO USE
+           <span class="accordion-menu-arrow"></span>
+        </div>
+        <div class="accordion-menu-item-view">
+          {{product.metafields.global.how-to-use}}
+        </div>
+        {%endif%}
+        <!-- Before & after -->
+        {%if product.metafields.global.before-after != blank %}
+        <div class="under-line"> </div>
+        <div class="accordion-menu type-heading-1-small accordion-menu-title">
+          BEFORE AND AFTER
+           <span class="accordion-menu-arrow"></span>
+        </div>
+        <div class="accordion-menu-item">
+          {{product.metafields.global.before-after}}
+        </div>
+        {%endif%}
+        <!-- Research & Claims -->
+        {%if product.metafields.global.research-claims != blank %}
+        <div class="under-line"> </div>
+        <div class="accordion-menu type-heading-1-small accordion-menu-title">
+            RESEARCH AND CLAIMS
+           <span class="accordion-menu-arrow"></span>
+        </div>
+        <div class="accordion-menu-item">
+          {{product.metafields.global.research-claims}}
+        </div>
+        {%endif%}
+        <!-- Awards & Press -->
+        {%if product.metafields.global.awards-press != blank %}
+        <div class="under-line"> </div>
+        <div class="accordion-menu type-heading-1-small accordion-menu-title">
+            AWARDS AND PRESS
+           <span class="accordion-menu-arrow"></span>
+        </div>
+        <div class="accordion-menu-item">
+          {{product.metafields.global.awards-press}}
+        </div>
+        {%endif%}   
+         <!-- Another Item-->
+         {%if product.metafields.global.another-item != blank %}
+         <div class="under-line"> </div>
+         <div class="accordion-menu type-heading-1-small accordion-menu-title">
+             ANOTHER ITEM
+            <span class="accordion-menu-arrow"></span>
+         </div>
+         <div class="accordion-menu-item">
+           {{product.metafields.global.another-item}}
+         </div>
+         {%endif%}  
+        {%if product.metafields.global.ingredients != blank
+          or
+          product.metafields.global.how-to-use != blank
+          or
+          product.metafields.global.before-after != blank
+          or
+          product.metafields.global.research-claims != blank
+          or
+          product.metafields.global.awards-press != blank
+              %}
+          <div class="under-line"> </div>
+          {%endif%}       
+       </div>       
+      </div>
+    </div>
+  </section>
+{% endif %}

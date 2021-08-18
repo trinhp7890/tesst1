@@ -1,0 +1,123 @@
+{% for block in blocks %}
+  {% assign image = block.value | defadivt: block.settings.image %}
+
+  {% assign slide_class_modifiers = '' %}
+  {% assign slide_class_modifiers = slide_class_modifiers | append: ' slideshow__slide--' | append: aspect_ratio %}
+
+  {% if block.settings.image != blank and block.settings.mobile_image != blank %}
+    {% assign slide_class_modifiers = slide_class_modifiers | append: ' slideshow__slide--has-mobile-image' %}
+  {% endif %}
+
+    {%- if block.settings.link_text == blank and block.settings.link != blank and aspect_ratio == 'unconstrained' -%}
+      <a href="{{ block.settings.link }}" class="slideshow__slide{{ slide_class_modifiers }}" {{ block.shopify_attributes }} data-index="{{ forloop.index0 }}">
+    {%- else -%}
+      <div
+        class="slideshow__slide{{ slide_class_modifiers }}"
+        {{ block.shopify_attributes }}
+        data-index="{{ forloop.index0 }}"
+      >
+    {%- endif -%}
+
+      {%- if block.settings.link_text == blank and block.settings.link != blank and aspect_ratio != 'unconstrained' -%}
+        <a class="slideshow__slide-link" href="{{ block.settings.link }}">
+      {%- endif -%}
+
+        {% if block.settings.image == blank and block.settings.video_url == blank %}
+          {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+          <div class="slideshow__placeholder slideshow__image slideshow__image--desktop slideshow__image--mobile">{{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg image__img' }}</div>
+        {% endif %}
+
+        <div
+          class="slideshow__overlay o-{{ block.settings.overlay_opacity }}"
+          style="background-color: {{ block.settings.overlay_color }};">
+        </div>
+
+        <div class="slideshow__content-wrap slideshow__content-wrap--{{ block.settings.vertical_text_position }}">
+          <div class="slideshow__content">
+            <div class="slideshow__content-inner slideshow__content-inner--{{ block.settings.horizontal_text_position }} animation__staggered-children-fade-in">
+              {% if block.settings.overline != blank %}
+                <h2
+                  class="slideshow__overline overline"
+                  data-theme-editor-setting="section.{{ id }}.block.{{ block.id }}.overline"
+                  style="color: {{ block.settings.text_color }}; max-width: {{ block.settings.text_max_width }}rem;"
+                >
+                  {{ block.settings.overline }}
+                </h2>
+              {% endif %}
+              {% if block.settings.title != blank %}
+                <h2
+                  class="slideshow__heading type-heading-display"
+                  data-theme-editor-setting="section.{{ id }}.block.{{ block.id }}.title"
+                  style="color: {{ block.settings.text_color }}; max-width: {{ block.settings.text_max_width }}rem;"
+                >
+                  {{ block.settings.title }}
+                </h2>
+              {% endif %}
+              {% if block.settings.subheading != blank %}
+                <p
+                  class="slideshow__subheading type-body-regular"
+                  data-theme-editor-setting="section.{{ id }}.block.{{ block.id }}.subheading"
+                  style="color: {{ block.settings.text_color }}; max-width: {{ block.settings.text_max_width }}rem;"
+                >
+                  {{ block.settings.subheading }}
+                </p>
+              {% endif %}
+
+              {%- if block.settings.link != blank and block.settings.link_text != blank -%}
+                <a href="{{ block.settings.link }}" class="slideshow__link bttn {{ horizontal_position }}">{{ block.settings.link_text }}</a>
+              {%- endif -%}
+            </div>
+          </div>
+        </div>
+
+        {% assign video_link_verified = false %}
+
+        {% if block.settings.video_url contains '.mp4' %}
+          {% assign video_link_verified = true %}
+        {% endif %}
+
+        {% if block.settings.video_url != blank and video_link_verified %}
+          <video class="slideshow__video slideshow__image slideshow__image--desktop slideshow__image--mobile" autoplay playsinline loop muted src="{{ block.settings.video_url }}" />
+        {% endif %}
+
+        {% if block.settings.image != blank and video_link_verified == false %}
+          {% assign image_is_constrained = true %}
+
+          {% if aspect_ratio == 'unconstrained' %}
+            {% assign image_is_constrained = false %}
+          {% endif %}
+
+          {% assign image_wrapper_class = 'slideshow__image slideshow__image--desktop' %}
+
+          {% if block.settings.mobile_image == blank %}
+            {% assign image_wrapper_class = image_wrapper_class | append: ' slideshow__image--mobile' %}
+          {% endif %}
+
+          {% render 'image' with
+            image: block.settings.image,
+            wrapper_class: image_wrapper_class,
+            disable_style: image_is_constrained,
+            max_width: 3000
+          %}
+
+          {% if block.settings.mobile_image != blank and block.settings.image != blank %}
+            {% render 'image' with
+              image: block.settings.mobile_image,
+              wrapper_class: 'slideshow__image slideshow__image--mobile',
+              disable_style: image_is_constrained,
+              max_width: 3000
+            %}
+          {% endif %}
+        {% endif %}
+
+      {%- if block.settings.link_text == blank and block.settings.link != blank and aspect_ratio != 'unconstrained' -%}
+        </a>
+      {%- endif -%}
+
+    {%- if block.settings.link_text == blank and block.settings.link != blank and aspect_ratio == 'unconstrained' -%}
+      </a>
+    {%- else -%}
+      </div>
+    {%- endif -%}
+
+  {% endfor %}

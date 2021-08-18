@@ -1,0 +1,82 @@
+{% assign max_product_limit = 8 %}
+{% assign modifiers = '' %}
+
+{% assign modifiers = modifiers | append: ' section--' | append: section_style %}
+
+{% unless section_style == 'contrast' %}
+  {% assign modifiers = modifiers | append: ' section--bordered' %}
+{% endunless %}
+
+{% assign modifiers = modifiers | append: ' carousel--columns-' | append: columns %}
+
+{% assign carousel_text_position = text_position | split: '_' | first %}
+{% assign carousel_text_alignment = text_position | split: '_' | last %}
+
+{% assign modifiers = modifiers | append: ' carousel--text-position-' | append: carousel_text_position %}
+{% assign modifiers = modifiers | append: ' carousel--text-alignment-' | append: carousel_text_alignment %}
+{% assign modifiers = modifiers | append: ' carousel--items-' | append: featured_collection.all_products_count %}
+
+{% assign modifiers = modifiers | append: ' featured-collection--' | append: aspect_ratio %}
+
+{% assign minimum_items_for_wrap_around = columns | plus: 2 %}
+{% assign items_needed = minimum_items_for_wrap_around | minus: featured_collection.all_products_count %}
+
+{% if carousel_text_position == 'top' and items_needed <= 0 or featured_collection == blank %}
+  {% assign modifiers = modifiers | append: ' carousel--columns-wrap-around' %}
+{% endif %}
+
+<section
+  data-section-id="{{ id }}"
+  data-section-type="featured-collection"
+  class="section featured-collection carousel{{ modifiers }}"
+  data-text-position={{ carousel_text_position }}
+  data-text-alignment={{ carousel_text_alignment }}
+>
+  {% assign collection_link = '#' %}
+
+  {% if featured_collection != blank %}
+    {% assign collection_link = featured_collection.url %}
+  {% endif %}
+
+  {% render 'text-block' with
+    id: id,
+    modifiers: 'mb5 animation__staggered-children-fade-in',
+    heading_alignment: carousel_text_alignment,
+    overline: overline,
+    heading: heading,
+    subheading: subheading,
+    text_max_width: text_max_width,
+    link: collection_link,
+    link_text: link_text
+  %}
+
+  {% render 'carousel-navigation' %}
+
+  <div class="featured-collection__slides carousel__slides" data-carousel>
+    {% if featured_collection != blank %}
+      {%- for product in featured_collection.products limit: max_product_limit -%}
+        <div class="featured-collection__slide carousel__slide animates">
+          {% render 'product-item' with
+            product: product
+            aspect_ratio: aspect_ratio
+          %}
+        </div>
+      {%- endfor -%}
+    {% else %}
+      {% for i in (1..minimum_items_for_wrap_around) %}
+        <div class="featured-collection__slide product-item carousel__slide animates">
+          {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+          <div class="product-item__placeholder">
+            {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+          </div>
+
+          <h2 class="type-body-regular mt3">
+            {{ 'homepage.onboarding.product_title' | t }}
+          </h2>
+          <p class="price-item price-item--regular ma0 meta">{{ 2000 | money }}</p>
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+</section>
+

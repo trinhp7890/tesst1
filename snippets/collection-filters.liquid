@@ -1,0 +1,26 @@
+<div class="collection-top-bar__filters">
+  {% if collection.all_tags.size > 0 and show_filters %}
+    {% if filter_type == 'by_group' %}
+      {% for category in categories %}
+        <a href="#" class="collection__button type-body-regular" data-filter="{{ category }}">
+          {{ category }}
+          {% render 'icon-chevron-down' %}
+        </a>
+      {% endfor %}
+    {% endif %}
+
+    {% if filter_type == 'by_tag' %}
+      <a href="#" class="collection__button type-body-regular" data-filter="__tags">
+        {{ 'collections.tags.title' | t }}
+        {% render 'icon-chevron-down' %}
+      </a>
+    {% endif %}
+  {% endif %}
+
+  {% if show_sort %}
+    <a href="#" class="collection__button type-body-regular" data-filter="__sort">
+      {{ 'collections.sorting.title' | t }}
+      {% render 'icon-chevron-down' %}
+    </a>
+  {% endif %}
+</div>

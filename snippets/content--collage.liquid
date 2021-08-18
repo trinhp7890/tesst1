@@ -1,0 +1,109 @@
+{% assign modifiers = '' %}
+
+{% assign modifiers = modifiers | append: ' section--' | append: section_style %}
+
+{% unless section_style == 'contrast' %}
+  {% assign modifiers = modifiers | append: ' section--bordered' %}
+{% endunless %}
+
+<section
+  data-section-id="{{ id }}"
+  data-section-type="collage"
+  data-animation-enabled="{{ enable_animation }}"
+  class="section {{ modifiers }}"
+>
+
+  {% render 'text-block' with
+    id: id,
+    modifiers: 'mb5 animation__staggered-children-fade-in',
+    heading_alignment: heading_alignment,
+    text_max_width: text_max_width,
+    overline: overline,
+    heading: heading,
+    subheading: subheading
+  %}
+
+  <div class="collage">
+
+    {% for block in blocks %}
+    {% assign s = block.settings %}
+      {%- assign image = block.value | default: s.image  -%}
+
+      {% assign parent_block_is_link = false %}
+
+      {% if s.link != blank and s.link_text == blank %}
+        {% assign parent_block_is_link = true %}
+        <a href="{{ s.link }}" class="collage__item animates collage__item--{{ s.size }}" {{ block.shopify_attributes }} data-index="{{ forloop.index0 }}">
+      {% else %}
+        <div
+          class="collage__item animates collage__item--{{ s.size }}{% if s.image == blank %} collage__item--has-placeholder{% endif %}"
+          {{ block.shopify_attributes }}
+          data-index="{{ forloop.index0 }}"
+        >
+      {% endif %}
+
+          <div class="collage__item-inner-wrapper">
+            <div
+              data-bgset="{% render 'responsive-bg-image', image: image %}"
+              role="img"
+              aria-label="{{ image.alt }}"
+              class="collage__item-inner lazyload"
+              {% unless s.image == blank %}
+                style="background-image: url({{ s.image | img_url: '700x' }});"
+              {% endunless %}
+            >
+              {% unless s.video_url == blank %}
+                <video class="collage__video" autoplay playsinline loop muted src="{{ s.video_url }}" />
+              {% endunless %}
+
+              {% if s.image == blank and s.video_url == blank %}
+                <div class="collage__placeholder">{{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}</div>
+              {% endif %}
+            </div>
+
+            {% if s.overline != blank or s.heading != blank or s.subheading != blank or s.link_text != blank %}
+              {% render 'overlay' with
+                section_id: id,
+                id: block.id
+                overlay_opacity: s.overlay_opacity,
+                overlay_color: s.overlay_color,
+
+                text_container_color: text_container_color,
+                alignment: s.alignment,
+                overline: s.overline,
+                heading: s.heading,
+                subheading: s.subheading,
+                text_color: text_color,
+                text_max_width: s.text_max_width,
+
+
+                parent_block_is_link: parent_block_is_link,
+                link: s.link,
+                link_label: s.link_text,
+                link_text_color: button_text_color
+                link_border_color: button_border_color
+              %}
+            {% endif %}
+          </div>
+
+        {% render 'text-block',
+          id: id,
+          modifiers: 'mb3 mt3',
+          heading_alignment: 'left',
+          text_max_width: text_max_width,
+          overline: s.overline,
+          heading: s.heading,
+          subheading: s.subheading,
+          link: s.link,
+          link_text: s.link_text,
+        %}
+
+      {% if s.link != blank and s.link_text == blank %}
+        </a>
+      {% else %}
+        </div>
+      {% endif %}
+    {% endfor %}
+
+  </div>
+</section>
