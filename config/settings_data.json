@@ -1,0 +1,1363 @@
+{
+  "current": {
+    "color_text": "#3a3a3a",
+    "color_body_text": "#333232",
+    "color_sale_text": "#ea0606",
+    "color_button": "#3a3a3a",
+    "color_button_text": "#ffffff",
+    "color_small_button_text_border": "#3a3a3a",
+    "color_text_field_text": "#000000",
+    "color_text_field_border": "#cccccc",
+    "color_text_field": "#ffffff",
+    "color_image_overlay_text": "#ffffff",
+    "color_image_overlay": "#685858",
+    "image_overlay_opacity": 40,
+    "color_borders": "#ebebeb",
+    "color_body_bg": "#ffffff",
+    "type_header_font": "helvetica_n7",
+    "type_header_base_size": 26,
+    "type_base_font": "helvetica_n4",
+    "type_base_size": 15,
+    "predictive_search_enabled": true,
+    "predictive_search_show_vendor": false,
+    "predictive_search_show_price": false,
+    "share_facebook": true,
+    "share_twitter": true,
+    "share_pinterest": true,
+    "social_twitter_link": "",
+    "social_facebook_link": "",
+    "social_pinterest_link": "",
+    "social_instagram_link": "",
+    "social_tumblr_link": "",
+    "social_snapchat_link": "",
+    "social_youtube_link": "",
+    "social_vimeo_link": "",
+    "favicon": "shopify:\/\/shop_images\/1_8XIy8cyO0np2CQQ14rAMNg.png",
+    "enable_ajax": true,
+    "checkout_header_image": "",
+    "checkout_logo_image": "",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "medium",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#fff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#fafafa",
+    "checkout_heading_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_body_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_accent_color": "#197bbd",
+    "checkout_button_color": "#197bbd",
+    "checkout_error_color": "#e32c2b",
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "align_logo": "left",
+          "logo_max_width": 100,
+          "main_linklist": "main-menu",
+          "message": false,
+          "home_page_only": true,
+          "message_text": "Announce something here",
+          "message_link": "",
+          "color_bg": "#3a3a3a",
+          "color_text": "#ffffff"
+        }
+      },
+      "hero-1": {
+        "type": "hero",
+        "settings": {
+          "image": "",
+          "alignment": "center",
+          "hero_layout": "full_width",
+          "hero_size": "large",
+          "text_size": "large",
+          "title": "Image with text overlay",
+          "text": "<p>Use overlay text to give your customers insight into your brand. Select imagery and text that relates to your style and story.<\/p>",
+          "button_label": "",
+          "button_link": ""
+        }
+      },
+      "feature-row": {
+        "type": "feature-row",
+        "settings": {
+          "image": "",
+          "layout": "left",
+          "title": "Image with text",
+          "text": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+          "button_label": "",
+          "button_link": ""
+        }
+      },
+      "feature-columns": {
+        "type": "feature-columns",
+        "blocks": {
+          "feature-columns-0": {
+            "type": "text_block",
+            "settings": {
+              "enable_image": true,
+              "image": "",
+              "title": "Add a title or tagline",
+              "text": "<p>Share blog posts, products, or promotions with your customers. Use this text to describe products, share details on availability and style, or as a space to display recent reviews or FAQs.<\/p>",
+              "button_label": "",
+              "button_link": ""
+            }
+          },
+          "feature-columns-1": {
+            "type": "text_block",
+            "settings": {
+              "enable_image": true,
+              "image": "",
+              "title": "Add a title or tagline",
+              "text": "<p>Share blog posts, products, or promotions with your customers. Use this text to describe products, share details on availability and style, or as a space to display recent reviews or FAQs.<\/p>",
+              "button_label": "",
+              "button_link": ""
+            }
+          },
+          "feature-columns-2": {
+            "type": "text_block",
+            "settings": {
+              "enable_image": true,
+              "image": "",
+              "title": "Add a title or tagline",
+              "text": "<p>Share blog posts, products, or promotions with your customers. Use this text to describe products, share details on availability and style, or as a space to display recent reviews or FAQs.<\/p>",
+              "button_label": "",
+              "button_link": ""
+            }
+          }
+        },
+        "block_order": [
+          "feature-columns-0",
+          "feature-columns-1",
+          "feature-columns-2"
+        ],
+        "settings": {
+          "title": "",
+          "align_text": "left"
+        }
+      },
+      "collection": {
+        "type": "collection",
+        "settings": {
+          "title": "RELATED PRODUCTS",
+          "collection": "target",
+          "grid": 4,
+          "rows": 2,
+          "show_vendor": false,
+          "show_view_all": false
+        }
+      },
+      "hero-2": {
+        "type": "hero",
+        "settings": {
+          "image": "",
+          "alignment": "center",
+          "hero_layout": "full_width",
+          "hero_size": "medium",
+          "text_size": "large",
+          "title": "Image with text overlay",
+          "text": "<p>Use overlay text to give your customers insight into your brand. Select imagery and text that relates to your style and story.<\/p>",
+          "button_label": "",
+          "button_link": ""
+        }
+      },
+      "quotes": {
+        "type": "quotes",
+        "blocks": {
+          "quotes-0": {
+            "type": "quote",
+            "settings": {
+              "quote": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.<\/p>",
+              "author": "Author's name"
+            }
+          },
+          "quotes-1": {
+            "type": "quote",
+            "settings": {
+              "quote": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.<\/p>",
+              "author": "Author's name"
+            }
+          },
+          "quotes-2": {
+            "type": "quote",
+            "settings": {
+              "quote": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.<\/p>",
+              "author": "Author's name"
+            }
+          }
+        },
+        "block_order": [
+          "quotes-0",
+          "quotes-1",
+          "quotes-2"
+        ],
+        "settings": {
+          "title": ""
+        }
+      },
+      "image-bar": {
+        "type": "image-bar",
+        "blocks": {
+          "image-bar-0": {
+            "type": "image",
+            "settings": {
+              "image": "",
+              "alignment": "center",
+              "link": "",
+              "cta_label": ""
+            }
+          },
+          "image-bar-1": {
+            "type": "image",
+            "settings": {
+              "image": "",
+              "alignment": "center",
+              "link": "",
+              "cta_label": ""
+            }
+          },
+          "image-bar-2": {
+            "type": "image",
+            "settings": {
+              "image": "",
+              "alignment": "center",
+              "link": "",
+              "cta_label": ""
+            }
+          }
+        },
+        "block_order": [
+          "image-bar-0",
+          "image-bar-1",
+          "image-bar-2"
+        ],
+        "settings": {
+          "section_height": "medium"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "footer-0": {
+            "type": "link_list",
+            "settings": {
+              "title": "Quick links",
+              "menu": "footer"
+            }
+          },
+          "footer-1": {
+            "type": "newsletter",
+            "settings": {
+              "title": "Newsletter"
+            }
+          }
+        },
+        "block_order": [
+          "footer-0",
+          "footer-1"
+        ],
+        "settings": {
+          "show_payment_icons": true,
+          "color_footer_bg": "#f6f6f6",
+          "color_footer_text": "#333232",
+          "show_locale_selector": true,
+          "show_currency_selector": true
+        }
+      },
+      "collection-template": {
+        "type": "collection-template",
+        "settings": {
+          "layout": "grid",
+          "grid": 3,
+          "rows": 2,
+          "show_collection_image": true,
+          "show_vendor": false,
+          "sort_enable": true,
+          "tags_enable": false
+        }
+      },
+      "section-services": {
+        "type": "section-services",
+        "blocks": {
+          "762ac67b-a914-4aac-a034-43181b6a323b": {
+            "type": "column",
+            "settings": {
+              "enable_special": false,
+              "title": "HAUS <br> SPECIAL",
+              "number_show": "85",
+              "subheading": "This all-embracing, comprehensive facial combines our expertise with your skin's needs. Includes an oxygen\n          blast, targeted serum ampoule and full extractions."
+            }
+          },
+          "8b3d6447-fb0a-41cd-91ec-d810cbf69f41": {
+            "type": "column",
+            "settings": {
+              "enable_special": false,
+              "title": "SPOTLESS REPUTATION",
+              "number_show": "85",
+              "subheading": "Our oil-dissolving, complexion-clearing facial uses ultrasonic waves and high frequency to treat troubled\n          or congested skin. Includes full extractions."
+            }
+          },
+          "cb26e68e-74e8-43c8-a639-5f7ebe64b9bc": {
+            "type": "column",
+            "settings": {
+              "enable_special": false,
+              "title": "TEEN <br> SPIRIT",
+              "number_show": "75",
+              "subheading": "Gives teens clean, bright skin, and tips on how to keep it that way. Includes a customized,\n          electrolyte-infused hydrojelly mask."
+            }
+          },
+          "1d512023-e2b4-4b73-850a-f961963107bb": {
+            "type": "column",
+            "settings": {
+              "enable_special": true,
+              "title": "POWER <br> HAUS",
+              "number_show": "125",
+              "subheading": "This high-powered skin renovation unites microdermabrasion and micro current to leave skin brighter,\n          smoother, lifted and contoured."
+            }
+          },
+          "216f15c1-fc9d-4a9e-a3de-70b657616754": {
+            "type": "column",
+            "settings": {
+              "enable_special": true,
+              "title": "WORLD OF <br> DIFFERENCE",
+              "number_show": "145",
+              "subheading": "Glow all out with this transformative, deluxe facial. Features a smoothing peel, full extractions,\n          cell-energizing LED, pure Vitamin C and a rich algae mask for instantly smoother, brighter, firmer skin."
+            }
+          },
+          "76950e9a-5042-4487-bc74-16ab3fcde977": {
+            "type": "column",
+            "settings": {
+              "enable_special": false,
+              "title": "KEEP <br> GLOWING",
+              "number_show": "75",
+              "subheading": "This pro-aging facial cleanses, exfoliates and hydrates a seasoned complexion. Celebrate the skin you’re\n          in!"
+            }
+          },
+          "df125c14-6ac6-464b-a37f-ebbb1e1fdd78": {
+            "type": "column",
+            "settings": {
+              "enable_special": false,
+              "title": "BEST <br> MAN",
+              "number_show": "75",
+              "subheading": "Show him some brotherly love with this targeted facial that exfoliates, hydrates and remedies the effects\n          of shaving."
+            }
+          },
+          "005c6b0a-bd33-48fd-8473-86efb66b377f": {
+            "type": "column",
+            "settings": {
+              "enable_special": false,
+              "title": "BRIGHT <br> SIDE",
+              "number_show": "75",
+              "subheading": "Look towards a bright future with a treatment that helps fade sun damage and dark spots."
+            }
+          },
+          "fb3b1d24-ebb1-46f3-8069-32a3f6755c7c": {
+            "type": "column",
+            "settings": {
+              "enable_special": true,
+              "title": "ALL <br> FOR ONE",
+              "number_show": "10",
+              "subheading": "Stay calm: this emergency spot treatment is here for you."
+            }
+          },
+          "6ebb8a88-12ed-4313-ab67-11491b1059e2": {
+            "type": "column",
+            "settings": {
+              "enable_special": true,
+              "title": "ME, MYSELF <br> & I",
+              "number_show": "100",
+              "subheading": "Hi-tech meets high touch in this data-driven facial, powered by Atolla. Born at MIT, our expert esthies can\n          now capture precise details about your skin like never before. Includes one personalized, take-home serum for\n          your face only!."
+            }
+          }
+        },
+        "block_order": [
+          "762ac67b-a914-4aac-a034-43181b6a323b",
+          "8b3d6447-fb0a-41cd-91ec-d810cbf69f41",
+          "cb26e68e-74e8-43c8-a639-5f7ebe64b9bc",
+          "1d512023-e2b4-4b73-850a-f961963107bb",
+          "216f15c1-fc9d-4a9e-a3de-70b657616754",
+          "76950e9a-5042-4487-bc74-16ab3fcde977",
+          "df125c14-6ac6-464b-a37f-ebbb1e1fdd78",
+          "005c6b0a-bd33-48fd-8473-86efb66b377f",
+          "fb3b1d24-ebb1-46f3-8069-32a3f6755c7c",
+          "6ebb8a88-12ed-4313-ab67-11491b1059e2"
+        ],
+        "settings": {
+          "title": "SERVICES",
+          "subheading": ""
+        }
+      },
+      "section-services-home": {
+        "type": "section-services-home",
+        "blocks": {
+          "a3779496-e091-4e1f-9269-8db3adf207ba": {
+            "type": "column",
+            "settings": {
+              "enable_special": false,
+              "title": "HAUS <br> SPECIAL",
+              "number_show": "85",
+              "subheading": "This all-embracing, comprehensive facial combines our expertise with your skin's needs. Includes an oxygen\n          blast, targeted serum ampoule and full extractions."
+            }
+          },
+          "4370cf64-2c4b-417f-b6d4-89aeecde52a6": {
+            "type": "column",
+            "settings": {
+              "enable_special": false,
+              "title": "SPOTLESS REPUTATION",
+              "number_show": "85",
+              "subheading": "Our oil-dissolving, complexion-clearing facial uses ultrasonic waves and high frequency to treat troubled\n          or congested skin. Includes full extractions."
+            }
+          },
+          "984fe029-be9b-4f12-bbb9-15fd79a1a3ad": {
+            "type": "column",
+            "settings": {
+              "enable_special": false,
+              "title": "TEEN <br> SPIRIT",
+              "number_show": "75",
+              "subheading": "Gives teens clean, bright skin, and tips on how to keep it that way. Includes a customized,\n          electrolyte-infused hydrojelly mask."
+            }
+          },
+          "33f7e58c-89e7-4221-a8d4-b6d6540a02ca": {
+            "type": "column",
+            "settings": {
+              "enable_special": true,
+              "title": "POWER <br> HAUS",
+              "number_show": "125",
+              "subheading": "This high-powered skin renovation unites microdermabrasion and micro current to leave skin brighter,\n          smoother, lifted and contoured."
+            }
+          },
+          "0465a8c4-cbbd-44bd-9249-8fddfae22a87": {
+            "type": "column",
+            "settings": {
+              "enable_special": true,
+              "title": "WORLD OF <br> DIFFERENCE",
+              "number_show": "145",
+              "subheading": "Glow all out with this transformative, deluxe facial. Features a smoothing peel, full extractions,\n          cell-energizing LED, pure Vitamin C and a rich algae mask for instantly smoother, brighter, firmer skin."
+            }
+          },
+          "becc11e6-aa80-43cb-88cd-4512eb7037d6": {
+            "type": "column",
+            "settings": {
+              "enable_special": false,
+              "title": "KEEP <br> GLOWING",
+              "number_show": "75",
+              "subheading": "This pro-aging facial cleanses, exfoliates and hydrates a seasoned complexion. Celebrate the skin you’re\n          in!"
+            }
+          },
+          "5f92d00c-b1c5-4600-bf0e-5fa9b3379be6": {
+            "type": "column",
+            "settings": {
+              "enable_special": false,
+              "title": "BEST <br> MAN",
+              "number_show": "75",
+              "subheading": "Show him some brotherly love with this targeted facial that exfoliates, hydrates and remedies the effects\n          of shaving."
+            }
+          },
+          "096119b0-8804-4783-918d-8edb5756bddf": {
+            "type": "column",
+            "settings": {
+              "enable_special": false,
+              "title": "BRIGHT <br> SIDE",
+              "number_show": "75",
+              "subheading": "Look towards a bright future with a treatment that helps fade sun damage and dark spots."
+            }
+          },
+          "3d4c5a6b-8a00-46e6-8243-602cf01f0c74": {
+            "type": "column",
+            "settings": {
+              "enable_special": true,
+              "title": "ALL <br> FOR ONE",
+              "number_show": "10",
+              "subheading": "Stay calm: this emergency spot treatment is here for you."
+            }
+          },
+          "d9fe0af9-90d0-4589-aad5-dc3455d0cc49": {
+            "type": "column",
+            "settings": {
+              "enable_special": true,
+              "title": "ME, MYSELF <br> & I",
+              "number_show": "100",
+              "subheading": "Hi-tech meets high touch in this data-driven facial, powered by Atolla. Born at MIT, our expert esthies can\n          now capture precise details about your skin like never before. Includes one personalized, take-home serum for\n          your face only!."
+            }
+          }
+        },
+        "block_order": [
+          "a3779496-e091-4e1f-9269-8db3adf207ba",
+          "4370cf64-2c4b-417f-b6d4-89aeecde52a6",
+          "984fe029-be9b-4f12-bbb9-15fd79a1a3ad",
+          "33f7e58c-89e7-4221-a8d4-b6d6540a02ca",
+          "0465a8c4-cbbd-44bd-9249-8fddfae22a87",
+          "becc11e6-aa80-43cb-88cd-4512eb7037d6",
+          "5f92d00c-b1c5-4600-bf0e-5fa9b3379be6",
+          "096119b0-8804-4783-918d-8edb5756bddf",
+          "3d4c5a6b-8a00-46e6-8243-602cf01f0c74",
+          "d9fe0af9-90d0-4589-aad5-dc3455d0cc49"
+        ],
+        "settings": {
+          "title": ".",
+          "subheading": "."
+        }
+      },
+      "video--dynamic": {
+        "type": "video--dynamic",
+        "settings": {
+          "section_style": "default",
+          "overline": "Video",
+          "title": "Video Section",
+          "subheading": "ádasd",
+          "link": "https:\/\/youtu.be\/8rydPzA4nTU",
+          "link_text": "ádasd",
+          "heading_alignment": "left",
+          "text_max_width": 50,
+          "video_url": "https:\/\/youtu.be\/8rydPzA4nTU",
+          "image": "shopify:\/\/shop_images\/2.png",
+          "overlay_opacity": 40,
+          "overlay_color": "#000"
+        }
+      },
+      "sections-services-page-right": {
+        "type": "sections-services-page-right",
+        "settings": {
+          "title": "TREAT ACNE, CONGESTED AND OILY SKIN",
+          "subheading": "Skin that is heavily congested, clogged, oily or acne prone."
+        }
+      },
+      "sections-services-page-left": {
+        "type": "sections-services-page-left",
+        "blocks": {
+          "b37d92f0-da79-4adf-afe3-faf2d44af6b7": {
+            "type": "column",
+            "settings": {
+              "enable_special": false,
+              "title": "ESTHIE TIPS",
+              "number_show": "0",
+              "subheading": "No pain, no gain does not apply! You may have some blackheads\nthat are hard to reach, but we prep the skin to open the pores\ntherefore extractions should not be painful. Don’t think you aren’t\ngetting results if you’re enjoying your facial!"
+            }
+          },
+          "e8107d8f-77d5-4f50-8523-692ca237e0b2": {
+            "type": "column",
+            "settings": {
+              "enable_special": false,
+              "title": "WHY OUR ESTHIES LOVE IT",
+              "number_show": "0",
+              "subheading": "Special event-worthy You may have some blackheads\nthat are hard to reach, but we prep the skin to open the pores\ntherefore extractions should not be painful. Don’t think you aren’t\ngetting results if you’re enjoying your facial!"
+            }
+          },
+          "a6346a91-fe79-462b-99e5-e1e9561f9ded": {
+            "type": "column",
+            "settings": {
+              "enable_special": false,
+              "title": "KNOW BEFORE YOU GO",
+              "number_show": "0",
+              "subheading": "Info in appt confirmation, plus contraindication - pregnancy\nthat are hard to reach, but we prep the skin to open the pores\ntherefore extractions should not be painful. Don’t think you aren’t\ngetting results if you’re enjoying your facial!"
+            }
+          },
+          "7e98a78b-016c-464f-b234-3c235fad713b": {
+            "type": "column",
+            "settings": {
+              "enable_special": false,
+              "title": "SKINCARE GOALS",
+              "number_show": "0",
+              "subheading": "Clear, balanced skin - free of spots."
+            }
+          }
+        },
+        "block_order": [
+          "b37d92f0-da79-4adf-afe3-faf2d44af6b7",
+          "e8107d8f-77d5-4f50-8523-692ca237e0b2",
+          "a6346a91-fe79-462b-99e5-e1e9561f9ded",
+          "7e98a78b-016c-464f-b234-3c235fad713b"
+        ],
+        "settings": {
+          "linkimage": "https:\/\/cdn.shopify.com\/s\/files\/1\/0441\/5261\/9170\/files\/service-pdp-image.jpg?v=1628263394",
+          "linkvideo": "https:\/\/www.youtube.com\/embed\/9II2IJlymsU",
+          "title": ".",
+          "subheading": "."
+        }
+      },
+      "list-collections-template": {
+        "type": "list-collections-template",
+        "settings": {
+          "display_type": "all",
+          "sort": "alphabetical",
+          "grid": 3
+        }
+      },
+      "services-sensitive-skin-page-left": {
+        "type": "services-sensitive-skin-page-left",
+        "blocks": {
+          "dee60777-a0ad-469e-bc04-82ab552760e3": {
+            "type": "column",
+            "settings": {
+              "enable_special": false,
+              "title": "ESTHIE TIPS",
+              "number_show": "0",
+              "subheading": "No pain, no gain does not apply! You may have some blackheads\nthat are hard to reach, but we prep the skin to open the pores\ntherefore extractions should not be painful. Don’t think you aren’t\ngetting results if you’re enjoying your facial!"
+            }
+          },
+          "10951e05-dce8-499e-bf8a-74fe324f5fe3": {
+            "type": "column",
+            "settings": {
+              "enable_special": false,
+              "title": "WHY OUR ESTHIES LOVE IT",
+              "number_show": "0",
+              "subheading": "Special event-worthy You may have some blackheads\nthat are hard to reach, but we prep the skin to open the pores\ntherefore extractions should not be painful. Don’t think you aren’t\ngetting results if you’re enjoying your facial!"
+            }
+          },
+          "e11adf1f-d364-4cd9-ba74-e6ef325c5f7f": {
+            "type": "column",
+            "settings": {
+              "enable_special": false,
+              "title": "KNOW BEFORE YOU GO",
+              "number_show": "0",
+              "subheading": "Info in appt confirmation, plus contraindication - pregnancy\nthat are hard to reach, but we prep the skin to open the pores\ntherefore extractions should not be painful. Don’t think you aren’t\ngetting results if you’re enjoying your facial!"
+            }
+          },
+          "40fbacf6-a13f-44a5-bffc-7f2a2d71d0d7": {
+            "type": "column",
+            "settings": {
+              "enable_special": false,
+              "title": "SKINCARE GOALS",
+              "number_show": "0",
+              "subheading": "Clear, balanced skin - free of spots."
+            }
+          }
+        },
+        "block_order": [
+          "dee60777-a0ad-469e-bc04-82ab552760e3",
+          "10951e05-dce8-499e-bf8a-74fe324f5fe3",
+          "e11adf1f-d364-4cd9-ba74-e6ef325c5f7f",
+          "40fbacf6-a13f-44a5-bffc-7f2a2d71d0d7"
+        ],
+        "settings": {
+          "linkimage": "https:\/\/cdn.shopify.com\/s\/files\/1\/0441\/5261\/9170\/files\/service-pdp-image.jpg?v=1628263394",
+          "linkvideo": "https:\/\/www.youtube.com\/embed\/9II2IJlymsU",
+          "title": ".",
+          "subheading": "."
+        }
+      },
+      "services-deyhdrated_dry_skin-page-left": {
+        "type": "services-deyhdrated_dry_skin-page-left",
+        "blocks": {
+          "e317baa7-76c7-4fde-8f79-610cdb6db0de": {
+            "type": "column",
+            "settings": {
+              "enable_special": false,
+              "title": "ESTHIE TIPS",
+              "number_show": "0",
+              "subheading": "No pain, no gain does not apply! You may have some blackheads\nthat are hard to reach, but we prep the skin to open the pores\ntherefore extractions should not be painful. Don’t think you aren’t\ngetting results if you’re enjoying your facial!"
+            }
+          },
+          "9be782fc-d934-4aa4-b9b8-0a63ca060ece": {
+            "type": "column",
+            "settings": {
+              "enable_special": false,
+              "title": "WHY OUR ESTHIES LOVE IT",
+              "number_show": "0",
+              "subheading": "Special event-worthy You may have some blackheads\nthat are hard to reach, but we prep the skin to open the pores\ntherefore extractions should not be painful. Don’t think you aren’t\ngetting results if you’re enjoying your facial!"
+            }
+          },
+          "a72739c2-8c26-489a-974f-0bdea2715ad3": {
+            "type": "column",
+            "settings": {
+              "enable_special": false,
+              "title": "KNOW BEFORE YOU GO",
+              "number_show": "0",
+              "subheading": "Info in appt confirmation, plus contraindication - pregnancy\nthat are hard to reach, but we prep the skin to open the pores\ntherefore extractions should not be painful. Don’t think you aren’t\ngetting results if you’re enjoying your facial!"
+            }
+          },
+          "18803cfa-80d8-4d36-9b02-749991972d4b": {
+            "type": "column",
+            "settings": {
+              "enable_special": false,
+              "title": "SKINCARE GOALS",
+              "number_show": "0",
+              "subheading": "Clear, balanced skin - free of spots."
+            }
+          }
+        },
+        "block_order": [
+          "e317baa7-76c7-4fde-8f79-610cdb6db0de",
+          "9be782fc-d934-4aa4-b9b8-0a63ca060ece",
+          "a72739c2-8c26-489a-974f-0bdea2715ad3",
+          "18803cfa-80d8-4d36-9b02-749991972d4b"
+        ],
+        "settings": {
+          "linkimage": "https:\/\/cdn.shopify.com\/s\/files\/1\/0441\/5261\/9170\/files\/service-pdp-image.jpg?v=1628263394",
+          "linkvideo": "https:\/\/www.youtube.com\/embed\/9II2IJlymsU",
+          "title": ".",
+          "subheading": "."
+        }
+      },
+      "services-all_skin_types_conditions-page-left": {
+        "type": "services-all_skin_types_conditions-page-left",
+        "blocks": {
+          "d848a8b6-eb9e-4427-93a0-8d4f925c2948": {
+            "type": "column",
+            "settings": {
+              "enable_special": false,
+              "title": "ESTHIE TIPS",
+              "number_show": "0",
+              "subheading": "No pain, no gain does not apply! You may have some blackheads\nthat are hard to reach, but we prep the skin to open the pores\ntherefore extractions should not be painful. Don’t think you aren’t\ngetting results if you’re enjoying your facial!"
+            }
+          },
+          "d6a8a166-d84f-4c52-a9d5-cb8276878c9b": {
+            "type": "column",
+            "settings": {
+              "enable_special": false,
+              "title": "WHY OUR ESTHIES LOVE IT",
+              "number_show": "0",
+              "subheading": "Special event-worthy You may have some blackheads\nthat are hard to reach, but we prep the skin to open the pores\ntherefore extractions should not be painful. Don’t think you aren’t\ngetting results if you’re enjoying your facial!"
+            }
+          },
+          "b7a88d97-3f48-4d2b-aa31-d881c52af403": {
+            "type": "column",
+            "settings": {
+              "enable_special": false,
+              "title": "KNOW BEFORE YOU GO",
+              "number_show": "0",
+              "subheading": "Info in appt confirmation, plus contraindication - pregnancy\nthat are hard to reach, but we prep the skin to open the pores\ntherefore extractions should not be painful. Don’t think you aren’t\ngetting results if you’re enjoying your facial!"
+            }
+          },
+          "154d34a8-c260-43b7-877b-8e402147bd39": {
+            "type": "column",
+            "settings": {
+              "enable_special": false,
+              "title": "SKINCARE GOALS",
+              "number_show": "0",
+              "subheading": "Clear, balanced skin - free of spots."
+            }
+          }
+        },
+        "block_order": [
+          "d848a8b6-eb9e-4427-93a0-8d4f925c2948",
+          "d6a8a166-d84f-4c52-a9d5-cb8276878c9b",
+          "b7a88d97-3f48-4d2b-aa31-d881c52af403",
+          "154d34a8-c260-43b7-877b-8e402147bd39"
+        ],
+        "settings": {
+          "linkimage": "https:\/\/cdn.shopify.com\/s\/files\/1\/0441\/5261\/9170\/files\/service-pdp-image.jpg?v=1628263394",
+          "linkvideo": "https:\/\/www.youtube.com\/embed\/9II2IJlymsU",
+          "title": ".",
+          "subheading": "."
+        }
+      },
+      "services-age_management-page-left": {
+        "type": "services-age_management-page-left",
+        "blocks": {
+          "e1435c14-f2d4-4373-8237-a33990d0a9a0": {
+            "type": "column",
+            "settings": {
+              "enable_special": false,
+              "title": "ESTHIE TIPS",
+              "number_show": "0",
+              "subheading": "No pain, no gain does not apply! You may have some blackheads\nthat are hard to reach, but we prep the skin to open the pores\ntherefore extractions should not be painful. Don’t think you aren’t\ngetting results if you’re enjoying your facial!"
+            }
+          },
+          "994ba03a-075c-4c96-a971-2bfdfa85a1c5": {
+            "type": "column",
+            "settings": {
+              "enable_special": false,
+              "title": "WHY OUR ESTHIES LOVE IT",
+              "number_show": "0",
+              "subheading": "Special event-worthy You may have some blackheads\nthat are hard to reach, but we prep the skin to open the pores\ntherefore extractions should not be painful. Don’t think you aren’t\ngetting results if you’re enjoying your facial!"
+            }
+          },
+          "bbabf01f-a367-4bc5-bd98-ea52e5fd9dd0": {
+            "type": "column",
+            "settings": {
+              "enable_special": false,
+              "title": "KNOW BEFORE YOU GO",
+              "number_show": "0",
+              "subheading": "Info in appt confirmation, plus contraindication - pregnancy\nthat are hard to reach, but we prep the skin to open the pores\ntherefore extractions should not be painful. Don’t think you aren’t\ngetting results if you’re enjoying your facial!"
+            }
+          },
+          "c08b0016-74e7-49a5-88d1-2a317c2c1eb4": {
+            "type": "column",
+            "settings": {
+              "enable_special": false,
+              "title": "SKINCARE GOALS",
+              "number_show": "0",
+              "subheading": "Clear, balanced skin - free of spots."
+            }
+          }
+        },
+        "block_order": [
+          "e1435c14-f2d4-4373-8237-a33990d0a9a0",
+          "994ba03a-075c-4c96-a971-2bfdfa85a1c5",
+          "bbabf01f-a367-4bc5-bd98-ea52e5fd9dd0",
+          "c08b0016-74e7-49a5-88d1-2a317c2c1eb4"
+        ],
+        "settings": {
+          "linkimage": "https:\/\/cdn.shopify.com\/s\/files\/1\/0441\/5261\/9170\/files\/service-pdp-image.jpg?v=1628263394",
+          "linkvideo": "https:\/\/www.youtube.com\/embed\/9II2IJlymsU",
+          "title": ".",
+          "subheading": "."
+        }
+      },
+      "services-heperpigmantation-page-left": {
+        "type": "services-heperpigmantation-page-left",
+        "blocks": {
+          "dce1c79b-e030-477c-867d-7d864631d1d0": {
+            "type": "column",
+            "settings": {
+              "enable_special": false,
+              "title": "ESTHIE TIPS",
+              "number_show": "0",
+              "subheading": "No pain, no gain does not apply! You may have some blackheads\nthat are hard to reach, but we prep the skin to open the pores\ntherefore extractions should not be painful. Don’t think you aren’t\ngetting results if you’re enjoying your facial!"
+            }
+          },
+          "0d4cddda-1ba4-4288-ac79-229762d6e95b": {
+            "type": "column",
+            "settings": {
+              "enable_special": false,
+              "title": "WHY OUR ESTHIES LOVE IT",
+              "number_show": "0",
+              "subheading": "Special event-worthy You may have some blackheads\nthat are hard to reach, but we prep the skin to open the pores\ntherefore extractions should not be painful. Don’t think you aren’t\ngetting results if you’re enjoying your facial!"
+            }
+          },
+          "306b102b-5ec9-47a7-8ad0-2a8868c07b56": {
+            "type": "column",
+            "settings": {
+              "enable_special": false,
+              "title": "KNOW BEFORE YOU GO",
+              "number_show": "0",
+              "subheading": "Info in appt confirmation, plus contraindication - pregnancy\nthat are hard to reach, but we prep the skin to open the pores\ntherefore extractions should not be painful. Don’t think you aren’t\ngetting results if you’re enjoying your facial!"
+            }
+          },
+          "93403414-676f-43fe-87ae-3a03d2238d6a": {
+            "type": "column",
+            "settings": {
+              "enable_special": false,
+              "title": "SKINCARE GOALS",
+              "number_show": "0",
+              "subheading": "Clear, balanced skin - free of spots."
+            }
+          }
+        },
+        "block_order": [
+          "dce1c79b-e030-477c-867d-7d864631d1d0",
+          "0d4cddda-1ba4-4288-ac79-229762d6e95b",
+          "306b102b-5ec9-47a7-8ad0-2a8868c07b56",
+          "93403414-676f-43fe-87ae-3a03d2238d6a"
+        ],
+        "settings": {
+          "linkimage": "https:\/\/cdn.shopify.com\/s\/files\/1\/0441\/5261\/9170\/files\/service-pdp-image.jpg?v=1628263394",
+          "linkvideo": "https:\/\/www.youtube.com\/embed\/9II2IJlymsU",
+          "title": ".",
+          "subheading": "."
+        }
+      },
+      "services-facial_warxing-page-left": {
+        "type": "services-facial_warxing-page-left",
+        "blocks": {
+          "a3c36262-9cbc-410a-8390-fdd709fa0856": {
+            "type": "column",
+            "settings": {
+              "enable_special": false,
+              "title": "ESTHIE TIPS",
+              "number_show": "0",
+              "subheading": "No pain, no gain does not apply! You may have some blackheads\nthat are hard to reach, but we prep the skin to open the pores\ntherefore extractions should not be painful. Don’t think you aren’t\ngetting results if you’re enjoying your facial!"
+            }
+          },
+          "4e51f443-7f49-40bf-924b-61ab3dc14850": {
+            "type": "column",
+            "settings": {
+              "enable_special": false,
+              "title": "WHY OUR ESTHIES LOVE IT",
+              "number_show": "0",
+              "subheading": "Special event-worthy You may have some blackheads\nthat are hard to reach, but we prep the skin to open the pores\ntherefore extractions should not be painful. Don’t think you aren’t\ngetting results if you’re enjoying your facial!"
+            }
+          },
+          "54f6e8cc-db70-422e-a662-09817290771c": {
+            "type": "column",
+            "settings": {
+              "enable_special": false,
+              "title": "KNOW BEFORE YOU GO",
+              "number_show": "0",
+              "subheading": "Info in appt confirmation, plus contraindication - pregnancy\nthat are hard to reach, but we prep the skin to open the pores\ntherefore extractions should not be painful. Don’t think you aren’t\ngetting results if you’re enjoying your facial!"
+            }
+          },
+          "f066397a-9582-4374-a161-3d021ee098d0": {
+            "type": "column",
+            "settings": {
+              "enable_special": false,
+              "title": "SKINCARE GOALS",
+              "number_show": "0",
+              "subheading": "Clear, balanced skin - free of spots."
+            }
+          }
+        },
+        "block_order": [
+          "a3c36262-9cbc-410a-8390-fdd709fa0856",
+          "4e51f443-7f49-40bf-924b-61ab3dc14850",
+          "54f6e8cc-db70-422e-a662-09817290771c",
+          "f066397a-9582-4374-a161-3d021ee098d0"
+        ],
+        "settings": {
+          "linkimage": "https:\/\/cdn.shopify.com\/s\/files\/1\/0441\/5261\/9170\/files\/service-pdp-image.jpg?v=1628263394",
+          "linkvideo": "https:\/\/www.youtube.com\/embed\/9II2IJlymsU",
+          "title": ".",
+          "subheading": "."
+        }
+      },
+      "services-facial_warxing-collection": {
+        "type": "services-facial_warxing-collection",
+        "settings": {
+          "title": "RELATED PRODUCTS",
+          "collection": "shop",
+          "grid": 4,
+          "rows": 2,
+          "show_vendor": false,
+          "show_view_all": false
+        }
+      },
+      "services-acne-congested-or-oily-skin-collection": {
+        "type": "services-acne-congested-or-oily-skin-collection",
+        "settings": {
+          "title": "RELATED PRODUCTS",
+          "collection": "target",
+          "grid": 4,
+          "rows": 2,
+          "show_vendor": false,
+          "show_view_all": false
+        }
+      },
+      "services-deyhdrated_dry_skin-collection": {
+        "type": "services-deyhdrated_dry_skin-collection",
+        "settings": {
+          "title": "RELATED PRODUCTS",
+          "collection": "target",
+          "grid": 4,
+          "rows": 2,
+          "show_vendor": false,
+          "show_view_all": false
+        }
+      },
+      "services-sensitive-skin-collection": {
+        "type": "services-sensitive-skin-collection",
+        "settings": {
+          "title": "RELATED PRODUCTS",
+          "collection": "target",
+          "grid": 4,
+          "rows": 2,
+          "show_vendor": false,
+          "show_view_all": false
+        }
+      },
+      "services-age_management-collection": {
+        "type": "services-age_management-collection",
+        "settings": {
+          "title": "RELATED PRODUCTS",
+          "collection": "target",
+          "grid": 4,
+          "rows": 2,
+          "show_vendor": false,
+          "show_view_all": false
+        }
+      },
+      "services-heperpigmantation-collection": {
+        "type": "services-heperpigmantation-collection",
+        "settings": {
+          "title": "RELATED PRODUCTS",
+          "collection": "target",
+          "grid": 4,
+          "rows": 2,
+          "show_vendor": false,
+          "show_view_all": false
+        }
+      }
+    },
+    "content_for_index": [
+      "hero-1",
+      "feature-row",
+      "feature-columns",
+      "collection",
+      "hero-2",
+      "quotes",
+      "image-bar"
+    ]
+  },
+  "presets": {
+    "Default": {
+      "sections": {
+        "header": {
+          "type": "header",
+          "settings": {}
+        },
+        "hero-1": {
+          "type": "hero",
+          "settings": {
+            "hero_size": "large",
+            "text_size": "large"
+          }
+        },
+        "feature-row": {
+          "type": "feature-row",
+          "settings": {}
+        },
+        "feature-columns": {
+          "type": "feature-columns",
+          "blocks": {
+            "feature-columns-0": {
+              "type": "text_block",
+              "settings": {}
+            },
+            "feature-columns-1": {
+              "type": "text_block",
+              "settings": {}
+            },
+            "feature-columns-2": {
+              "type": "text_block",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "feature-columns-0",
+            "feature-columns-1",
+            "feature-columns-2"
+          ],
+          "settings": {
+            "title": ""
+          }
+        },
+        "collection": {
+          "type": "collection",
+          "settings": {
+            "grid": 4
+          }
+        },
+        "hero-2": {
+          "type": "hero",
+          "settings": {
+            "text_size": "large"
+          }
+        },
+        "quotes": {
+          "type": "quotes",
+          "blocks": {
+            "quotes-0": {
+              "type": "quote",
+              "settings": {}
+            },
+            "quotes-1": {
+              "type": "quote",
+              "settings": {}
+            },
+            "quotes-2": {
+              "type": "quote",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "quotes-0",
+            "quotes-1",
+            "quotes-2"
+          ],
+          "settings": {
+            "title": ""
+          }
+        },
+        "image-bar": {
+          "type": "image-bar",
+          "blocks": {
+            "image-bar-0": {
+              "type": "image",
+              "settings": {}
+            },
+            "image-bar-1": {
+              "type": "image",
+              "settings": {}
+            },
+            "image-bar-2": {
+              "type": "image",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "image-bar-0",
+            "image-bar-1",
+            "image-bar-2"
+          ],
+          "settings": {}
+        },
+        "footer": {
+          "type": "footer",
+          "blocks": {
+            "footer-0": {
+              "type": "link_list",
+              "settings": {}
+            },
+            "footer-1": {
+              "type": "newsletter",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "footer-0",
+            "footer-1"
+          ],
+          "settings": {
+            "show_payment_icons": true
+          }
+        }
+      },
+      "content_for_index": [
+        "hero-1",
+        "feature-row",
+        "feature-columns",
+        "collection",
+        "hero-2",
+        "quotes",
+        "image-bar"
+      ]
+    },
+    "Light": {
+      "color_text": "#162950",
+      "color_body_text": "#6d6d6d",
+      "color_sale_text": "#DA2F0C",
+      "color_borders": "#e4e4e4",
+      "color_button": "#DA2F0C",
+      "color_button_text": "#ffffff",
+      "color_small_button_text_border": "#162950",
+      "color_text_field": "#ffffff",
+      "color_text_field_text": "#162950",
+      "color_text_field_border": "#909090",
+      "color_image_overlay_text": "#ffffff",
+      "color_image_overlay": "#3d3d3d",
+      "image_overlay_opacity": 40,
+      "color_body_bg": "#f8f8f8",
+      "type_header_font": "muli_n6",
+      "type_header_base_size": 26,
+      "type_base_font": "muli_n4",
+      "type_base_size": 18,
+      "share_facebook": true,
+      "share_twitter": true,
+      "share_pinterest": true,
+      "social_twitter_link": "",
+      "social_facebook_link": "",
+      "social_pinterest_link": "",
+      "social_instagram_link": "",
+      "social_tumblr_link": "",
+      "social_snapchat_link": "",
+      "social_youtube_link": "",
+      "social_vimeo_link": "",
+      "favicon": "",
+      "checkout_header_image": "",
+      "checkout_logo_image": "",
+      "checkout_logo_position": "left",
+      "checkout_logo_size": "small",
+      "checkout_body_background_image": "",
+      "checkout_body_background_color": "#ffffff",
+      "checkout_input_background_color_mode": "white",
+      "checkout_sidebar_background_image": "",
+      "checkout_sidebar_background_color": "#e8f3f6",
+      "checkout_heading_font": "Roboto",
+      "checkout_body_font": "Source Sans Pro",
+      "checkout_accent_color": "#1990c6",
+      "checkout_button_color": "#23314e",
+      "checkout_error_color": "#ff6d6d",
+      "sections": {
+        "header": {
+          "type": "header",
+          "settings": {
+            "align_logo": "left",
+            "logo": "",
+            "logo_max_width": 135,
+            "main_linklist": "main-menu",
+            "message": true,
+            "color_bg": "#162950",
+            "color_text": "#ffffff"
+          }
+        },
+        "hero": {
+          "type": "hero",
+          "settings": {
+            "alignment": "center",
+            "hero_size": "x-large",
+            "text_size": "large"
+          }
+        },
+        "slideshow": {
+          "type": "slideshow",
+          "blocks": {
+            "slideshow-0": {
+              "type": "image",
+              "settings": {
+                "image": "",
+                "alignment": "center center"
+              }
+            },
+            "1492095993817": {
+              "type": "image",
+              "settings": {
+                "image": "",
+                "alignment": "center"
+              }
+            }
+          },
+          "block_order": [
+            "slideshow-0",
+            "1492095993817"
+          ],
+          "settings": {
+            "slideshow_height": "medium",
+            "text_size": "medium",
+            "autorotate": false,
+            "autorotate_speed": 5
+          }
+        },
+        "featured-collections": {
+          "type": "collection",
+          "settings": {
+            "grid": 3,
+            "rows": 1,
+            "show_vendor": true,
+            "show_view_all": true
+          }
+        },
+        "product-template": {
+          "type": "product-template",
+          "settings": {
+            "show_quantity_selector": false,
+            "show_variant_labels": true,
+            "show_vendor": false,
+            "show_share_buttons": true,
+            "media_size": "medium",
+            "enable_image_zoom": true,
+            "enable_video_looping": false
+          }
+        },
+        "collection-template": {
+          "type": "collection-template",
+          "settings": {
+            "layout": "grid",
+            "grid": 2,
+            "rows": 2,
+            "show_collection_image": true,
+            "show_vendor": false,
+            "sort_enable": true,
+            "tags_enable": true
+          }
+        },
+        "1492033809691": {
+          "type": "map",
+          "settings": {}
+        },
+        "1492033877875": {
+          "type": "quotes",
+          "blocks": {
+            "1492033877875-0": {
+              "type": "quote",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "1492033877875-0"
+          ],
+          "settings": {}
+        },
+        "1492033924902": {
+          "type": "custom-content",
+          "blocks": {
+            "1492033924902-0": {
+              "type": "text",
+              "settings": {
+                "width": "100%",
+                "alignment": "center",
+                "align_text": "center"
+              }
+            }
+          },
+          "block_order": [
+            "1492033924902-0"
+          ],
+          "settings": {
+            "title": ""
+          }
+        },
+        "1492096252560": {
+          "type": "collection-list",
+          "blocks": {
+            "1492096252560-0": {
+              "type": "featured_collection",
+              "settings": {}
+            },
+            "1492096252560-1": {
+              "type": "featured_collection",
+              "settings": {}
+            },
+            "1492096252560-2": {
+              "type": "featured_collection",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "1492096252560-0",
+            "1492096252560-1",
+            "1492096252560-2"
+          ],
+          "settings": {
+            "grid": 3
+          }
+        },
+        "blog-template": {
+          "type": "blog-template",
+          "settings": {
+            "layout": "grid",
+            "blog_show_author": true,
+            "blog_show_date": false
+          }
+        },
+        "article-template": {
+          "type": "article-template",
+          "settings": {
+            "blog_show_author": true,
+            "blog_show_date": true,
+            "show_share_buttons": true
+          }
+        },
+        "cart-template": {
+          "type": "cart-template",
+          "settings": {
+            "cart_notes_enable": false
+          }
+        },
+        "footer": {
+          "type": "footer",
+          "blocks": {
+            "link_list": {
+              "type": "link_list",
+              "settings": {}
+            },
+            "text": {
+              "type": "text",
+              "settings": {}
+            },
+            "newsletter": {
+              "type": "newsletter",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "link_list",
+            "text",
+            "newsletter"
+          ],
+          "settings": {
+            "color_footer_bg": "#f8f8f8",
+            "color_footer_text": "#6d6d6d"
+          }
+        }
+      },
+      "content_for_index": [
+        "hero",
+        "featured-collections",
+        "slideshow",
+        "1492033924902",
+        "1492096252560",
+        "1492033877875",
+        "1492033809691"
+      ]
+    }
+  }
+}
