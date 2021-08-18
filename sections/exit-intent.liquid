@@ -1,0 +1,81 @@
+{% if section.settings.enable_exit_intent %}
+  {% render 'frame--exit-intent' with
+    id: section.id,
+    exit_intent_position: section.settings.exit_intent_position,
+    exit_intent_image: section.settings.exit_intent_image,
+    exit_intent_heading: section.settings.exit_intent_heading,
+    exit_intent_text: section.settings.exit_intent_text,
+    text_color: section.settings.text_color,
+    bg_color: section.settings.bg_color,
+    border_color: section.settings.border_color,
+    input_text_color: section.settings.input_text_color
+  %}
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Popup",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_exit_intent",
+        "label": "Enable",
+        "info": "Show a popup the first time the user's cursor leaves your site.",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "exit_intent_position",
+        "options": [
+            { "value": "top-left", "label": "Top left"},
+            { "value": "top-right", "label": "Top right"},
+            { "value": "bottom-left", "label": "Bottom left"},
+            { "value": "bottom-right", "label": "Bottom right"}
+        ],
+        "default": "bottom-right",
+        "label": "Popup position"
+      },
+      {
+        "type": "image_picker",
+        "id": "exit_intent_image",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "exit_intent_heading",
+        "label": "Heading",
+        "default": "Sign up for our newsletter"
+      },
+      {
+        "type": "textarea",
+        "id": "exit_intent_text",
+        "label": "Subheading",
+        "default": "Use this popup to capture customer email addresses at the last moment."
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text color",
+        "default": "#1b1b1b"
+      },
+      {
+        "type": "color",
+        "id": "bg_color",
+        "label": "Background color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "border_color",
+        "label": "Border color",
+        "default": "#dedede"
+      },
+      {
+        "type": "color",
+        "id": "input_text_color",
+        "label": "Input text color",
+        "default": "#1b1b1b"
+      }
+    ]
+  }
+{% endschema %}

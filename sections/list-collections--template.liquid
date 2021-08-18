@@ -1,0 +1,90 @@
+{% render 'pages--list-collections' with
+  id: section.id,
+
+  display: section.settings.display_type,
+  columns: section.settings.columns,
+  aspect_ratio: section.settings.aspect_ratio,
+  collection_title_alignment: section.settings.collection_title_alignment,
+  show_product_count: section.settings.show_product_count,
+
+  blocks: section.blocks,
+%}
+
+{% schema %}
+  {
+    "name": "Collections list page",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "All of your collections are listed by default. To customize your list, choose 'Selected' and add collections."
+      },
+      {
+        "id": "display_type",
+        "type": "radio",
+        "label": "Select collections to show",
+        "default": "all",
+        "options": [
+          { "value": "all", "label": "All" },
+          { "value": "selected", "label": "Selected" }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "columns",
+        "label": "Columns",
+        "min": 2,
+        "max": 4,
+        "step": 1,
+        "default": 3
+      },
+      {
+        "id": "aspect_ratio",
+        "type": "select",
+        "label": "Image aspect ratio",
+        "options": [
+          { "label": "Natural", "value": "natural" },
+          { "label": "Square (1:1)", "value": "square" },
+          { "label": "Landscape (3:2)", "value": "landscape" },
+          { "label": "Portrait (2:3)", "value": "portrait" }
+        ],
+        "default": "natural"
+      },
+      {
+        "type": "select",
+        "id": "collection_title_alignment",
+        "label": "Collection title alignment",
+        "default": "left",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "show_product_count",
+        "label": "Show product count",
+        "default": true
+      }
+    ],
+    "max_blocks": 12,
+    "blocks": [
+      {
+        "type": "collection",
+        "name": "Collection",
+        "settings": [
+          {
+            "id": "collection",
+            "type": "collection",
+            "label": "Collection"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,61 @@
+{% render 'pages--product' with
+  show_vendor: section.settings.show_vendor,
+  show_swatches: section.settings.show_swatches,
+  show_quantity_input: section.settings.show_quantity_input,
+  show_share_buttons: section.settings.show_share_buttons,
+  enable_payment_button: section.settings.enable_payment_button,
+  enable_video_looping: section.settings.enable_video_looping,
+%}
+
+{% schema %}
+  {
+    "name": "Product pages",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_vendor",
+        "label": "Show vendor",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_swatches",
+        "label": "Show swatches",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_share_buttons",
+        "label": "Show social sharing buttons"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_quantity_input",
+        "label": "Show quantity selector",
+        "info": "If quantity selector is hidden, quantities will default to 1.",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_payment_button",
+        "label": "Show dynamic checkout button",
+        "info": "Lets customers check out directly using a familiar payment method. [Learn more](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Media"
+      },
+      {
+        "type": "paragraph",
+        "content": "Learn more about [media types](https://help.shopify.com/en/manual/products/product-media)"
+      },
+      {
+        "id": "enable_video_looping",
+        "type": "checkbox",
+        "label": "Enable video looping",
+        "default": true
+      }
+    ]
+  }
+{% endschema %}

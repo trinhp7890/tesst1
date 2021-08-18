@@ -1,0 +1,72 @@
+{% render 'frame--announcement-bar' with
+  id: section.id,
+  announcement_bar_enabled: section.settings.announcement_bar_enabled,
+  announcement_bar_timing: section.settings.announcement_bar_timing,
+  blocks: section.blocks,
+%}
+
+{% schema %}
+  {
+    "name": "Announcement bar",
+    "class": "announcement-bar-section",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "announcement_bar_enabled",
+        "label": "Show announcement",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "announcement_bar_timing",
+        "label": "Time between announcements",
+        "min": 3,
+        "max": 15,
+        "step": 1,
+        "default": 5
+      }
+    ],
+    "max_blocks": 3,
+    "blocks": [
+      {
+        "type": "announcement",
+        "name": "Announcement",
+        "settings": [
+          {
+            "type": "color",
+            "id": "background_color",
+            "label": "Background color"
+          },
+          {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text color",
+            "default": "#ffffff"
+          },
+          {
+            "type": "text",
+            "id": "text",
+            "label": "Announcement text",
+            "default": "Announce something here"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Announcement link",
+            "info": "Optional"
+          }
+        ]
+      }
+    ],
+    "default": {
+      "blocks": [
+        {
+          "type": "announcement",
+          "settings": {
+            "text": "Announce something here"
+          }
+        }
+      ]
+    }
+  }
+{% endschema %}

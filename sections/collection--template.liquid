@@ -1,0 +1,216 @@
+{% render 'pages--collection' with
+  id: section.id,
+  show_collection_image: section.settings.show_collection_image,
+  show_heading: section.settings.show_heading,
+  overlay_opacity: section.settings.overlay_opacity,
+  overlay_color: section.settings.overlay_color,
+  text_color: section.settings.text_color,
+  show_description: section.settings.show_description,
+  show_border: section.settings.show_border,
+  heading_alignment: section.settings.heading_alignment,
+  text_max_width: section.settings.text_max_width,
+  show_small_heading: section.settings.show_small_heading,
+  show_swatches: section.settings.show_swatches,
+  products_per_row: section.settings.products_per_row,
+  per_page: section.settings.per_page,
+  pagination: section.settings.pagination,
+  aspect_ratio: section.settings.aspect_ratio,
+  show_filters: section.settings.show_filters,
+  show_sort: section.settings.show_sort,
+  filter_style: section.settings.filter_style,
+  filter_type: section.settings.filter_type,
+%}
+
+{% schema %}
+  {
+    "name": "Collection pages",
+    "class": "section-dynamic section-borderable",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Collection image"
+      },
+      {
+        "id": "show_collection_image",
+        "type": "checkbox",
+        "label": "Show collection image",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "overlay_opacity",
+        "label": "Overlay opacity",
+        "min": 0,
+        "max": 100,
+        "step": 10,
+        "default": 20
+      },
+      {
+        "type": "color",
+        "id": "overlay_color",
+        "label": "Overlay color",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "header",
+        "content": "Collection heading"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_border",
+        "label": "Show border",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_heading",
+        "label": "Show heading",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_small_heading",
+        "label": "Show small heading",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_description",
+        "label": "Show description",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "heading_alignment",
+        "label": "Heading alignment",
+        "default": "left",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "text_max_width",
+        "label": "Max width of text",
+        "min": 16,
+        "max": 50,
+        "step": 1,
+        "default": 38
+      },
+      {
+        "type": "header",
+        "content": "Filtering"
+      },
+      {
+        "id": "show_sort",
+        "type": "checkbox",
+        "label": "Show sort options",
+        "default": true
+      },
+      {
+        "id": "show_filters",
+        "type": "checkbox",
+        "label": "Show filters",
+        "default": true
+      },
+      {
+        "id": "filter_type",
+        "type": "select",
+        "label": "Filter type",
+        "options": [
+          { "label": "By group", "value": "by_group" },
+          { "label": "By tag", "value": "by_tag" }
+        ],
+        "default": "by_tag"
+      },
+      {
+        "id": "filter_style",
+        "type": "select",
+        "label": "Filter style",
+        "options": [
+          { "label": "Sidebar", "value": "sidebar" },
+          { "label": "Buttons", "value": "buttons" }
+        ],
+        "default": "sidebar"
+      },
+      {
+        "type": "header",
+        "content": "Collection"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_swatches",
+        "label": "Show swatches",
+        "default": false
+      },
+      {
+        "type": "paragraph",
+        "content": "Add swatch image files to your store's [files area](/admin/settings/files). Make sure the file names match the names of your color variants. For example, a variant called Blue would need a file called 'blue.png'"
+      },
+      {
+        "id": "products_per_row",
+        "type": "range",
+        "label": "Products per row",
+        "default": 4,
+        "min": 2,
+        "max": 4,
+        "step": 1
+      },
+      {
+        "id": "aspect_ratio",
+        "type": "select",
+        "label": "Image aspect ratio",
+        "options": [
+          { "label": "Natural", "value": "natural" },
+          { "label": "Square (1:1)", "value": "square" },
+          { "label": "Landscape (3:2)", "value": "landscape" },
+          { "label": "Portrait (2:3)", "value": "portrait" }
+        ],
+        "default": "natural"
+      },
+      {
+        "id": "per_page",
+        "type": "range",
+        "label": "Products per page",
+        "default": 12,
+        "min": 12,
+        "max": 36,
+        "step": 12
+      },
+      {
+        "type": "select",
+        "id": "pagination",
+        "label": "Pagination",
+        "default": "paginated",
+        "options": [
+          {
+            "value": "infinite",
+            "label": "Infinite"
+          },
+          {
+            "value": "click",
+            "label": "Click to load"
+          },
+          {
+            "value": "paginated",
+            "label": "Paginated"
+          }
+        ],
+        "info": "This setting determines how additional pages of products are navigated."
+      }
+    ]
+  }
+{% endschema %}

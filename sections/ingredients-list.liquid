@@ -1,0 +1,241 @@
+{% render 'ingredients-content--list' with
+  id: section.id,
+  section_style: section.settings.section_style,
+  alignment: section.settings.alignment,
+  overline_Squalane: section.settings.overline_Squalane,
+  title_Squalane: section.settings.title_Squalane,
+  text: section.settings.text,
+  text_max_width: section.settings.text_max_width,
+  link_Squalane: section.settings.link_Squalane,
+  link_text_Squalane: section.settings.link_text_Squalane,
+  overline_sodium: section.settings.overline_sodium,
+  title_sodium: section.settings.title_sodium,
+  link_sodium: section.settings.link_sodium,
+  link_text_sodium: section.settings.link_text_sodium,
+  overline_seramide: section.settings.overline_seramide,
+  title_seramide: section.settings.title_seramide,
+  link_seramide: section.settings.link_seramide,
+  link_text_seramide: section.settings.link_text_seramide,
+  overline_pure: section.settings.overline_pure,
+  title_pure: section.settings.title_pure,
+  link_pure: section.settings.link_pure,
+  link_text_pure: section.settings.link_text_pure,
+  overline_colloidal: section.settings.overline_colloidal,
+  title_colloidal: section.settings.title_colloidal,
+  link_colloidal: section.settings.link_colloidal,
+  link_text_colloidal: section.settings.link_text_colloidal,
+  overline_linoleic: section.settings.overline_linoleic,
+  title_linoleic: section.settings.title_linoleic,
+  link_linoleic: section.settings.link_linoleic,
+  link_text_linoleic: section.settings.link_text_linoleic,
+  
+  enabled: true
+%}
+
+{% schema %}
+  {
+    "name": "List ingredients",
+    "class": "section-dynamic section-borderable",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Section style"
+      },
+      {
+        "type": "select",
+        "id": "section_style",
+        "label": "Style",
+        "default": "default",
+        "options": [
+          {
+            "value": "default",
+            "label": "Default"
+          },
+          {
+            "value": "contrast",
+            "label": "Contrast"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Squalane"
+      },
+      {
+        "type": "text",
+        "id": "overline_Squalane",
+        "label": "Squalane content"
+      },
+      {
+        "type": "text",
+        "id": "title_Squalane",
+        "label": "Heading",
+        "default":"This is the Rich text section"
+      },
+      {
+        "id": "link_Squalane",
+        "type": "url",
+        "label": "Link"
+      },
+      {
+        "id": "link_text_Squalane",
+        "type": "text",
+        "label": "Link text"
+      },
+      {
+        "type": "header",
+        "content": "SODIUM HYALURONATE"
+      },
+      {
+        "type": "text",
+        "id": "overline_sodium",
+        "label": "Sodium Hyaluronate content"
+      },
+      {
+        "type": "text",
+        "id": "title_sodium",
+        "label": "Heading",
+        "default":"This is the Rich text section"
+      },
+      {
+        "id": "link_sodium",
+        "type": "url",
+        "label": "Link"
+      },
+      {
+        "id": "link_text_sodium",
+        "type": "text",
+        "label": "Link text"
+      },
+      {
+        "type": "header",
+        "content": "SERAMIDE"
+      },
+      {
+        "type": "text",
+        "id": "overline_seramide",
+        "label": "Seramide content"
+      },
+      {
+        "type": "text",
+        "id": "title_seramide",
+        "label": "Heading",
+        "default":"This is the Rich text section"
+      },
+      {
+        "id": "link_seramide",
+        "type": "url",
+        "label": "Link"
+      },
+      {
+        "id": "link_text_seramide",
+        "type": "text",
+        "label": "Link text"
+      },
+      {
+        "type": "header",
+        "content": "PURE SNOW WHITE PETROLATUM"
+      },
+      {
+        "type": "text",
+        "id": "overline_pure",
+        "label": "PURE SNOW WHITE PETROLATUM Content"
+      },
+      {
+        "type": "text",
+        "id": "title_pure",
+        "label": "Heading",
+        "default":"This is the Rich text section"
+      },
+      {
+        "id": "link_pure",
+        "type": "url",
+        "label": "Link"
+      },
+      {
+        "id": "link_text_pure",
+        "type": "text",
+        "label": "Link text"
+      },
+      {
+        "type": "header",
+        "content": "COLLOIDAL OATMEAL"
+      },
+      {
+        "type": "text",
+        "id": "overline_colloidal",
+        "label": "COLLOIDAL OATMEAL Content"
+      },
+      {
+        "type": "text",
+        "id": "title_colloidal",
+        "label": "Heading",
+        "default":"This is the Rich text section"
+      },
+      {
+        "id": "link_colloidal",
+        "type": "url",
+        "label": "Link"
+      },
+      {
+        "id": "link_text_colloidal",
+        "type": "text",
+        "label": "Link text"
+      },
+      {
+        "type": "header",
+        "content": "LINOLEIC ACID"
+      },
+      {
+        "type": "text",
+        "id": "overline_linoleic",
+        "label": "LINOLEIC ACID Content"
+      },
+      {
+        "type": "text",
+        "id": "title_linoleic",
+        "label": "Heading",
+        "default":"This is the Rich text section"
+      },
+      {
+        "id": "link_linoleic",
+        "type": "url",
+        "label": "Link"
+      },
+      {
+        "id": "link_text_linoleic",
+        "type": "text",
+        "label": "Link text"
+      },
+      {
+        "type": "select",
+        "id": "alignment",
+        "label": "Alignment",
+        "default": "center",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "text_max_width",
+        "label": "Max width of text",
+        "min": 16,
+        "max": 50,
+        "step": 1,
+        "default": 36
+      }
+    ],
+    "presets": [{
+        "name": "Title-header",
+        "category": "Text"
+    }]
+  }
+{% endschema %}

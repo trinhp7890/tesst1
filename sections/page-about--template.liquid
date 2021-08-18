@@ -1,0 +1,50 @@
+{% render 'pages--page' with
+  id: section.id,
+
+  overline: section.settings.overline,
+  subheading: section.settings.subheading,
+
+  blocks: section.blocks
+%}
+
+{% schema %}
+  {
+    "name": "About page",
+    "class": "page-section",
+      "settings": [
+      {
+        "type": "text",
+        "id": "overline",
+        "label": "Small heading"
+      },
+      {
+        "type": "header",
+        "content": "About page image grid"
+      },
+      {
+        "type": "paragraph",
+        "content": "Add image blocks to create a compelling image layout above your page content."
+      }
+    ],
+    "max_blocks": 5,
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Image",
+        "settings": [
+          {
+            "id": "image",
+            "type": "image_picker",
+            "label": "Image"
+          },
+          {
+            "type": "url",
+            "id": "video_url",
+            "label": "Video link",
+            "info": "Direct link to .mp4 video file. [Learn more here](https://help.fluorescent.co/lorenza/full-width-image.html#upload-a-video)."
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

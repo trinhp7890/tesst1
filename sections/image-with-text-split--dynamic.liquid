@@ -1,0 +1,144 @@
+{% include 'content--image-with-text-split' with
+  id: section.id,
+
+  feature_background_color: section.settings.background_color,
+  feature_image: section.settings.feature_image,
+  feature_link: section.settings.feature_link,
+  feature_description: section.settings.feature_description,
+  feature_text_color: section.settings.feature_text_color,
+  feature_alignment: section.settings.feature_alignment,
+
+  overlay_image: section.settings.overlay_image,
+  image_text: section.settings.image_text,
+  link: section.settings.link,
+  detail_alignment: section.settings.detail_alignment,
+  text_color: section.settings.text_color,
+  text_max_width: section.settings.text_max_width,
+  gradient_color: section.settings.gradient_color,
+  gradient_length: section.settings.gradient_length,
+%}
+
+{% schema %}
+  {
+    "name": "Image with text split",
+    "class": "section-dynamic",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Feature"
+      },
+      {
+        "id": "feature_image",
+        "type": "image_picker",
+        "label": "Image"
+      },
+      {
+        "id": "feature_link",
+        "type": "url",
+        "label": "Link"
+      },
+      {
+        "id": "feature_description",
+        "type": "richtext",
+        "label": "Caption",
+        "default":"<p>Use this half of the section to give an overall impression of your product</p>"
+      },
+      {
+        "id": "feature_text_color",
+        "type": "color",
+        "label": "Text color",
+        "default": "#000"
+      },
+      {
+        "id": "background_color",
+        "type": "color",
+        "label": "Background color",
+        "default": "#F3F3F3"
+      },
+      {
+        "id": "feature_alignment",
+        "type": "select",
+        "label": "Text alignment",
+        "options": [
+          { "value": "left_top", "label": "Top left" },
+          { "value": "center_top", "label": "Top center" },
+          { "value": "right_top", "label": "Top right" },
+          { "value": "left_bottom", "label": "Bottom left" },
+          { "value": "center_bottom", "label": "Bottom center" },
+          { "value": "right_bottom", "label": "Bottom right" }
+        ],
+        "default": "left_bottom"
+      },
+      {
+        "type": "header",
+        "content": "Detail"
+      },
+      {
+        "id": "overlay_image",
+        "type": "image_picker",
+        "label": "Image"
+      },
+      {
+        "id": "link",
+        "type": "url",
+        "label": "Link"
+      },
+      {
+        "type": "richtext",
+        "id": "image_text",
+        "label": "Image text overlay",
+        "default":"<p>This half is great for a a large image of your product's details.</p>"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text overlay color",
+        "default": "#ffffff"
+      },
+      {
+        "id": "detail_alignment",
+        "type": "select",
+        "label": "Text alignment",
+        "options": [
+          { "value": "left_top", "label": "Top left" },
+          { "value": "center_top", "label": "Top center" },
+          { "value": "right_top", "label": "Top right" },
+          { "value": "left_bottom", "label": "Bottom left" },
+          { "value": "center_bottom", "label": "Bottom center" },
+          { "value": "right_bottom", "label": "Bottom right" }
+        ],
+        "default": "center_bottom"
+      },
+      {
+        "type": "range",
+        "id": "text_max_width",
+        "label": "Max width of text",
+        "min": 16,
+        "max": 50,
+        "step": 1,
+        "default": 36
+      },
+      {
+        "id": "gradient_color",
+        "type": "color",
+        "label": "Gradient overlay color",
+        "default": "#030303"
+      },
+      {
+        "type": "range",
+        "id": "gradient_length",
+        "min": 0,
+        "max": 100,
+        "step": 10,
+        "label": "Gradient overlay length",
+        "default": 30
+      }
+    ],
+    "presets": [
+      {
+        "name": "Image with text split",
+        "category": "Image"
+      }
+    ]
+  }
+{% endschema %}

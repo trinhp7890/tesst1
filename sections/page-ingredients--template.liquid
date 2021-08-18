@@ -1,0 +1,40 @@
+{% render 'pages--ingredients' with
+  id: section.id,
+  section_style: section.settings.section_style,
+  alignment: section.settings.alignment,
+  overline: section.settings.overline,
+  title: section.settings.title,
+  text: section.settings.text,
+  text_max_width: section.settings.text_max_width,
+  link: section.settings.link,
+  link_text: section.settings.link_text
+%}
+{% schema %}
+  {
+    "name": "INGREDIENTS",
+    "settings": [
+      {
+        "type": "select",
+        "id": "layout",
+        "label": "Layout style",
+        "default": "latest_featured",
+        "options": [
+          {
+            "value": "default",
+            "label": "3 blog posts per row"
+          },
+          {
+            "value": "latest_featured",
+            "label": "'Latest blog post is featured"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "show_rss",
+        "label": "Show RSS link",
+        "default": true
+      }
+    ]
+  }
+{% endschema %}

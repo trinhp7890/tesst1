@@ -1,0 +1,127 @@
+{% include 'content--collection-list' with
+  id: section.id,
+
+  section_style: section.settings.section_style,
+  text_position: section.settings.text_position,
+
+  columns: section.settings.columns,
+  aspect_ratio: section.settings.aspect_ratio,
+  overline: section.settings.overline,
+  heading: section.settings.title,
+  subheading: section.settings.subheading,
+  text_max_width: section.settings.text_max_width,
+  blocks: section.blocks
+%}
+
+{% schema %}
+  {
+    "name": "Collection list",
+    "class": "section-dynamic section-borderable",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Section style"
+      },
+      {
+        "type": "select",
+        "id": "section_style",
+        "label": "Style",
+        "default": "default",
+        "options": [
+          {
+            "value": "default",
+            "label": "Default"
+          },
+          {
+            "value": "contrast",
+            "label": "Contrast"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "text_position",
+        "label": "Text position",
+        "options": [
+          { "value": "top_left", "label": "Top left" },
+          { "value": "top_center", "label": "Top center" },
+          { "value": "top_right", "label": "Top right" },
+          { "value": "middle_left", "label": "Middle left" },
+          { "value": "middle_right", "label": "Middle right" }
+        ],
+        "default": "top_center"
+      },
+      {
+        "type": "header",
+        "content": "Section content"
+      },
+      {
+        "type": "range",
+        "id": "columns",
+        "label": "Columns",
+        "min": 2,
+        "max": 4,
+        "step": 1,
+        "default": 3
+      },
+            {
+        "id": "aspect_ratio",
+        "type": "select",
+        "label": "Image aspect ratio",
+        "options": [
+          { "label": "Natural", "value": "natural" },
+          { "label": "Square (1:1)", "value": "square" },
+          { "label": "Landscape (3:2)", "value": "landscape" },
+          { "label": "Portrait (2:3)", "value": "portrait" }
+        ],
+        "default": "natural"
+      },
+      {
+        "type": "text",
+        "id": "overline",
+        "label": "Small heading",
+        "default": "Collections"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Collection list"
+      },
+      {
+        "type": "textarea",
+        "id": "subheading",
+        "label": "Subheading",
+        "default": "Use this section to showcase your many collections."
+      },
+      {
+        "type": "range",
+        "id": "text_max_width",
+        "label": "Max width of text",
+        "min": 16,
+        "max": 50,
+        "step": 1,
+        "default": 36
+      }
+    ],
+    "blocks": [
+      {
+        "type": "collection",
+        "name": "Collection",
+        "settings": [
+          {
+            "id": "collection",
+            "type": "collection",
+            "label": "Collection"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Collection list",
+        "category": "Collection"
+      }
+    ]
+  }
+{% endschema %}

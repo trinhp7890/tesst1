@@ -1,0 +1,100 @@
+{% render 'content--featured-product' with
+  id: section.id,
+  section_style: section.settings.section_style,
+  product: all_products[section.settings.product],
+  show_vendor: section.settings.show_vendor,
+  show_swatches: section.settings.show_swatches,
+  show_share_buttons: section.settings.show_share_buttons,
+  show_description: section.settings.show_description,
+  show_quantity_input: section.settings.show_quantity_input,
+  enable_payment_button: section.settings.enable_payment_button,
+  enable_video_looping: section.settings.enable_video_looping,
+%}
+
+{% schema %}
+  {
+    "name": "Featured product",
+    "class": "section-dynamic section-borderable",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Section style"
+      },
+      {
+        "type": "select",
+        "id": "section_style",
+        "label": "Style",
+        "default": "default",
+        "options": [
+          {
+            "value": "default",
+            "label": "Default"
+          },
+          {
+            "value": "contrast",
+            "label": "Contrast"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Section content"
+      },
+      {
+        "type": "product",
+        "id": "product",
+        "label": "Product"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_vendor",
+        "label": "Show vendor",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_swatches",
+        "label": "Show swatches",
+        "default": false,
+        "info": "Add swatch image files to your store's [files area](/admin/settings/files). Make sure the file names match the names of your color variants. For example, a variant called Blue would need a file called 'blue.png'"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_share_buttons",
+        "label": "Show social sharing buttons"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_description",
+        "label": "Show product description",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_quantity_input",
+        "label": "Show quantity input",
+        "info": "If quantity inputs are hidden, quantities will default to 1.",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_payment_button",
+        "label": "Show dynamic checkout button",
+        "info": "Lets customers check out directly using a familiar payment method. [Learn more](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+        "default": true
+      },
+      {
+        "id": "enable_video_looping",
+        "type": "checkbox",
+        "label": "Enable video looping",
+        "default": true
+      }
+    ],
+    "presets": [
+      {
+        "name": "Featured product",
+        "category": "Product"
+      }
+    ]
+  }
+{% endschema %}

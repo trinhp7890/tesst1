@@ -1,0 +1,129 @@
+{% render 'content--collection-list-grid' with
+  id: section.id,
+  section_style: section.settings.section_style,
+  heading_alignment: section.settings.heading_alignment,
+  overline: section.settings.overline,
+  heading: section.settings.title,
+  subheading: section.settings.subheading,
+  text_max_width: section.settings.text_max_width,
+  columns: section.settings.columns,
+  aspect_ratio: section.settings.aspect_ratio,
+  blocks: section.blocks
+%}
+
+{% schema %}
+  {
+    "name": "Collection list grid",
+    "class": "section-dynamic section-borderable",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Section style"
+      },
+      {
+        "type": "select",
+        "id": "section_style",
+        "label": "Style",
+        "default": "default",
+        "options": [
+          {
+            "value": "default",
+            "label": "Default"
+          },
+          {
+            "value": "contrast",
+            "label": "Contrast"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Section content"
+      },
+      {
+        "type": "range",
+        "id": "columns",
+        "label": "Columns",
+        "min": 1,
+        "max": 4,
+        "step": 1,
+        "default": 2
+      },
+      {
+        "id": "aspect_ratio",
+        "type": "select",
+        "label": "Image aspect ratio",
+        "options": [
+          { "label": "Natural", "value": "natural" },
+          { "label": "Square (1:1)", "value": "square" },
+          { "label": "Landscape (3:2)", "value": "landscape" },
+          { "label": "Portrait (2:3)", "value": "portrait" }
+        ],
+        "default": "natural"
+      },
+      {
+        "type": "text",
+        "id": "overline",
+        "label": "Small heading",
+        "default": "Collection"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Collection list"
+      },
+      {
+        "type": "textarea",
+        "id": "subheading",
+        "label": "Subheading",
+        "default": "Add a subheading to provide more details about these collections."
+      },
+      {
+        "type": "select",
+        "id": "heading_alignment",
+        "label": "Heading alignment",
+        "default": "center",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "text_max_width",
+        "label": "Max width of text",
+        "min": 16,
+        "max": 50,
+        "step": 1,
+        "default": 36
+      }
+    ],
+    "max_blocks": 12,
+    "blocks": [
+      {
+        "type": "collection",
+        "name": "Collection",
+        "settings": [
+          {
+            "type": "collection",
+            "id": "collection",
+            "label": "Collection"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Collection list grid",
+        "category": "Collection"
+      }
+    ]
+  }
+{% endschema %}

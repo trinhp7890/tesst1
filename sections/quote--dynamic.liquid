@@ -1,0 +1,94 @@
+{% include 'content--quote' with
+  id: section.id,
+  section_style: section.settings.section_style,
+  timer: section.settings.timer,
+  max_width: section.settings.text_max_width,
+  blocks: section.blocks
+%}
+
+{% schema %}
+  {
+    "name": "Quote",
+    "class": "section-dynamic section-borderable",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Section style"
+      },
+      {
+        "type": "select",
+        "id": "section_style",
+        "label": "Style",
+        "default": "default",
+        "options": [
+          {
+            "value": "default",
+            "label": "Default"
+          },
+          {
+            "value": "contrast",
+            "label": "Contrast"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Section content"
+      },
+      {
+        "id": "timer",
+        "type": "range",
+        "label": "Time between quotes",
+        "default": 7,
+        "min": 3,
+        "max": 15,
+        "step": 1
+      },
+      {
+        "type": "range",
+        "id": "text_max_width",
+        "label": "Max width of text",
+        "min": 16,
+        "max": 50,
+        "step": 1,
+        "default": 28
+      }
+    ],
+    "max_blocks": 6,
+    "blocks": [
+      {
+        "type": "quote",
+        "name": "Quote",
+        "settings": [
+          {
+            "type": "textarea",
+            "id": "quote",
+            "label": "Quote",
+            "default": "Absolutely unparalleled products and service. I'm confident that this store will be the next big thing in its industry, and that its products will be timeless."
+          },
+          {
+            "type": "text",
+            "id": "author",
+            "label": "Author",
+            "default": "Steve Jordans"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Quote",
+        "category": "Text",
+        "blocks": [
+          {
+            "type": "quote",
+            "settings": {
+              "quote": "Absolutely unparalleled products and service. I'm confident that this store will be the next big thing in its industry, and that its products will be timeless.",
+              "author": "Steve Jordans"
+            }
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,35 @@
+{% render 'content--product-recommendations' with
+  id: section.id,
+  enabled: section.settings.enabled,
+  heading: section.settings.heading,
+  columns: section.settings.columns,
+%}
+
+{% schema %}
+  {
+    "name": "Recommended products",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enabled",
+        "label": "Enable",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Related"
+      },
+      {
+        "type": "range",
+        "id": "columns",
+        "label": "Columns",
+        "min": 2,
+        "max": 4,
+        "step": 1,
+        "default": 4
+      }
+    ]
+  }
+{% endschema %}

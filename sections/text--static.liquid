@@ -1,0 +1,32 @@
+{% render 'content--static-text' with
+  id: section.id,
+  enabled: section.settings.enabled,
+  heading: section.settings.title,
+  text: section.settings.text,
+%}
+
+{% schema %}
+  {
+    "name": "Text",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enabled",
+        "label": "Enable",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default":"Text"
+      },
+      {
+        "id": "text",
+        "type": "richtext",
+        "label": "Text",
+        "default": "<p>Use this text area to share information about your brand with your customers. Describe your shipping policy, return policy, or share announcements.</p>"
+      }
+    ]
+  }
+{% endschema %}

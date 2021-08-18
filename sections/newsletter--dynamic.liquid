@@ -1,0 +1,78 @@
+{% include 'content--newsletter' with
+  id: section.id,
+  section_style: section.settings.section_style,
+  text_max_width: section.settings.text_max_width,
+  overline: section.settings.title,
+  heading: section.settings.heading,
+  subheading: section.settings.subheading,
+%}
+
+{% schema %}
+  {
+    "name": "Newsletter",
+    "class": "section-dynamic section-borderable",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Section style"
+      },
+      {
+        "type": "select",
+        "id": "section_style",
+        "label": "Style",
+        "default": "default",
+        "options": [
+          {
+            "value": "default",
+            "label": "Default"
+          },
+          {
+            "value": "contrast",
+            "label": "Contrast"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Section content"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Small heading",
+        "default": "Newsletter"
+      },
+      {
+        "id": "heading",
+        "type": "text",
+        "label": "Heading",
+        "default": "Newsletters can reinforce your brand"
+      },
+      {
+        "id": "subheading",
+        "type": "text",
+        "label": "Subheading",
+        "default": "Include a short sentence describing what someone can expect from your newsletter."
+      },
+      {
+        "type": "range",
+        "id": "text_max_width",
+        "label": "Max width of text",
+        "min": 16,
+        "max": 50,
+        "step": 1,
+        "default": 36
+      },
+      {
+        "type": "paragraph",
+        "content": "Customers who subscribe will have their email address added to the “accepts marketing” [customer list](/admin/customers?query=&accepts_marketing=1)."
+      }
+    ],
+    "presets": [
+      {
+        "name": "Newsletter",
+        "category": "Promotional"
+      }
+    ]
+  }
+{% endschema %}

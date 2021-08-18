@@ -1,0 +1,56 @@
+
+{% assign modifiers = '' %}
+{%- assign has_image = false -%}
+
+{% if section.settings.image != blank %}
+  {%- assign has_image = true -%}
+  {% assign modifiers = modifiers | append: ' contact--has-image' %}
+{% endif %}
+
+{% capture content %}
+  {%- if page.content != blank -%}
+    <div class="contact__text rte">{{ page.content }}</div>
+  {%- endif -%}
+
+  {% render 'contact-form' %}
+{% endcapture %}
+
+<section class="contact section{{ modifiers }}">
+  <div class="contact__inner">
+    {% if has_image %}
+      <div class="contact__container">
+        <div class="contact__image">
+          {% render 'image' with image: section.settings.image, wrapper_class: 'borders' %}
+        </div>
+        <div class="contact__content">
+          <div class="contact__content-inner">
+            <h1 class="contact__heading type-heading-1 mt0 mb3">{{ page.title }}</h1>
+
+            {{ content }}
+          </div>
+        </div>
+      </div>
+    {% else %}
+      <header class="page__header">
+        <h1 class="contact__heading type-heading-1 mt0 mb3">{{ page.title }}</h1>
+      </header>
+
+      {{ content }}
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Contact page",
+    "class": "page-section",
+    "settings": [
+      {
+        "id": "image",
+        "type": "image_picker",
+        "label": "Image",
+        "info": "We recommend using an image with a 2:3 aspect ratio."
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,273 @@
+{% render 'content--collage' with
+  id: section.id,
+  section_style: section.settings.section_style,
+  enable_animation: section.settings.enable_animation,
+  heading_alignment: section.settings.heading_alignment,
+  overline: section.settings.overline,
+  heading: section.settings.title,
+  subheading: section.settings.subheading,
+  text_max_width: section.settings.text_max_width,
+  text_color: section.settings.text_color,
+  text_container_color: section.settings.text_container_color,
+  button_text_color: section.settings.button_text_color,
+  button_border_color: section.settings.button_border_color,
+  blocks: section.blocks
+%}
+
+{% schema %}
+  {
+    "name": "Collage",
+    "class": "section-dynamic section-borderable",
+    "max_blocks": 9,
+    "settings": [
+      {
+        "type": "header",
+        "content": "Section style"
+      },
+      {
+        "type": "select",
+        "id": "section_style",
+        "label": "Style",
+        "default": "default",
+        "options": [
+          {
+            "value": "default",
+            "label": "Default"
+          },
+          {
+            "value": "contrast",
+            "label": "Contrast"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_animation",
+        "label": "Enable animation",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Section content"
+      },
+      {
+        "type": "text",
+        "id": "overline",
+        "label": "Small heading",
+        "default": "Collage"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Collage section"
+      },
+      {
+        "type": "textarea",
+        "id": "subheading",
+        "label": "Subheading",
+        "default": "The collage section is perfect for lookbooks or for showcasing a series of particularly excellent editorial images."
+      },
+      {
+        "type": "select",
+        "id": "heading_alignment",
+        "label": "Heading alignment",
+        "default": "center",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "text_max_width",
+        "label": "Max width of text",
+        "min": 16,
+        "max": 50,
+        "step": 1,
+        "default": 36
+      },
+      {
+        "type": "header",
+        "content": "Collage content"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text color",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "text_container_color",
+        "label": "Text container color",
+        "default": "#ffffff",
+        "info": "Optional"
+      },
+      {
+        "type": "color",
+        "id": "button_text_color",
+        "label": "Button text color",
+        "default": "#1b1b1b"
+      },
+      {
+        "type": "color",
+        "id": "button_border_color",
+        "label": "Button border color",
+        "default": "#dedede"
+      }
+    ],
+    "max_blocks": 10,
+    "blocks": [
+      {
+        "type": "grid_item",
+        "name": "Item",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "url",
+            "id": "video_url",
+            "label": "Video link",
+            "info": "Direct link to .mp4 video file. [Learn more here](https://help.fluorescent.co/lorenza/full-width-image.html#upload-a-video)."
+          },
+          {
+            "type": "select",
+            "id": "size",
+            "label": "Block size",
+            "options": [
+              { "value": "small", "label": "Small" },
+              { "value": "vertical", "label": "Large - vertical" },
+              { "value": "horizontal", "label": "Large - horizontal" },
+              { "value": "large", "label": "Large" }
+            ],
+            "default": "small"
+          },
+          {
+            "type": "range",
+            "id": "overlay_opacity",
+            "min": 0,
+            "max": 100,
+            "step": 10,
+            "default": 10,
+            "label": "Overlay opacity"
+          },
+          {
+            "type": "color",
+            "id": "overlay_color",
+            "label": "Overlay color",
+            "default": "#000000"
+          },
+          {
+            "type": "text",
+            "id": "overline",
+            "label": "Small heading"
+          },
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading"
+          },
+          {
+            "type": "textarea",
+            "id": "subheading",
+            "label": "Subheading"
+          },
+          {
+            "id": "alignment",
+            "type": "select",
+            "label": "Text position",
+            "options": [
+              { "value": "left_top", "label": "Top left" },
+              { "value": "center_top", "label": "Top center" },
+              { "value": "right_top", "label": "Top right" },
+              { "value": "left_center", "label": "Middle left" },
+              { "value": "center_center", "label": "Middle center" },
+              { "value": "right_center", "label": "Middle right" },
+              { "value": "left_bottom", "label": "Bottom left" },
+              { "value": "center_bottom", "label": "Bottom center" },
+              { "value": "right_bottom", "label": "Bottom right" }
+            ],
+            "default": "left_center"
+          },
+          {
+            "type": "range",
+            "id": "text_max_width",
+            "label": "Max width of text",
+            "min": 16,
+            "max": 50,
+            "step": 1,
+            "default": 36
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Link"
+          },
+          {
+            "type": "text",
+            "id": "link_text",
+            "label": "Button text"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Collage",
+        "category": "Image",
+        "blocks": [
+          {
+            "type": "grid_item",
+            "settings": {
+              "size": "vertical",
+              "heading": "This is a large vertical block",
+              "subheading": "Mix and match between large portrait blocks and small landscape blocks.",
+              "text_max_width": 20,
+              "alignment": "left_top"
+            }
+          },
+          {
+            "type": "grid_item",
+            "settings": {
+              "size": "small",
+              "heading": "This is a small block",
+              "subheading": "Try adding two small blocks before and after two large blocks for an asymmetrical mosaic effect.",
+              "text_max_width": 22,
+              "alignment": "left_bottom"
+            }
+          },
+          {
+            "type": "grid_item",
+            "settings": {
+              "size": "small",
+              "heading": "This is a small block",
+              "subheading": "Try adding two small blocks before and after two large blocks for an asymmetrical mosaic effect.",
+              "text_max_width": 22,
+              "alignment": "left_bottom"
+            }
+          },
+          {
+            "type": "grid_item",
+            "settings": {
+              "size": "horizontal",
+              "heading": "Have control over your content",
+              "subheading": "Each block has text placement and max width options so you can fine tune your message and balance it with your imagery.",
+              "text_max_width": 19,
+              "alignment": "right_bottom"
+            }
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

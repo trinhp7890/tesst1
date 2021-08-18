@@ -1,0 +1,202 @@
+{% include 'content--image-with-text' with
+  id: section.id,
+
+  section_style: section.settings.section_style,
+  enable_animation: section.settings.enable_animation,
+
+  image: section.settings.image,
+  video_url: section.settings.video_url,
+  image_width: section.settings.image_width,
+  image_position: section.settings.image_position,
+  overflow: section.settings.overflow,
+
+  text_alignment: section.settings.text_alignment,
+  text_color: section.settings.text_color,
+  text_container_color: section.settings.text_container_color,
+  button_text_color: section.settings.button_text_color,
+  button_border_color: section.settings.button_border_color,
+  overline: section.settings.overline,
+  heading: section.settings.title,
+  subheading: section.settings.subheading,
+  text_max_width: section.settings.text_max_width,
+  link: section.settings.link,
+  link_text: section.settings.link_text
+%}
+
+{% schema %}
+  {
+    "name": "Image with text",
+    "class": "section-dynamic section-borderable",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Section style"
+      },
+      {
+        "type": "select",
+        "id": "section_style",
+        "label": "Style",
+        "default": "default",
+        "options": [
+          {
+            "value": "default",
+            "label": "Default"
+          },
+          {
+            "value": "contrast",
+            "label": "Contrast"
+          },
+          {
+            "value": "full-height",
+            "label": "Full-height"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_animation",
+        "label": "Enable animation",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Section content"
+      },
+      {
+        "id": "image",
+        "type": "image_picker",
+        "label": "Image"
+      },
+      {
+        "type": "url",
+        "id": "video_url",
+        "label": "Video link",
+        "info": "Direct link to .mp4 video file. [Learn more here](https://help.fluorescent.co/lorenza/full-width-image.html#upload-a-video)."
+      },
+      {
+        "type": "select",
+        "id": "image_width",
+        "label": "Media width",
+        "default": "two-third",
+        "options": [
+          {
+            "value": "one-half",
+            "label": "Half (1/2)"
+          },
+          {
+            "value": "two-third",
+            "label": "Two thirds (2/3)"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "image_position",
+        "label": "Media position",
+        "default": "left",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Text"
+      },
+      {
+        "type": "text",
+        "id": "overline",
+        "label": "Small heading",
+        "default": "Image with text"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Image with text section"
+      },
+      {
+        "type": "richtext",
+        "id": "subheading",
+        "label": "Text",
+        "default": "<p>Use this section to showcase your editorial photography or images from your look book. This Section looks best with two or three sentences of text.</p>"
+      },
+      {
+        "type": "url",
+        "id": "link",
+        "label": "Link"
+      },
+      {
+        "type": "text",
+        "id": "link_text",
+        "label": "Link text",
+        "default": "Shop now"
+      },
+      {
+        "type": "select",
+        "id": "text_alignment",
+        "label": "Text alignment",
+        "default": "left",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text color",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "text_container_color",
+        "label": "Text container color",
+        "info": "Optional"
+      },
+      {
+        "type": "color",
+        "id": "button_text_color",
+        "label": "Button text color",
+        "default": "#1b1b1b"
+      },
+      {
+        "type": "color",
+        "id": "button_border_color",
+        "label": "Button border color",
+        "default": "#dedede"
+      },
+      {
+        "type": "range",
+        "id": "text_max_width",
+        "label": "Max width of text",
+        "min": 16,
+        "max": 50,
+        "step": 1,
+        "default": 36
+      }
+    ],
+    "presets": [
+      {
+        "name": "Image with text",
+        "category": "Image"
+      }
+    ]
+  }
+{% endschema %}

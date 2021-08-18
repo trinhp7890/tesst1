@@ -1,0 +1,156 @@
+{% if section.settings.enabled %}
+  {% include 'content--testimonials' with
+    id: section.id,
+
+    section_style: "default",
+    text_position: section.settings.text_position,
+
+    aspect_ratio: section.settings.aspect_ratio,
+    overline: section.settings.overline,
+    heading: section.settings.title,
+    subheading: section.settings.subheading,
+    text_max_width: section.settings.text_max_width,
+    link: section.settings.link,
+    link_text: section.settings.link_text,
+    columns: section.settings.columns,
+    blocks: section.blocks
+  %}
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Testimonials",
+    "class": "section-dynamic section-borderable",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enabled",
+        "label": "Enable",
+        "default": false
+      },
+      {
+        "type": "header",
+        "content": "Section style"
+      },
+      {
+        "type": "select",
+        "id": "text_position",
+        "label": "Text position",
+        "options": [
+          { "value": "top_left", "label": "Top left" },
+          { "value": "top_center", "label": "Top center" },
+          { "value": "top_right", "label": "Top right" },
+          { "value": "middle_left", "label": "Middle left" },
+          { "value": "middle_right", "label": "Middle right" }
+        ],
+        "default": "top_center"
+      },
+      {
+        "type": "header",
+        "content": "Section content"
+      },
+      {
+        "type": "range",
+        "id": "columns",
+        "label": "Columns",
+        "min": 2,
+        "max": 4,
+        "step": 1,
+        "default": 3
+      },
+      {
+        "id": "aspect_ratio",
+        "type": "select",
+        "label": "Image aspect ratio",
+        "options": [
+          { "label": "Natural", "value": "natural" },
+          { "label": "Square (1:1)", "value": "square" },
+          { "label": "Landscape (3:2)", "value": "landscape" },
+          { "label": "Portrait (2:3)", "value": "portrait" }
+        ],
+        "default": "natural"
+      },
+      {
+        "type": "text",
+        "id": "overline",
+        "label": "Small heading",
+        "default": "Testimonials"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Testimonials Section"
+      },
+      {
+        "type": "textarea",
+        "id": "subheading",
+        "label": "Subheading",
+        "default": "Use this section to showcase your product reviews."
+      },
+      {
+        "type": "url",
+        "id": "link",
+        "label": "Link"
+      },
+      {
+        "type": "text",
+        "id": "link_text",
+        "label": "Link text"
+      },
+      {
+        "type": "range",
+        "id": "text_max_width",
+        "label": "Max width of text",
+        "min": 16,
+        "max": 50,
+        "step": 1,
+        "default": 36
+      }
+    ],
+    "blocks": [
+      {
+        "type": "testimonial",
+        "name": "Testimonial",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "product_image",
+            "label": "Testimonial image"
+          },
+          {
+            "type": "url",
+            "id": "product_link",
+            "label": "Product link"
+          },
+          {
+            "id": "rating",
+            "type": "range",
+            "label": "Star rating",
+            "default": 0,
+            "min": 0,
+            "max": 5,
+            "step": 0.5
+          },
+          {
+            "type": "image_picker",
+            "id": "reviewer_image",
+            "label": "Reviewer image"
+          },
+          {
+            "type": "text",
+            "id": "reviewer_name",
+            "label": "Reviewer name",
+            "default": "First Lastname"
+          },
+          {
+            "id": "review",
+            "type": "textarea",
+            "label": "Review",
+            "default": "I absolutely love this product, but my favourite thing about it was the customer service and easy returns. I found what worked for me with ease. Thank you store!"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

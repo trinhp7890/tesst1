@@ -1,0 +1,100 @@
+{% render 'content--rich-text' with
+  id: section.id,
+  section_style: section.settings.section_style,
+  alignment: section.settings.alignment,
+  overline: section.settings.overline,
+  title: section.settings.title,
+  text: section.settings.text,
+  text_max_width: section.settings.text_max_width,
+  link: section.settings.link,
+  link_text: section.settings.link_text
+%}
+
+{% schema %}
+  {
+    "name": "Rich text",
+    "class": "section-dynamic section-borderable",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Section style"
+      },
+      {
+        "type": "select",
+        "id": "section_style",
+        "label": "Style",
+        "default": "default",
+        "options": [
+          {
+            "value": "default",
+            "label": "Default"
+          },
+          {
+            "value": "contrast",
+            "label": "Contrast"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Section content"
+      },
+      {
+        "type": "text",
+        "id": "overline",
+        "label": "Small heading"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default":"This is the Rich text section"
+      },
+      {
+        "id": "text",
+        "type": "richtext",
+        "label": "Text",
+        "default": "<p>Use this text area to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+      },
+      {
+        "id": "link",
+        "type": "url",
+        "label": "Link"
+      },
+      {
+        "id": "link_text",
+        "type": "text",
+        "label": "Link text"
+      },
+      {
+        "type": "select",
+        "id": "alignment",
+        "label": "Alignment",
+        "default": "center",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "text_max_width",
+        "label": "Max width of text",
+        "min": 16,
+        "max": 50,
+        "step": 1,
+        "default": 36
+      }
+    ],
+    "presets": [{
+        "name": "Rich text",
+        "category": "Text"
+    }]
+  }
+{% endschema %}

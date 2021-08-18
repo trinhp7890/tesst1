@@ -1,0 +1,56 @@
+{% include 'content--ing-detail-collection' with
+  id: section.id,
+  ing_collection: collections[section.settings.collection], 
+  what_it_is: section.settings.what_it_is,
+  what_it_works: section.settings.what_it_works,
+  header_ingredients: section.settings.header_ingredients,
+  title_ingredients: section.settings.title_ingredients
+%}
+
+{% schema %}
+  {
+    "name": "Ing-detail collection",
+    "class": "section-dynamic ingredients-detail",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Section style"
+      },
+      {
+        "type": "text",
+        "id": "header_ingredients",
+        "label": "FIRST TITLE",
+        "default": "About Ceramide and why it is awesome"
+      },
+      {
+        "type": "text",
+        "id": "title_ingredients",
+        "label": "TITLE",
+        "default": "CERAMIDE"
+      },
+      {
+        "type": "textarea",
+        "id": "what_it_is",
+        "label": "What it is",
+        "default": "Ceramide, lipohilic in nature and derived from sunflower seed oil, is rich in essential fatty acids making it a key ingredient for regulatory actions on skin elasticity and moisture."
+      },
+	  {
+        "type": "textarea",
+        "id": "what_it_works",
+        "label": "What it works",
+        "default": "Vegetable oils and fats are good emollients, due to their lipophilic nature. These compounds efficiently prevent transepidermal water loss, because of their excellent occlusive properties. A number of studies have demonstrated that the higher the saturation degree of a certain oil, the lower its viscosity and the better its skin penetration. Because of this property, these compounds are assumed to facilitate oil penetration into the skin, thus helping improve the skin. Because of these reasons, sunflower oil is highly recommendable to formulate cosmetic products with moisturizing and emollient activities."
+      },
+      {
+        "id": "collection",
+        "type": "collection",
+        "label": "Collection"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Featured collection",
+        "category": "Collection"
+      }
+    ]
+  }
+{% endschema %}

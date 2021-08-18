@@ -1,0 +1,140 @@
+{% include 'content--location' with
+  id: section.id,
+  section_style: section.settings.section_style,
+  heading_alignment: section.settings.heading_alignment,
+  text_max_width: section.settings.text_max_width,
+  overline: section.settings.overline,
+  heading: section.settings.title,
+  subheading: section.settings.subheading,
+  address: section.settings.address,
+  hours: section.settings.hours,
+  image: section.settings.image,
+  map_address: section.settings.map_address,
+  map_link_text: section.settings.map_link_text,
+  api_key: section.settings.api_key,
+  map_json: section.settings.map_json
+%}
+
+{% schema %}
+  {
+    "name": "Map",
+    "class": "section-dynamic section-borderable",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Section style"
+      },
+      {
+        "type": "select",
+        "id": "section_style",
+        "label": "Style",
+        "default": "default",
+        "options": [
+          {
+            "value": "default",
+            "label": "Default"
+          },
+          {
+            "value": "contrast",
+            "label": "Contrast"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Section content"
+      },
+      {
+        "type": "text",
+        "id": "overline",
+        "label": "Small heading",
+        "default": "Location"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Map Section"
+      },
+      {
+        "type": "textarea",
+        "id": "subheading",
+        "label": "Subheading",
+        "default": "Use this section to direct your customers to your physical location."
+      },
+      {
+        "type": "richtext",
+        "id": "hours",
+        "label": "Hours",
+        "default": "<p>Mon - Fri, 10am - 7pm<br/>Saturday, 11am - 8pm<br/>Sunday, 11am - 5pm</p>"
+      },
+      {
+        "type": "richtext",
+        "id": "address",
+        "label": "Address",
+        "default": "<p>Our store<br/>423 Fake St.<br/>Faketown, Ontario</p>"
+      },
+      {
+        "type": "select",
+        "id": "heading_alignment",
+        "label": "Heading alignment",
+        "default": "center",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "text_max_width",
+        "label": "Max width of text",
+        "min": 16,
+        "max": 50,
+        "step": 1,
+        "default": 32
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image",
+        "info": "Choose an image to represent your store."
+      },
+      {
+        "type": "text",
+        "id": "map_address",
+        "label": "Map address",
+        "info": "Google Maps will find the exact location."
+      },
+      {
+        "type": "text",
+        "id": "api_key",
+        "label": "Google Maps API key",
+        "info": "You'll need to register a Google Maps API key to display the map."
+      },
+      {
+        "type": "textarea",
+        "id": "map_json",
+        "label": "Custom map JSON",
+        "info": "This area is for custom [map styles](https://mapstyle.withgoogle.com/)."
+      },
+      {
+        "type": "text",
+        "id": "map_link_text",
+        "label": "Map link text",
+        "default": "Get Directions"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Map",
+        "category": "Store information"
+      }
+    ]
+  }
+{% endschema %}

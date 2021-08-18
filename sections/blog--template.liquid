@@ -1,0 +1,34 @@
+{% render 'pages--blog' with
+  layout: section.settings.layout
+  show_rss: section.settings.show_rss
+%}
+
+{% schema %}
+  {
+    "name": "Blog pages",
+    "settings": [
+      {
+        "type": "select",
+        "id": "layout",
+        "label": "Layout style",
+        "default": "latest_featured",
+        "options": [
+          {
+            "value": "default",
+            "label": "3 blog posts per row"
+          },
+          {
+            "value": "latest_featured",
+            "label": "'Latest blog post is featured"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "show_rss",
+        "label": "Show RSS link",
+        "default": true
+      }
+    ]
+  }
+{% endschema %}

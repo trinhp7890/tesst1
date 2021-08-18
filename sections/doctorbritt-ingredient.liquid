@@ -1,0 +1,26 @@
+
+{% render 'doctorbritt-ingredient--content' with
+  id: section.id,
+  enabled: section.settings.enabled,
+  title: section.settings.title,
+  text: section.settings.text,
+%}
+
+{% schema %}
+{
+  "name": "Doctor info",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default":"Text"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Small heading"
+    }
+  ]
+}
+{% endschema %}
