@@ -1,0 +1,13 @@
+<div style="margin-top:200px;padding-left:30px;">
+{% assign category = 'santa-monica' %}
+{% unless blogs[category].empty? or blogs[category].articles.size == 0 %}
+     {% for article in blogs[category].articles %}
+         <div style="float:left; margin-left:10px;">
+			 <div style="display:block;">{{ article.title }}</div>
+			 <div style="display:block;">{{ article.excerpt }}</div>
+			 <div style="display:block;"><img  style="width:120px;" src="{{ article.image.src | img_url: '500x' }}" alt="esthis {{ article.title }}"/></div>
+		 </div>
+     {% endfor %}
+{% endunless %}
+</div>
+

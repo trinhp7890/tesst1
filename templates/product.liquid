@@ -1,0 +1,124 @@
+<style>
+  .logo_small {display:block !important;}
+  .logo_big {display:none !important;}
+</style>
+{% comment %}
+  The contents of the product.liquid template can be found in /sections/product-template.liquid
+{% endcomment %}
+
+{% section 'product-template' %}
+{% section 'product-recommendations' %}
+
+{% comment %}
+  add video
+{% endcomment %}
+{% assign linkvideo = product.metafields.global.video_link%}
+{% assign linkimgvideo = product.metafields.global.video_thumb%}
+
+{%if linkvideo != blank and linkimgvideo != blank %}
+
+<div class="product-template__container page-width">
+  <div class="product-recommendations__inner">
+    <div class="section-header text-center">
+      <h2 class="header_title margin_bottom_10 fontHelCondBo2">MEET FACE HAUS</h2>
+      <div class="under_bottom2"></div>
+      
+	    <div class="thumb-img">
+			<img src="{{ product.metafields.global.video_thumb }}" data-video-link="{{ product.metafields.global.video_link }}" alt="video image link"/>
+		</div>
+     
+    </div>
+  </div>
+</div>
+<div class="video-popup-outter">
+</div>
+<div class="video-popup">
+	<div class="close">X</div>
+	<div class="video-popup-inner">    
+    {% comment %}
+        <video class="video-link" width="100%" controls autoplay>
+          <source src="{{ product.metafields.global.video_link }}" type="video/mp4">
+        Your browser does not support the video tag.
+        </video>             
+    {% endcomment %}
+    <iframe id="video_play" class="video-link" width="100%" src="" frameborder="0" allow="autoplay; encrypted-media"> </iframe>
+	</div>
+</div>
+{%else%}
+  <style>
+    .product-recommendations__inner{
+      padding-bottom: 30px;
+    }
+
+  </style>
+{%endif%}
+<div class="product-template__container page-width">
+  <div class="product-recommendations__inner">
+    <div class="section-header text-center">
+      <h2 class="header_title margin_bottom_10 fontHelCondBo2">CUSTOMER REVIEWS</h2>
+      <div class="under_bottom_review"></div>     
+    </div>
+  </div>
+  {%- comment -%}Judgeme Review Widget Container added - Mike Sacco  {%- endcomment -%}
+{% render 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: false, product: product %}
+</div>
+
+{% if collection %}
+  <div class="text-center return-link-wrapper page-width">
+    <a href="{{ collection.url }}" class="btn btn--secondary btn--has-icon-before return-link">
+      {% include 'icon-arrow-left' %}
+      {{ 'products.product.back_to_collection' | t: title: collection.title }}
+    </a>
+  </div>
+{% endif %}
+
+<script>
+  // Override default values of shop.strings for each template.
+  // Alternate product templates can change values of
+  // add to cart button, sold out, and unavailable states here.
+  theme.productStrings = {
+    addToCart: {{ 'products.product.add_to_cart' | t | json }},
+    soldOut: {{ 'products.product.sold_out' | t | json }},
+    unavailable: {{ 'products.product.unavailable' | t | json }}
+  }
+</script>
+
+{% assign current_variant = product.selected_or_first_available_variant %}
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org/",
+  "@type": "Product",
+  "@id": {{ canonical_url | append: '#product' | json }},
+  "name": {{ product.title | json }},
+  "url": {{ shop.url | append: product.url | json }},
+  {%- if product.featured_media -%}
+    {%- assign media_size = product.featured_media.preview_image.width | append: 'x' -%}
+    "image": [
+      {{ product.featured_media | img_url: media_size | prepend: "https:" | json }}
+    ],
+  {%- endif -%}
+  "description": {{ product.description | strip_html | json }},
+  {%- if current_variant.sku != blank -%}
+    "sku": {{ current_variant.sku | json }},
+  {%- endif -%}
+  "brand": {
+    "@type": "Thing",
+    "name": {{ product.vendor | json }}
+  },
+  "offers": [
+    {%- for variant in product.variants -%}
+      {
+        "@type" : "Offer",
+        {%- if variant.sku != blank -%}
+          "sku": {{ variant.sku | json }},
+        {%- endif -%}
+        "availability" : "http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}",
+        "price" : {{ variant.price | divided_by: 100.00 | json }},
+        "priceCurrency" : {{ cart.currency.iso_code | json }},
+        "url" : {{ shop.url | append: variant.url | json }}
+      }{% unless forloop.last %},{% endunless %}
+    {%- endfor -%}
+  ]
+}
+</script>

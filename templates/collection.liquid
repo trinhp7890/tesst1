@@ -1,0 +1,17 @@
+<style>
+  .logo_small {display:block !important;}
+  .logo_big {display:none !important;}  
+</style>
+{% if request.path contains '/collections/types' %}
+  <style>
+    .shopify-section 
+    {
+      margin-top: 25px;
+    }   
+  </style>
+{%endif%}
+{% comment %}
+  The contents of the collection.liquid template can be found in /sections/collection-template.liquid
+{% endcomment %}
+
+{% section 'collection-template' %}

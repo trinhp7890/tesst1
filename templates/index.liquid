@@ -1,0 +1,620 @@
+<!--holiday-popup comment 10/09/2020
+<div class="holiday-popup-outer" id="holiday-popup">
+  <div class="holiday-bg"></div>
+  <div class="holiday-popup">
+    <div class="holiday-popup-closer">
+      <img src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/x.svg?v=1590585108" width="100%"
+        alt="X close button">
+    </div>
+    <div class="holiday-popup-inner">
+      <a href="https://facehaus.zenoti.com/webstoreNew/ab45b855-769f-4faa-8ad2-094d1ad34718"
+        target="_blank">
+        <img src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/nyc-reopening.jpg?v=1602211544"
+          width="100%" alt="promotional pop up">
+      </a>
+    </div>
+  </div>
+  
+</div>
+ end holiday pop-->
+<!-- subscribe-popup comment 28/09/2020 tuanlv commented 10/09/2020 -->
+<div class="subscribe-loading">
+    <img src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/loading1.gif?v=1604327957" alt="loading gif" width="100%">    
+</div>
+<div class="subscribe-popup-outer" id="subscribe-popup">
+  <div class="holiday-bg"></div>
+  <div class="subscribe-popup">
+    <div class="subscribe-popup-closer" id="subscribe-popup-closer">
+      <img src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/x.svg?v=1590585108" width="100%"
+        alt="X close button">
+    </div>
+	
+    <div class="subscribe-popup-inner">
+      <div class="subscribe_lf_pop">
+        <div class="subscribe_title_pop">
+          LET'S STAY IN TOUCH
+        </div>
+		<div class="subscribe_de_pop">Stay current on all Haus <span class="mobile1"><br/></span>news and get<span class="desktop"><br/></span>  10% off your next product purchase.
+		</div>      
+      </div>
+      <!--div class="subscribe_rg_pop">
+        <div class="name_sub">
+          <input id="subscribe_firtname_pop" class="subscribe_firtname item_pading pop" type="text" placeholder="first name *">
+          <input id="subscribe_lastname_pop" class="subscribe_lastname item_pading pop" type="text" placeholder="last name *">
+        </div>
+        <input id="subscribe_email_pop" class="subscribe_email_pop item_pading" type="text" placeholder="email address *" name="subscribe">
+        <select id="subscribe_haus_pop" class="subscribe_haus_pop item_pading" name="subscribe_haus">
+        <select id="subscribe_haus_pop" class="subscribe_haus_pop item_pading" name="subscribe_haus">
+			<option class="haus_op" value="0">choose your haus *</option>
+        </select>
+        <div style="width: 100%;">
+          <button id="subscribe_submit_pop" class="subscribe_submit_pop" >SUBSCRIBE</button>
+        </div>
+        <div class="subscribe-invalid-message">
+		</div>
+      </div-->
+	  <div class="subscribe_rg_pop">
+        <div class="name_sub">
+          <div class="subscribe_firtname">
+			<label class="subscribe-label" for="subscribe_firtname_pop">first name (*)</label>
+			<input id="subscribe_firtname_pop" class="subscribe_firtname1  pop" type="text">
+		  </div>
+		  <div class="subscribe_lastname">
+			<label class="subscribe-label" for="subscribe_lastname_pop">last name (*)</label>
+			<input id="subscribe_lastname_pop" class="subscribe_lastname1  pop" type="text">
+		  </div>
+          
+        </div>
+		<div class="subscribe_email_pop">
+		   <label class="subscribe-label" for="subscribe_email_pop">email address (*)</label>
+		   <input id="subscribe_email_pop" class="subscribe_email_pop1 " type="text" name="subscribe">
+		</div>
+        
+        
+        <select id="subscribe_haus_pop" class="subscribe_haus_pop" name="subscribe_haus">
+			<option class="haus_op" value="0">choose your haus *</option>
+        </select>
+        <div style="width: 100%;">
+          <button id="subscribe_submit_pop" class="subscribe_submit_pop" >SUBSCRIBE</button>
+        </div>
+        <div class="subscribe-invalid-message">
+		</div>
+      </div>
+      <div class="subscribe-success">
+		<div class="subscribe-success-thank">
+			THANK YOU
+		</div>
+		<div class="subscribe-success-thank-details">
+			Use the below 10% off promo code <br> to shop your favorite Haus skincare.
+		</div>
+		<div class="subscribe-success-code-outer">
+			<label class="subscribe-label-success" for="subscribe_success_code">CODE </label>
+			<input type="text" class="subscribe-success-code" value="10PERCENTOFF"  id="subscribe_success_code" disabled></input>			
+			<button class="subscribe-success-code-copy" onmouseout="outFunc()">
+			  <span class="subscribe-tooltiptext" id="myTooltip">Copy to clipboard</span>
+			  copy promo
+			 </button>
+		</div>
+		<div class="subscribe-text-copied">
+			<div class="subscribe-text-copied-inner">
+				Copied the promo code: 10PERCENTOFF
+			</div>
+		</div>
+		<div class="subscribe-success-shop">
+			<a href="/collections/shop"><span style="display:none;">SHOP NOW</span>
+				<input type="button" id="popup_shop_btn" value="SHOP NOW"></input>
+          	</a>
+		</div>
+		<div class="subscribe-success-bottom">
+			Use this code in check out to receive 10% off your next order. Valid for 1 time purchase only.
+		</div>
+		<div class="hidden-code-wrap">
+			<label class="subscribe-label-success" for="subscribe-success-code-hidden">CODE </label> 
+			<input type="text" id="subscribe-success-code-hidden" value="10PERCENTOFF"></input>
+		</div>
+	</div>
+     
+    </div>
+  </div>
+</div>
+
+
+<!--- Main Page--->
+<div class="main_slideshow">
+  <div id="main_slider" style="width:100% !important;">
+    <div class="grid_columns">
+      <div class="g_column">
+        <div class="g_grid">
+          <img class="big_small"
+            src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/haus-guys-get-facials-b.jpg?v=1593005563"
+            width="100%" alt="surprised girl desktop">
+          <img class="medium"
+            src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/haus-guys-get-facials-b.jpg?v=1593005563"
+            width="100%" alt="surprised girl mobile">
+        </div>
+        <div class="g_grid">
+          <img class="big_small"
+            src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/2-FH_934x394-c.jpg?v=1589895666" width="100%"
+            alt="Face Haus is a facial bar desktop">
+          <img class="medium"
+            src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/2-FH_934x394-c.jpg?v=1589895666" width="100%"
+            alt="Face Haus is a facial bar mobile">
+        </div>
+      </div>
+
+      <div class="g_column">
+        <div class="g_grid">
+          <a
+            href="https://facehaus.zenoti.com/webstoreNew/f4b87304-1594-4b5d-90ec-5169d5628f3c?_ga=2.195079272.538820826.1590070325-1913384384.1589553432">
+            <img class="big_small"
+              src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/we-have-gone-bigger-in-tx.jpg?v=1594345515"
+              width="100%" alt="our haus is your haus desktop">
+            <img class="medium"
+              src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/we-have-gone-bigger-in-tx.jpg?v=1594345515"
+              width="100%" alt="our haus is your haus mobile">
+          </a>
+        </div>
+        <div id="esthie_grid" class="g_grid point">
+          <div class="grid_overlayer">
+            <a href="#">
+              <img class="big_small"
+                src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/super-star-esthie-olivia.jpg?v=1593005530"
+                width="100%" alt="super star esthies desktop">
+              <img class="medium"
+                src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/super-star-esthie-olivia.jpg?v=1593005530"
+                width="100%" alt="super star esthies mobile">
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="g_column finalcolumn">
+        <div id="meetour_grid" class="g_grid lastimage point">
+          <a href="/collections/shop">
+            <img class="big_small"
+              src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/shop-the-haus.jpg?v=1593005530"
+              width="100%" alt="we are all in this together">
+            <img class="medium"
+              src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/shop-the-haus.jpg?v=1593005530"
+              width="100%" alt="we are all in this together">
+          </a>
+        </div>
+        <div class="g_grid point">
+          <img class="big_small"
+            src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/6-FH_938x370-b.jpg?v=1589895666" width="100%"
+            alt="the two face haus models desktop">
+          <img class="medium"
+            src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/6-FH_938x370-b.jpg?v=1589895666" width="100%"
+            alt="the two face haus models mobile">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>		  
+</div>
+
+<!--- main_content_downs-->
+<div class="main_content_downs">
+  <div class="main_content" style="padding-bottom:35px;">
+    <!--To change add products-->
+    <div class="esthys_holder-new accordion-menu-item listproduct esthys-h-dynamic">
+
+      <div class="desktop">
+        <div class="section-header text-center" style="margin-bottom: 25px;">
+          <div class="home-product-header">
+            SHOP THE HAUS
+          </div>
+          <div class="under_bottom_homeproduct"></div>
+        </div>
+        <div class="custom-navigation">
+          <div class="flex-next loc_arrow-b_product desktop">
+            <img src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/right_arrow2-2.svg?v=1591370077"
+              alt="arrow right" width="100%">
+          </div>
+          <div class="flex-prev loc_arrow2-b_product desktop">
+            <img src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/left_arrow2-2.svg?v=1591370078"
+              alt="arrow left" width="100%">
+          </div>
+        </div>
+        <div class="flexslider desktop">
+          <div class="slides ">
+			{% assign all_products = collections['shop'].products %}
+            {% for product in all_products %}
+
+            {% assign check_value = forloop.index0 | modulo: 4 %}
+            {% assign check_value1 = forloop.index | modulo: 4 %}
+            {% if check_value == 0 %}
+            <li class="esthy_slides">
+              {% endif %}
+
+              <a href="{{product.url}}">
+            <div class="esthy_block">
+            {%if product.metafields.global.has_badge != blank %}
+                <div class="badge-icon-grid">                
+					{%if product.metafields.global.has_badge == '1' %}
+				<img src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/pro-size.jpg?v=1599120001" alt="badge pro size"/>	
+				{% else %}
+				<img src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/all-new.jpg?v=1607388830" alt="badge all new"/>	
+				{%endif%}
+                </div>
+              {%endif%}
+              <div class="esthyproduct_img">
+                <img class="product-card__image-with-placeholder-wrapper"
+                  src="{{product.featured_image.src | img_url: 'medium' }}" alt="{{ product.title }}"/>
+              </div>
+              <div class="esthy_text">
+                <div class="esthy_header">
+                  {%if product.metafields.global.brandname != blank%}
+                    <span class="price-item subtitle_products brandname_">{{ product.metafields.global.brandname }}</span>                                    
+                  {%endif%}  
+                  <br>                
+                  <div class="h4 grid-view-item__title product-card__title header_title fontHelCondBo2">
+                    
+                    {{ product.title }}
+                    <br>															  
+						<span class="price-item price-item--regular">{{product.price | money | remove: '.00'}} </span>                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+              {% if check_value1 == 0 %}
+            </li>
+            {% endif %}
+            {% if forloop.last == true %}
+            {% if forloop.index > 4 and check_value1 > 0 %}
+            </li>
+            {% endif %}
+            {% if forloop.index > 0 and forloop.index <= 4 %}
+          </div>
+
+          <style>
+            .loc_arrow-b.mobile2,
+            .loc_arrow2-b.mobile2 {
+              display: none;
+            }
+          </style>
+          {% endif %}
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+     <!-- mobi-->
+    <div class="mobile2">
+      <div class="section-header text-center" style="margin-bottom: 25px;">
+        <div class="home-product-header">
+          SHOP THE HAUS
+        </div>
+        <div class="under_bottom_homeproduct"></div>
+        <div class="custom-navigation_mb">
+          <div class="flex-next loc_arrow-b_prduct mobile2">
+            <img src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/right_arrow2-mobile.svg?v=1591499527"
+              alt="right arrow mobile2" width="100%">
+          </div>
+          <div class="flex-prev loc_arrow2-b_prduct mobile2">
+            <img src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/left_arrow2-mobile.svg?v=1591797077"
+              alt="left arrow mobile2" width="100%">
+          </div>
+        </div>
+        <div class="flexslider_mb mobile2">
+          <div class="slides ">
+            {% for product in all_products %}
+            {% assign check_value = forloop.index0 | modulo: 1 %}
+            {% assign check_value1 = forloop.index | modulo: 1 %}
+            {% if check_value == 0 %}
+            <li class="esthy_slides">
+              {% endif %}
+              <a href="{{shop.url | append: product.url}}"><span style="display:none;">{{ product.title }}</span>
+	      <div class="esthy_block">
+                  {%if product.metafields.global.has_badge != blank %}
+                <div class="badge-icon-grid">                
+					{%if product.metafields.global.has_badge == '1' %}
+					<img src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/pro-size.jpg?v=1599120001" alt="badge pro size"/>	
+					{% else %}
+					<img src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/all-new.jpg?v=1607388830" alt="badge all new"/>	
+					{%endif%}
+                </div>
+              {%endif%}
+          <div class="esthyproduct_img">
+            <img class="product-card__image-with-placeholder-wrapper"
+              src="{{product.featured_image.src | img_url: 'medium' }}"  alt="{{ product.title }}"/>
+          </div>
+		  {%if product.metafields.global.brandname != blank%}
+                    <span class="price-item subtitle_products brandname_">{{ product.metafields.global.brandname }}</span>                                    
+                  {%endif%}  
+                  <br>    
+          <div class="h4 grid-view-item__title product-card__title header_title fontHelCondBo2">
+            {{ product.title }}
+            <br>
+            {% assign lenthprice = product.price | size %}
+            {% assign indexprice = lenthprice | minus: 4  %}
+            {% assign indexprice = indexprice | divided_by: 2 %}
+            <span class="price-item price-item--regular">${{ product.price | slice: 0, indexprice }}.00</span>
+          </div>
+				</a>
+              {% if check_value1 == 0 %}
+            </li>
+            {% endif %}
+
+
+            {% if forloop.last == true %}
+            {% if forloop.index > 1 and check_value1 > 0 %}
+            </li>
+            {% endif %}
+            {% if forloop.index > 0 and forloop.index <= 1 %}
+          </div>
+          <style>
+            .loc_arrow-b.mobile2,
+            .loc_arrow2-b.mobile2 {
+              display: none;
+            }
+          </style>
+          {% endif %}
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--To change add products-->
+<!--esthys -->
+<div class="esthys" id="esthys">
+  <div class="featured_esthy">
+    <div class="new_esthie_text">
+      <div class="meet_new">
+        <img src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/meet_new.svg?v=1590585243" width="100%"
+          alt="meet our esthies">
+        <!--<div class="meet_new_title">MEET OUR ESTHIES!</div>-->
+      </div>
+      <div class="esthie_copy_new">
+        Our estheticians are skin care experts
+        <img width="120px" class="meet_new_img_desc"
+          src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/7d54b715-18dc-4540-a3f4-addfae16a6df.jfif?v=1594346907"
+          alt="meet our esthies description" />
+        <br>
+        Choose a Haus and pick your pro.
+      </div>
+      <!-- <div class="esthie_copy_new">
+            <div class="meet_new_expert">
+              OUR ESTHETICIANS ARE SKIN AND CARE EXPERTS.
+            </div>
+            <img width="120px" class="meet_new_img_desc"
+              src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/7d54b715-18dc-4540-a3f4-addfae16a6df.jfif?v=1594346907"
+              alt="meet our esthies description" />
+            <br>
+            <div class="meet_new_choose_haus">
+              CHOOSE A HAUS AND PICK YOUR PRO.
+            </div>
+          </div> -->
+
+      <div class="dropdown">
+        <button class="dropbtn">Find Your Haus </button>
+        <div class="dropdown-content">
+          <a id="findhaus_santamonica" href="/blogs/santa-monica">Santa Monica</a>
+          <a id="findhaus_southbay" href="/blogs/south-bay">South Bay</a>
+          <a id="findhaus_studiocity" href="/blogs/studio-city">Studio City</a>
+          <a id="findhaus_uscvillage" href="/blogs/usc-village">USC Village</a>
+          <a id="findhaus_westhollywood" href="/blogs/West-Hollywood">West Hollywood</a>
+          <a id="findhaus_prestonroyal" href="/blogs/Dallas-Preston-Royal">Dallas - Preston Royal</a>
+          <a id="findhaus_westvillage" href="/blogs/west-village">Dallas - West Village</a>
+          <a id="findhaus_ricevillage" href="/blogs/Houston-Rice-Village">Houston - Rice Village</a>
+          <a id="findhaus_eastside" href="/blogs/new-york">NYC - Upper East Side</a>
+          <a id="findhaus_larchmont_village" href="/pages/los-angeles-larchmont-village">Larchmont Village (Opening 2021)</a>
+		  <a id="findhaus_target" href="/target">Target</a>
+        </div>
+      </div>
+    </div>
+    <div class="new_esthie_image"><img
+        src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/new-esthies-2020.jpg?v=1594346908" width="100%"
+        alt="face haus esthies professionals"></div>
+    <div class="clearer"></div>
+  </div>
+  <div class="esthys_holder desktop" id="esthies_main">
+  </div>
+</div> 
+
+<!--services -->
+{% section 'section-services-home' %}
+
+<!--img_holder -->
+<div class="img_holder" style="margin-top: 0">
+  <div class="map" id="hauses">
+    <div class="desktop2">
+      <a href="{{shop.url}}/pages/facials-west-hollywood" class="map_icon" id="icon1">
+        <img src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/star.png?v=1590585744" width="100%"
+          alt="west hollywood star"></a>
+      <div id="icon1_box" style="z-index: 1050" class="map_info_box">
+        <img style="margin-left: -19px;" class="map_arrow"
+          src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/map_arrow.svg?v=1590585807"
+          alt="location arrow">WEST HOLLYWOOD
+      </div>
+
+      <a href="{{shop.url}}/pages/facials-usc-village" class="map_icon" id="icon2">
+        <img src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/star.png?v=1590585744" width="100%"
+          alt="usc village star"></a>
+      <div id="icon2_box" class="map_info_box">
+        <img style="margin-left: -32px;" class="map_arrow"
+          src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/map_arrow.svg?v=1590585807"
+          alt="location arrow">USC VILLAGE
+      </div>
+      <a href="{{shop.url}}/pages/facials-santa-monica" class="map_icon" id="icon3">
+        <img src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/star.png?v=1590585744" width="100%"
+          alt="santa monica star"></a>
+      <div id="icon3_box" class="map_info_box">
+        <img class="map_arrow2" src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/map_arrow.svg?v=1590585807"
+          alt="location arrow">SANTA MONICA
+      </div>
+
+      <a href="{{shop.url}}/pages/facials-studio-city" class="map_icon" id="icon4">
+        <img src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/star.png?v=1590585744" width="100%"
+          alt="studio city star"></a>
+      <div id="icon4_box" class="map_info_box">
+        <img style="margin-left: -32px;" class="map_arrow"
+          src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/map_arrow.svg?v=1590585807"
+          alt="location arrow">STUDIO CITY
+      </div>
+      <a href="{{shop.url}}/pages/facials-south-bay" class="map_icon" id="icon5">
+        <img src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/star.png?v=1590585744" width="100%"
+          alt="south bay star"></a>
+      <div id="icon5_box" style="z-index: 1050" class="map_info_box">
+        <img class="map_arrow2" style="margin-left: 80px"
+          src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/map_arrow.svg?v=1590585807"
+          alt="location arrow">SOUTH BAY
+      </div>
+      <a class="map_icon" href="{{shop.url}}/pages/facials-new-york" id="icon6">
+        <img src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/star.png?v=1590585744" width="100%"
+          alt="new york star"></a>
+      <div id="icon6_box" class="map_info_box">
+        <img style="margin-left: -38px;" class="map_arrow"
+          src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/map_arrow.svg?v=1590585807"
+          alt="location arrow">NEW YORK
+      </div>
+      <a href="{{shop.url}}/pages/facials-dallas-preston-royal" class="map_icon" id="icon7">
+        <img src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/star.png?v=1590585744" width="100%"
+          alt="dallas preston royal star"></a>
+      <div id="icon7_box" class="map_info_box">
+        <img style="margin-left: -18px;" class="map_arrow"
+          src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/map_arrow.svg?v=1590585807"
+          alt="location arrow">DALLAS - PRESTON ROYAL
+      </div>
+      <a href="{{shop.url}}/pages/facials-dallas-west-village" class="map_icon" id="icon8">
+        <img src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/star.png?v=1590585744" width="100%"
+          alt="dallas west village star"></a>
+      <div id="icon8_box" class="map_info_box">
+        <img style="margin-left: -35px;" class="map_arrow"
+          src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/map_arrow.svg?v=1590585807"
+          alt="location arrow">DALLAS - West Village
+      </div>
+      <a href="{{shop.url}}/pages/houston-texas" class="map_icon" id="icon9">
+        <img src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/star.png?v=1590585744" width="100%"
+          alt="houston texas star">
+      </a>
+      <div id="icon9_box" class="map_info_box">
+        <img style="margin-left: -35px;" class="map_arrow"
+          src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/map_arrow.svg?v=1590585807"
+          alt="location arrow">Houston - Rice Village
+      </div>
+
+      <a href="{{shop.url}}/pages/los-angeles-larchmont-village" class="map_icon" id="icon10">
+        <img src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/star.png?v=1590585744" width="100%"
+          alt="los angeles larchmont village star">
+      </a>
+      <div id="icon10_box" class="map_info_box">
+        <img style="margin-left: -35px;margin-top: 10px;" class="map_arrow"
+          src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/map_arrow.svg?v=1590585807" alt="location arrow">
+        LARCHMONT VILLAGE (OPENING 2021)
+      </div>
+      <img src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/map.jpg?v=1590585844" class="map_img"
+        width="100%" alt="map of USA">
+    </div>
+    <div class="polaroid coming_soon_photo desktop">
+      <div id="pol_1_close" class="closer3">
+        <img src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/x22.svg?v=1590585873" width="100%"
+          alt="X close button">
+      </div>
+      <div class="pol_text">
+        NOW OPEN
+        <div class="pol_2_text">HOUSTON<br>
+          RICE <br>VILLAGE</span>
+        </div>
+      </div>
+      <img src="https://cdn.shopify.com/s/files/1/0386/7390/7756/files/houston.jpg?v=1594741627" width="100%"
+        alt="now open Dallas & NYC as of March ‘19">
+    </div>
+    <div class="hauses_mobile mobile2" style="background: #84bac1;">
+      <div class="service_column6" style="width:100%; padding-top: 10px; padding-bottom: 10px;">
+        FIND YOUR HAUS
+      </div>
+      <div class="mobile_haus col_1">
+        <a id="haus_santamonica_m" href="{{shop.url}}/pages/facials-santa-monica" class="hm_btn">SANTA MONICA</a>
+      </div>
+      <div class="mobile_haus col_2">
+        <a id="haus_southbay_m" href="{{shop.url}}/pages/facials-south-bay" class="hm_btn">SOUTH BAY</a>
+      </div>
+      <div class="mobile_haus col_1">
+        <a id="haus_studiocity_m" href="{{shop.url}}/pages/facials-studio-city" class="hm_btn">STUDIO CITY</a>
+      </div>
+      <div class="mobile_haus col_2">
+        <a id="haus_uscvillage_m" href="{{shop.url}}/pages/facials-usc-village" class="hm_btn">USC VILLAGE</a>
+      </div>
+      <div class="mobile_haus col_1">
+        <a id="haus_whollywood_m" href="{{shop.url}}/pages/facials-west-hollywood" class="hm_btn">WEST HOLLYWOOD</a>
+      </div>
+      <div class="mobile_haus col_2">
+        <a id="haus_dallaspreston_m" href="{{shop.url}}/pages/facials-dallas-preston-royal" class="hm_btn">DALLAS - PRESTON
+          ROYAL</a>
+      </div>
+      <div class="mobile_haus col_1">
+        <a id="haus_westvillage_m" href="{{shop.url}}/pages/facials-dallas-west-village" class="hm_btn">DALLAS - WEST
+          VILLAGE</a>
+      </div>
+      <div class="mobile_haus col_2">
+        <a id="haus_ricevillage_m" href="{{shop.url}}/pages/houston-texas" class="hm_btn">HOUSTON - RICE VILLAGE</a>
+      </div>
+      <div class="mobile_haus col_1">
+        <a  id="haus_eastside_m" href="{{shop.url}}/pages/facials-new-york" class="hm_btn">NYC</a>
+      </div>
+      <div class="mobile_haus col_2">
+        <a id="haus_larchmont_village_m" href="{{shop.url}}/pages/los-angeles-larchmont-village" class="hm_btn">
+          LARCHMONT VILLAGE (OPENING 2021)</a>
+      </div>
+    </div>
+  </div>
+  
+</div>
+	<div class="subscribe subscribe-h-dynamic">
+	  <div class="subscribe_lf">
+		<div class="subscribe_title">
+		  LET'S STAY IN TOUCH
+		</div>
+		
+		<div class="header_title title_sub">Stay current on all Haus news and get 10% off your next product purchase.
+		</div>
+	  </div>
+	  <div class="subscribe_rg">
+		<!--div class="name_sub_mb">       
+		  <input id="subscribe_firtname" class="subscribe_firtname item_pading" type="text" placeholder="first name *" >
+		  <input id="subscribe_lastname" class="subscribe_lastname item_pading" type="text" placeholder="last name *" >
+		  <input id="subscribe_email" class="subscribe_email item_pading" type="text" placeholder="email address *" name="subscribe">
+		</div-->
+		<div class="name_sub_mb">       
+		  <div class="subscribe_firtname">
+			<label class="subscribe-label" for="subscribe_firtname">first name (*)</label>
+			<input id="subscribe_firtname" class="subscribe_firtname1 " type="text" >
+		  </div>
+		  <div class="subscribe_lastname">
+		  <label class="subscribe-label" for="subscribe_lastname">last name (*)</label>
+			<input id="subscribe_lastname" class="subscribe_lastname1 " type="text" >
+		  </div>
+		  <div class="subscribe_email">
+		  <label class="subscribe-label" for="subscribe_email">email address (*)</label>
+			<input id="subscribe_email" class="subscribe_email1 " type="text" name="subscribe">
+		  </div>
+		  
+		  
+		</div>
+		
+		
+		<div class="subscribe-haus">			
+			<div class="subscribe-invalid-message-bottom desktop">
+			</div>
+			<select id="subscribe_haus" class="subscribe_haus item_pading" name="subscribe_haus">
+				<option class="haus_op" value="0">choose your haus *</option>
+			</select>
+		</div>
+		<div class="subscribe-submit-wrap">
+			<button id="subscribe_submit"  class="subscribe_submit" >SUBSCRIBE</button>
+			<div class="subscribe-invalid-message-bottom mobile2">
+			</div>
+		</div>
+	  </div>
+	  <!--div class="subscribe-success-footer">
+		Thank you for signing up, here is your 10% promo code for your next order:	
+		<span class="subscribe-code">10PERCENTOFF</span>
+		 Use this code in check out to receive 10% off your next order.
+	  </div-->
+	</div>
+</div>
+</div>
+<!--end-->
