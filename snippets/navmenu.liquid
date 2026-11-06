@@ -80,24 +80,13 @@
 
           <div class="z-5 absolute w-100 left-0 {{ meganav_classes }}" data-nav-submenu data-meganav-menu data-navigation-dropdown>
             <div class="mega-navigation-wrapper shadow-3">
-              {% render 'mega-navigation' with
-                menu: link.handle,
-                depth: d,
-                blocks: blocks,
-                link: link,
-              %}
+              {% render 'mega-navigation' with menu, menu: link.handle, depth: d, blocks: blocks, link: link %}
             </div>
           </div>
 
         {% comment %} Item with simple dropdown {% endcomment %}
         {% else %}
-          {% render 'navmenu' with
-            menu: linklists[link.handle],
-            depth: d,
-            is_submenu: true,
-            sub_menu_title: link.title,
-            has_triggers: true,
-          %}
+          {% render 'navmenu' with menu, menu: linklists[link.handle], depth: d, is_submenu: true, sub_menu_title: link.title, has_triggers: true %}
         {% endif %}
 
 
@@ -105,4 +94,31 @@
       </li>
     {% endunless %}
   {% endfor %}
-</ul>
+</ul>{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'mega-navigation' with
+                    menu: link.handle,
+                    depth: d,
+                    blocks: blocks,
+                    link: link,
+                  %}
+  to: "{% render 'mega-navigation' with menu, menu: link.handle, depth: d, blocks:
+    blocks, link: link %}"
+  position: 3063..3160
+- from: |-
+    {% render 'navmenu' with
+                menu: linklists[link.handle],
+                depth: d,
+                is_submenu: true,
+                sub_menu_title: link.title,
+                has_triggers: true,
+              %}
+  to: "{% render 'navmenu' with menu, menu: linklists[link.handle], depth: d, is_submenu:
+    true, sub_menu_title: link.title, has_triggers: true %}"
+  position: 3292..3430
+{%- endcomment -%}

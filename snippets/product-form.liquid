@@ -1,4 +1,4 @@
-{% capture "form_classes" -%}
+{% capture form_classes -%}
   product-form product-form-{{ section.id }}
   {%- unless section.settings.show_variant_labels %} product-form--hide-variant-labels {% endunless %}
   {%- if show_dynamic_checkout and product.has_only_default_variant %} product-form--payment-button-no-variants {%- endif -%}
@@ -18,10 +18,7 @@
 
   {% unless product.has_only_default_variant %}
     <div class="product-form__controls-group product-form__controls-group-options"></div>
-      {% render 'product-form-options' with
-        product: product,
-        show_swatches: show_swatches
-      %}
+      {% render 'product-form-options' with product, product: product, show_swatches: show_swatches %}
     </div>
   {% endunless %}
 
@@ -129,4 +126,21 @@
 
   {% comment %} Surface pick-up {% endcomment %}
   <div data-store-availability-container data-base-url="{{ shop.url }}{{ routes.root_url }}"></div>
-{% endform %}
+{% endform %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: '{% capture "form_classes" -%}'
+  to: "{% capture form_classes -%}"
+  position: 0..27
+- from: |-
+    {% render 'product-form-options' with
+            product: product,
+            show_swatches: show_swatches
+          %}
+  to: "{% render 'product-form-options' with product, product: product, show_swatches:
+    show_swatches %}"
+  position: 788..884
+{%- endcomment -%}

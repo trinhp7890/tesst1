@@ -116,22 +116,12 @@
         >
           {{collection_label }}
         </div>
-          <!-- {% render 'text-block' with
-            heading_alignment: heading_alignment,
-            text_max_width: text_max_width,
-            overline: collection_label,
-            heading: collection_heading,
-            subheading: collection_subheading,
-          %} -->
+          <!-- {% render 'text-block' with heading_alignment, heading_alignment: heading_alignment, text_max_width: text_max_width, overline: collection_label, heading: collection_heading, subheading: collection_subheading %} -->
          
         </div>
 
         {% if show_collection_image and collection.image != blank %}
-          {% render 'image' with
-            image: collection.image,
-            wrapper_class: 'lazyload collection__image',
-            disable_style: true
-          %}
+          {% render 'image' with image, image: collection.image, wrapper_class: 'lazyload collection__image', disable_style: true %}
         {% endif %}
 
         <div class="collection__image-overlay"></div>
@@ -141,12 +131,7 @@
         {% if show_sort or show_filters %}
           {%- if filter_style == 'sidebar' -%}
             <div class="collection__sidebar" data-sidebar>
-              {% render 'collection-sidebar' with
-                categories: categories,
-                filter_type: filter_type,
-                show_sort: show_sort,
-                show_filters: show_filters
-              %}
+              {% render 'collection-sidebar' with categories, categories: categories, filter_type: filter_type, show_sort: show_sort, show_filters: show_filters %}
             </div>
           {%- endif -%}
         {% endif %}
@@ -154,12 +139,7 @@
         <div class="collection__main-area">
 
           {% if show_filters or show_sort %}
-            {% render 'collection-filters' with
-              categories: categories,
-              filter_type: filter_type,
-              show_sort: show_sort,
-              show_filters: show_filters
-            %}
+            {% render 'collection-filters' with categories, categories: categories, filter_type: filter_type, show_sort: show_sort, show_filters: show_filters %}
           {% endif %}
 
           <div class="collection__window">
@@ -170,18 +150,12 @@
 
             <div id="root" class="collection__products" data-partial>
               <div class="collection__top-row">
-                {% render 'collection-top-bar' with
-                  categories: categories
-                %}
+                {% render 'collection-top-bar' with categories, categories: categories %}
               </div>
 
               <div class="grid-display w-100{{ grid_modifiers }} collection__infinite-container">
                 {% for product in collection.products %}
-                  {% render 'product-item' with
-                    product: product,
-                    swatches_enabled: show_swatches,
-                    aspect_ratio: aspect_ratio
-                  %}
+                  {% render 'product-item' with product, product: product, swatches_enabled: show_swatches, aspect_ratio: aspect_ratio %}
                 {% else %}
                   <div class="collection__empty">
                     <div>{{ 'collections.general.no_products' | t }}</div>
@@ -201,16 +175,9 @@
               {% if paginated %}
                 <div class="mt3 w-100">
                   {% if paginate.pages > 1 %}
-                    {% render 'pagination' with
-                      paginate: paginate,
-                      type: 'general.pagination.products'
-                    %}
+                    {% render 'pagination' with paginate, paginate: paginate, type: 'general.pagination.products' %}
                   {% else %}
-                    {% render 'pagination' with
-                      paginate: paginate,
-                      type: 'general.pagination.products',
-                      display_paginate_item_count_only: true
-                    %}
+                    {% render 'pagination' with paginate, paginate: paginate, type: 'general.pagination.products', display_paginate_item_count_only: true %}
                   {% endif %}
                 </div>
               {% endif %}
@@ -221,9 +188,94 @@
     </div>
   {% endpaginate %}
 
-  {% render 'collection-flyout' with
-    filter_type: filter_type,
-    categories: categories,
-    show_sort: show_sort
-  %}
+  {% render 'collection-flyout' with filter_type, filter_type: filter_type, categories: categories, show_sort: show_sort %}
 </section>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'text-block' with
+                heading_alignment: heading_alignment,
+                text_max_width: text_max_width,
+                overline: collection_label,
+                heading: collection_heading,
+                subheading: collection_subheading,
+              %}
+  to: "{% render 'text-block' with heading_alignment, heading_alignment: heading_alignment,
+    text_max_width: text_max_width, overline: collection_label, heading: collection_heading,
+    subheading: collection_subheading %}"
+  position: 3457..3667
+- from: |-
+    {% render 'image' with
+                image: collection.image,
+                wrapper_class: 'lazyload collection__image',
+                disable_style: true
+              %}
+  to: "{% render 'image' with image, image: collection.image, wrapper_class: 'lazyload
+    collection__image', disable_style: true %}"
+  position: 3777..3899
+- from: |-
+    {% render 'collection-sidebar' with
+                    categories: categories,
+                    filter_type: filter_type,
+                    show_sort: show_sort,
+                    show_filters: show_filters
+                  %}
+  to: "{% render 'collection-sidebar' with categories, categories: categories, filter_type:
+    filter_type, show_sort: show_sort, show_filters: show_filters %}"
+  position: 4195..4344
+- from: |-
+    {% render 'collection-filters' with
+                  categories: categories,
+                  filter_type: filter_type,
+                  show_sort: show_sort,
+                  show_filters: show_filters
+                %}
+  to: "{% render 'collection-filters' with categories, categories: categories, filter_type:
+    filter_type, show_sort: show_sort, show_filters: show_filters %}"
+  position: 4511..4660
+- from: |-
+    {% render 'collection-top-bar' with
+                      categories: categories
+                    %}
+  to: "{% render 'collection-top-bar' with categories, categories: categories %}"
+  position: 4977..5050
+- from: |-
+    {% render 'product-item' with
+                        product: product,
+                        swatches_enabled: show_swatches,
+                        aspect_ratio: aspect_ratio
+                      %}
+  to: "{% render 'product-item' with product, product: product, swatches_enabled:
+    show_swatches, aspect_ratio: aspect_ratio %}"
+  position: 5246..5365
+- from: |-
+    {% render 'pagination' with
+                          paginate: paginate,
+                          type: 'general.pagination.products'
+                        %}
+  to: "{% render 'pagination' with paginate, paginate: paginate, type: 'general.pagination.products'
+    %}"
+  position: 6165..6261
+- from: |-
+    {% render 'pagination' with
+                          paginate: paginate,
+                          type: 'general.pagination.products',
+                          display_paginate_item_count_only: true
+                        %}
+  to: "{% render 'pagination' with paginate, paginate: paginate, type: 'general.pagination.products',
+    display_paginate_item_count_only: true %}"
+  position: 6311..6447
+- from: |-
+    {% render 'collection-flyout' with
+        filter_type: filter_type,
+        categories: categories,
+        show_sort: show_sort
+      %}
+  to: "{% render 'collection-flyout' with filter_type, filter_type: filter_type, categories:
+    categories, show_sort: show_sort %}"
+  position: 6625..6746
+{% endcomment %}

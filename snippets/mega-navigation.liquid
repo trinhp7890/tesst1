@@ -11,9 +11,7 @@
         <div class="mega-navigation__featured">
           <div class="mega-navigation__featured-wrapper">
             {% if b.mega_nav_featured_image != blank %}
-              {% render 'image' with
-                image: b.mega_nav_featured_image
-              %}
+              {% render 'image' with image, image: b.mega_nav_featured_image %}
             {% endif %}
             {% if b.featured_image_link_text != blank or b.featured_image_heading != nil %}
 
@@ -41,9 +39,7 @@
       {% for link in link.links %}
         <li class="mega-navigation__list">
           <h4 class="mega-navigation__list-heading mt0 overline"><a href="{{ link.url }}">{{ link.title }}</a></h4>
-          {% render 'navmenu' with
-            menu: link.handle
-          %}
+          {% render 'navmenu' with menu, menu: link.handle %}
         </li>
       {% endfor %}
     </ul>
@@ -61,4 +57,22 @@
 
     {% break %}
   {% endif %}
-{% endfor %}
+{% endfor %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'image' with
+                    image: b.mega_nav_featured_image
+                  %}
+  to: "{% render 'image' with image, image: b.mega_nav_featured_image %}"
+  position: 519..584
+- from: |-
+    {% render 'navmenu' with
+                menu: link.handle
+              %}
+  to: "{% render 'navmenu' with menu, menu: link.handle %}"
+  position: 1825..1876
+{%- endcomment -%}

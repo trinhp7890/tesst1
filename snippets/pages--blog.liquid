@@ -68,11 +68,27 @@
 
       <div class="blog__pagination">
         {% if paginate.pages > 1 %}
-          {% render 'pagination' with paginate: paginate, type: 'general.pagination.blog_posts' %}
+          {% render 'pagination' with paginate, paginate: paginate, type: 'general.pagination.blog_posts' %}
         {% else %}
-          {% render 'pagination' with paginate: paginate, type: 'general.pagination.blog_posts', display_paginate_item_count_only: true %}
+          {% render 'pagination' with paginate, paginate: paginate, type: 'general.pagination.blog_posts', display_paginate_item_count_only: true %}
         {% endif %}
       </div>
 
   {% endpaginate %}
-</section>
+</section>{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'pagination' with paginate: paginate, type: 'general.pagination.blog_posts'
+    %}"
+  to: "{% render 'pagination' with paginate, paginate: paginate, type: 'general.pagination.blog_posts'
+    %}"
+  position: 2742..2840
+- from: "{% render 'pagination' with paginate: paginate, type: 'general.pagination.blog_posts',
+    display_paginate_item_count_only: true %}"
+  to: "{% render 'pagination' with paginate, paginate: paginate, type: 'general.pagination.blog_posts',
+    display_paginate_item_count_only: true %}"
+  position: 2870..3008
+{%- endcomment -%}

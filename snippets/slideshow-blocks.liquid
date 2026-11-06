@@ -93,20 +93,10 @@
             {% assign image_wrapper_class = image_wrapper_class | append: ' slideshow__image--mobile' %}
           {% endif %}
 
-          {% render 'image' with
-            image: block.settings.image,
-            wrapper_class: image_wrapper_class,
-            disable_style: image_is_constrained,
-            max_width: 3000
-          %}
+          {% render 'image' with image, image: block.settings.image, wrapper_class: image_wrapper_class, disable_style: image_is_constrained, max_width: 3000 %}
 
           {% if block.settings.mobile_image != blank and block.settings.image != blank %}
-            {% render 'image' with
-              image: block.settings.mobile_image,
-              wrapper_class: 'slideshow__image slideshow__image--mobile',
-              disable_style: image_is_constrained,
-              max_width: 3000
-            %}
+            {% render 'image' with image, image: block.settings.mobile_image, wrapper_class: 'slideshow__image slideshow__image--mobile', disable_style: image_is_constrained, max_width: 3000 %}
           {% endif %}
         {% endif %}
 
@@ -120,4 +110,31 @@
       </div>
     {%- endif -%}
 
-  {% endfor %}
+  {% endfor %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'image' with
+                image: block.settings.image,
+                wrapper_class: image_wrapper_class,
+                disable_style: image_is_constrained,
+                max_width: 3000
+              %}
+  to: "{% render 'image' with image, image: block.settings.image, wrapper_class: image_wrapper_class,
+    disable_style: image_is_constrained, max_width: 3000 %}"
+  position: 4727..4877
+- from: |-
+    {% render 'image' with
+                  image: block.settings.mobile_image,
+                  wrapper_class: 'slideshow__image slideshow__image--mobile',
+                  disable_style: image_is_constrained,
+                  max_width: 3000
+                %}
+  to: "{% render 'image' with image, image: block.settings.mobile_image, wrapper_class:
+    'slideshow__image slideshow__image--mobile', disable_style: image_is_constrained,
+    max_width: 3000 %}"
+  position: 4981..5162
+{%- endcomment -%}

@@ -5,9 +5,9 @@
     <div class="quick-shop__image" data-product-image-wrapper>
       <a href="{{ product.url }}">
         {% if current_variant.featured_image %}
-          {% render 'image' with image: current_variant.featured_image %}
+          {% render 'image' with image, image: current_variant.featured_image %}
         {% else %}
-            {% render 'image' with image: product.featured_image %}
+            {% render 'image' with image, image: product.featured_image %}
         {% endif %}
       </a>
     </div>
@@ -181,4 +181,16 @@
 
     {% endif %}
   </div>
-</div>
+</div>{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'image' with image: current_variant.featured_image %}"
+  to: "{% render 'image' with image, image: current_variant.featured_image %}"
+  position: 304..374
+- from: "{% render 'image' with image: product.featured_image %}"
+  to: "{% render 'image' with image, image: product.featured_image %}"
+  position: 406..468
+{%- endcomment -%}

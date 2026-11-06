@@ -18,7 +18,7 @@
 
   {% if article.image and show_featured_image %}
     <div class="article__image mb5">
-      {% render 'image' with image: article.image %}
+      {% render 'image' with image, image: article.image %}
     </div>
   {% endif %}
 
@@ -51,7 +51,7 @@
 
   {% if blog.comments_enabled? %}
     <div class="article__comments center">
-      {% render 'comments' with article: article %}
+      {% render 'comments' with article, article: article %}
     </div>
   {% endif %}
 </article>
@@ -96,3 +96,16 @@
     }
   }
 </script>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'image' with image: article.image %}"
+  to: "{% render 'image' with image, image: article.image %}"
+  position: 664..717
+- from: "{% render 'comments' with article: article %}"
+  to: "{% render 'comments' with article, article: article %}"
+  position: 1696..1750
+{% endcomment %}

@@ -192,10 +192,7 @@
     </div>
 
     {% if paginate.pages > 1 %}
-      {% render 'pagination' with
-        type: 'general.pagination.addresses',
-        paginate: paginate
-      %}
+      {% render 'pagination' with type, type: 'general.pagination.addresses', paginate: paginate %}
     {% endif %}
 
   {% endpaginate %}
@@ -362,4 +359,18 @@
 
   <p class="db tc"><a class="underline" href="{{ routes.account_url }}">{{ 'customer.account.return' | t }}</a></p>
 
-</section>
+</section>{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'pagination' with
+            type: 'general.pagination.addresses',
+            paginate: paginate
+          %}
+  to: "{% render 'pagination' with type, type: 'general.pagination.addresses', paginate:
+    paginate %}"
+  position: 7507..7600
+{%- endcomment -%}

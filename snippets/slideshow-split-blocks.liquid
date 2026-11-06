@@ -12,16 +12,31 @@
       {% endif %}
 
       <div class="slideshow-split__image">
-        {% render 'image' with image: block.settings.image, disable_style: true %}
+        {% render 'image' with image, image: block.settings.image, disable_style: true %}
       </div>
 
       {% unless block.settings.mobile_image == blank %}
         <div class="slideshow-split__image  slideshow-split__image--mobile">
-          {% render 'image' with image: block.settings.mobile_image, disable_style: true %}
+          {% render 'image' with image, image: block.settings.mobile_image, disable_style: true %}
         </div>
       {% endunless %}
     {% else %}
       <div class="slideshow__placeholder slideshow-split__image">{{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg image__img' }}</div>
     {% endif %}
   </div>
-{% endfor %}
+{% endfor %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'image' with image: block.settings.image, disable_style: true %}"
+  to: "{% render 'image' with image, image: block.settings.image, disable_style: true
+    %}"
+  position: 576..657
+- from: "{% render 'image' with image: block.settings.mobile_image, disable_style:
+    true %}"
+  to: "{% render 'image' with image, image: block.settings.mobile_image, disable_style:
+    true %}"
+  position: 815..903
+{%- endcomment -%}

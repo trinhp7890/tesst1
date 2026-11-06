@@ -104,14 +104,7 @@
         {{ product_heading }}
       </div>
 
-      {% render 'product-form' with
-        product: product,
-        show_vendor: show_vendor,
-        current_variant: current_variant,
-        show_dynamic_checkout: enable_payment_button,
-        show_swatches: show_swatches,
-        show_quantity_input: show_quantity_input,
-      %}
+      {% render 'product-form' with product, product: product, show_vendor: show_vendor, current_variant: current_variant, show_dynamic_checkout: enable_payment_button, show_swatches: show_swatches, show_quantity_input: show_quantity_input %}
 
       {%- comment -%}
         Live region for announcing updated price and availability to screen readers
@@ -150,8 +143,8 @@
 
   <!-- {%- assign images = product.media | where: 'media_type', 'image' -%} -->
   {%- assign images = product.media[0] | where: 'media_type', 'image' -%}
-  {% render 'lightbox' with images: images %}
-  {% render 'reviews-drawer' with product: product %}
+  {% render 'lightbox' with images, images: images %}
+  {% render 'reviews-drawer' with product, product: product %}
 </section>
 
 {% unless product == empty %}
@@ -161,4 +154,29 @@
   <script type="application/json" id="ModelJson-{{ section.id }}">
     {{ product.media | where: 'media_type', 'model' | json }}
   </script>
-{% endunless %}
+{% endunless %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'product-form' with
+            product: product,
+            show_vendor: show_vendor,
+            current_variant: current_variant,
+            show_dynamic_checkout: enable_payment_button,
+            show_swatches: show_swatches,
+            show_quantity_input: show_quantity_input,
+          %}
+  to: "{% render 'product-form' with product, product: product, show_vendor: show_vendor,
+    current_variant: current_variant, show_dynamic_checkout: enable_payment_button,
+    show_swatches: show_swatches, show_quantity_input: show_quantity_input %}"
+  position: 3678..3914
+- from: "{% render 'lightbox' with images: images %}"
+  to: "{% render 'lightbox' with images, images: images %}"
+  position: 5453..5504
+- from: "{% render 'reviews-drawer' with product: product %}"
+  to: "{% render 'reviews-drawer' with product, product: product %}"
+  position: 5507..5567
+{%- endcomment -%}

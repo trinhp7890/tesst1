@@ -6,8 +6,18 @@
 
     {%- for image in images -%}
       <div class="lightbox__image" data-id="{{ image.id }}">
-        {% render 'image' with image: image %}
+        {% render 'image' with image, image: image %}
       </div>
     {%- endfor -%}
   </div>
 </div>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'image' with image: image %}"
+  to: "{% render 'image' with image, image: image %}"
+  position: 291..336
+{% endcomment %}
