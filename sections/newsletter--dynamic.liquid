@@ -1,11 +1,4 @@
-{% include 'content--newsletter' with
-  id: section.id,
-  section_style: section.settings.section_style,
-  text_max_width: section.settings.text_max_width,
-  overline: section.settings.title,
-  heading: section.settings.heading,
-  subheading: section.settings.subheading,
-%}
+{% include 'content--newsletter' with id, id: section.id, section_style: section.settings.section_style, text_max_width: section.settings.text_max_width, overline: section.settings.title, heading: section.settings.heading, subheading: section.settings.subheading %}
 
 {% schema %}
   {
@@ -75,4 +68,23 @@
       }
     ]
   }
-{% endschema %}
+{% endschema %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% include 'content--newsletter' with
+      id: section.id,
+      section_style: section.settings.section_style,
+      text_max_width: section.settings.text_max_width,
+      overline: section.settings.title,
+      heading: section.settings.heading,
+      subheading: section.settings.subheading,
+    %}
+  to: "{% include 'content--newsletter' with id, id: section.id, section_style: section.settings.section_style,
+    text_max_width: section.settings.text_max_width, overline: section.settings.title,
+    heading: section.settings.heading, subheading: section.settings.subheading %}"
+  position: 0..265
+{%- endcomment -%}

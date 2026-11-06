@@ -31,17 +31,7 @@
   data-text-position={{ carousel_text_position }}
   data-text-alignment={{ carousel_text_alignment }}
 >
-  {% render 'text-block' with
-    id: id,
-    modifiers: 'mb5 animation__staggered-children-fade-in',
-    heading_alignment: carousel_text_alignment,
-    text_max_width: text_max_width,
-    overline: overline,
-    heading: heading,
-    subheading: subheading,
-    link: link,
-    link_text: link_text
-  %}
+  {% render 'text-block' with id, id: id, modifiers: 'mb5 animation__staggered-children-fade-in', heading_alignment: carousel_text_alignment, text_max_width: text_max_width, overline: overline, heading: heading, subheading: subheading, link: link, link_text: link_text %}
 
   {% render 'carousel-navigation' %}
 
@@ -57,9 +47,7 @@
           {% endif %}
 
             {% if block.settings.image != blank %}
-              {% render 'image' with
-                image: block.settings.image
-              %}
+              {% render 'image' with image, image: block.settings.image %}
             {% else %}
               {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
             {% endif %}
@@ -91,3 +79,33 @@
     {% endif %}
   </div>
 </section>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'text-block' with
+        id: id,
+        modifiers: 'mb5 animation__staggered-children-fade-in',
+        heading_alignment: carousel_text_alignment,
+        text_max_width: text_max_width,
+        overline: overline,
+        heading: heading,
+        subheading: subheading,
+        link: link,
+        link_text: link_text
+      %}
+  to: "{% render 'text-block' with id, id: id, modifiers: 'mb5 animation__staggered-children-fade-in',
+    heading_alignment: carousel_text_alignment, text_max_width: text_max_width, overline:
+    overline, heading: heading, subheading: subheading, link: link, link_text: link_text
+    %}"
+  position: 1398..1667
+- from: |-
+    {% render 'image' with
+                    image: block.settings.image
+                  %}
+  to: "{% render 'image' with image, image: block.settings.image %}"
+  position: 2231..2291
+{% endcomment %}

@@ -1,10 +1,5 @@
 
-{% render 'doctorbritt-ingredient--content' with
-  id: section.id,
-  enabled: section.settings.enabled,
-  title: section.settings.title,
-  text: section.settings.text,
-%}
+{% render 'doctorbritt-ingredient--content' with id, id: section.id, enabled: section.settings.enabled, title: section.settings.title, text: section.settings.text %}
 
 {% schema %}
 {
@@ -23,4 +18,21 @@
     }
   ]
 }
-{% endschema %}
+{% endschema %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'doctorbritt-ingredient--content' with
+      id: section.id,
+      enabled: section.settings.enabled,
+      title: section.settings.title,
+      text: section.settings.text,
+    %}
+  to: "{% render 'doctorbritt-ingredient--content' with id, id: section.id, enabled:
+    section.settings.enabled, title: section.settings.title, text: section.settings.text
+    %}"
+  position: 1..166
+{%- endcomment -%}

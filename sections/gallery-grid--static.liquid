@@ -1,12 +1,4 @@
-{% render 'content--gallery-grid' with
-  id: section.id,
-  enabled: section.settings.enabled,
-  columns: section.settings.columns,
-  aspect_ratio: section.settings.aspect_ratio,
-  heading: section.settings.title,
-  text: section.settings.text,
-  blocks: section.blocks,
-%}
+{% render 'content--gallery-grid' with id, id: section.id, enabled: section.settings.enabled, columns: section.settings.columns, aspect_ratio: section.settings.aspect_ratio, heading: section.settings.title, text: section.settings.text, blocks: section.blocks %}
 
 {% schema %}
   {
@@ -68,3 +60,25 @@
     ]
   }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'content--gallery-grid' with
+      id: section.id,
+      enabled: section.settings.enabled,
+      columns: section.settings.columns,
+      aspect_ratio: section.settings.aspect_ratio,
+      heading: section.settings.title,
+      text: section.settings.text,
+      blocks: section.blocks,
+    %}
+  to: "{% render 'content--gallery-grid' with id, id: section.id, enabled: section.settings.enabled,
+    columns: section.settings.columns, aspect_ratio: section.settings.aspect_ratio,
+    heading: section.settings.title, text: section.settings.text, blocks: section.blocks
+    %}"
+  position: 0..261
+{% endcomment %}

@@ -1,11 +1,4 @@
-{% include 'content--ing-detail-collection' with
-  id: section.id,
-  ing_collection: collections[section.settings.collection], 
-  what_it_is: section.settings.what_it_is,
-  what_it_works: section.settings.what_it_works,
-  header_ingredients: section.settings.header_ingredients,
-  title_ingredients: section.settings.title_ingredients
-%}
+{% include 'content--ing-detail-collection' with id, id: section.id, ing_collection: collections[section.settings.collection], what_it_is: section.settings.what_it_is, what_it_works: section.settings.what_it_works, header_ingredients: section.settings.header_ingredients, title_ingredients: section.settings.title_ingredients %}
 
 {% schema %}
   {
@@ -54,3 +47,19 @@
     ]
   }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% include 'content--ing-detail-collection' with\n  id: section.id,\n  ing_collection:
+    collections[section.settings.collection], \n  what_it_is: section.settings.what_it_is,\n
+    \ what_it_works: section.settings.what_it_works,\n  header_ingredients: section.settings.header_ingredients,\n
+    \ title_ingredients: section.settings.title_ingredients\n%}"
+  to: "{% include 'content--ing-detail-collection' with id, id: section.id, ing_collection:
+    collections[section.settings.collection], what_it_is: section.settings.what_it_is,
+    what_it_works: section.settings.what_it_works, header_ingredients: section.settings.header_ingredients,
+    title_ingredients: section.settings.title_ingredients %}"
+  position: 0..328
+{% endcomment %}

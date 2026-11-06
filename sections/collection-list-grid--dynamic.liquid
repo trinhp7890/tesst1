@@ -1,15 +1,4 @@
-{% render 'content--collection-list-grid' with
-  id: section.id,
-  section_style: section.settings.section_style,
-  heading_alignment: section.settings.heading_alignment,
-  overline: section.settings.overline,
-  heading: section.settings.title,
-  subheading: section.settings.subheading,
-  text_max_width: section.settings.text_max_width,
-  columns: section.settings.columns,
-  aspect_ratio: section.settings.aspect_ratio,
-  blocks: section.blocks
-%}
+{% render 'content--collection-list-grid' with id, id: section.id, section_style: section.settings.section_style, heading_alignment: section.settings.heading_alignment, overline: section.settings.overline, heading: section.settings.title, subheading: section.settings.subheading, text_max_width: section.settings.text_max_width, columns: section.settings.columns, aspect_ratio: section.settings.aspect_ratio, blocks: section.blocks %}
 
 {% schema %}
   {
@@ -127,3 +116,30 @@
     ]
   }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'content--collection-list-grid' with
+      id: section.id,
+      section_style: section.settings.section_style,
+      heading_alignment: section.settings.heading_alignment,
+      overline: section.settings.overline,
+      heading: section.settings.title,
+      subheading: section.settings.subheading,
+      text_max_width: section.settings.text_max_width,
+      columns: section.settings.columns,
+      aspect_ratio: section.settings.aspect_ratio,
+      blocks: section.blocks
+    %}
+  to: "{% render 'content--collection-list-grid' with id, id: section.id, section_style:
+    section.settings.section_style, heading_alignment: section.settings.heading_alignment,
+    overline: section.settings.overline, heading: section.settings.title, subheading:
+    section.settings.subheading, text_max_width: section.settings.text_max_width,
+    columns: section.settings.columns, aspect_ratio: section.settings.aspect_ratio,
+    blocks: section.blocks %}"
+  position: 0..434
+{% endcomment %}

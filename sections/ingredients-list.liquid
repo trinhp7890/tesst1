@@ -1,36 +1,4 @@
-{% render 'ingredients-content--list' with
-  id: section.id,
-  section_style: section.settings.section_style,
-  alignment: section.settings.alignment,
-  overline_Squalane: section.settings.overline_Squalane,
-  title_Squalane: section.settings.title_Squalane,
-  text: section.settings.text,
-  text_max_width: section.settings.text_max_width,
-  link_Squalane: section.settings.link_Squalane,
-  link_text_Squalane: section.settings.link_text_Squalane,
-  overline_sodium: section.settings.overline_sodium,
-  title_sodium: section.settings.title_sodium,
-  link_sodium: section.settings.link_sodium,
-  link_text_sodium: section.settings.link_text_sodium,
-  overline_seramide: section.settings.overline_seramide,
-  title_seramide: section.settings.title_seramide,
-  link_seramide: section.settings.link_seramide,
-  link_text_seramide: section.settings.link_text_seramide,
-  overline_pure: section.settings.overline_pure,
-  title_pure: section.settings.title_pure,
-  link_pure: section.settings.link_pure,
-  link_text_pure: section.settings.link_text_pure,
-  overline_colloidal: section.settings.overline_colloidal,
-  title_colloidal: section.settings.title_colloidal,
-  link_colloidal: section.settings.link_colloidal,
-  link_text_colloidal: section.settings.link_text_colloidal,
-  overline_linoleic: section.settings.overline_linoleic,
-  title_linoleic: section.settings.title_linoleic,
-  link_linoleic: section.settings.link_linoleic,
-  link_text_linoleic: section.settings.link_text_linoleic,
-  
-  enabled: true
-%}
+{% render 'ingredients-content--list' with id, id: section.id, section_style: section.settings.section_style, alignment: section.settings.alignment, overline_Squalane: section.settings.overline_Squalane, title_Squalane: section.settings.title_Squalane, text: section.settings.text, text_max_width: section.settings.text_max_width, link_Squalane: section.settings.link_Squalane, link_text_Squalane: section.settings.link_text_Squalane, overline_sodium: section.settings.overline_sodium, title_sodium: section.settings.title_sodium, link_sodium: section.settings.link_sodium, link_text_sodium: section.settings.link_text_sodium, overline_seramide: section.settings.overline_seramide, title_seramide: section.settings.title_seramide, link_seramide: section.settings.link_seramide, link_text_seramide: section.settings.link_text_seramide, overline_pure: section.settings.overline_pure, title_pure: section.settings.title_pure, link_pure: section.settings.link_pure, link_text_pure: section.settings.link_text_pure, overline_colloidal: section.settings.overline_colloidal, title_colloidal: section.settings.title_colloidal, link_colloidal: section.settings.link_colloidal, link_text_colloidal: section.settings.link_text_colloidal, overline_linoleic: section.settings.overline_linoleic, title_linoleic: section.settings.title_linoleic, link_linoleic: section.settings.link_linoleic, link_text_linoleic: section.settings.link_text_linoleic, enabled: true %}
 
 {% schema %}
   {
@@ -238,4 +206,44 @@
         "category": "Text"
     }]
   }
-{% endschema %}
+{% endschema %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'ingredients-content--list' with\n  id: section.id,\n  section_style:
+    section.settings.section_style,\n  alignment: section.settings.alignment,\n  overline_Squalane:
+    section.settings.overline_Squalane,\n  title_Squalane: section.settings.title_Squalane,\n
+    \ text: section.settings.text,\n  text_max_width: section.settings.text_max_width,\n
+    \ link_Squalane: section.settings.link_Squalane,\n  link_text_Squalane: section.settings.link_text_Squalane,\n
+    \ overline_sodium: section.settings.overline_sodium,\n  title_sodium: section.settings.title_sodium,\n
+    \ link_sodium: section.settings.link_sodium,\n  link_text_sodium: section.settings.link_text_sodium,\n
+    \ overline_seramide: section.settings.overline_seramide,\n  title_seramide: section.settings.title_seramide,\n
+    \ link_seramide: section.settings.link_seramide,\n  link_text_seramide: section.settings.link_text_seramide,\n
+    \ overline_pure: section.settings.overline_pure,\n  title_pure: section.settings.title_pure,\n
+    \ link_pure: section.settings.link_pure,\n  link_text_pure: section.settings.link_text_pure,\n
+    \ overline_colloidal: section.settings.overline_colloidal,\n  title_colloidal:
+    section.settings.title_colloidal,\n  link_colloidal: section.settings.link_colloidal,\n
+    \ link_text_colloidal: section.settings.link_text_colloidal,\n  overline_linoleic:
+    section.settings.overline_linoleic,\n  title_linoleic: section.settings.title_linoleic,\n
+    \ link_linoleic: section.settings.link_linoleic,\n  link_text_linoleic: section.settings.link_text_linoleic,\n
+    \ \n  enabled: true\n%}"
+  to: "{% render 'ingredients-content--list' with id, id: section.id, section_style:
+    section.settings.section_style, alignment: section.settings.alignment, overline_Squalane:
+    section.settings.overline_Squalane, title_Squalane: section.settings.title_Squalane,
+    text: section.settings.text, text_max_width: section.settings.text_max_width,
+    link_Squalane: section.settings.link_Squalane, link_text_Squalane: section.settings.link_text_Squalane,
+    overline_sodium: section.settings.overline_sodium, title_sodium: section.settings.title_sodium,
+    link_sodium: section.settings.link_sodium, link_text_sodium: section.settings.link_text_sodium,
+    overline_seramide: section.settings.overline_seramide, title_seramide: section.settings.title_seramide,
+    link_seramide: section.settings.link_seramide, link_text_seramide: section.settings.link_text_seramide,
+    overline_pure: section.settings.overline_pure, title_pure: section.settings.title_pure,
+    link_pure: section.settings.link_pure, link_text_pure: section.settings.link_text_pure,
+    overline_colloidal: section.settings.overline_colloidal, title_colloidal: section.settings.title_colloidal,
+    link_colloidal: section.settings.link_colloidal, link_text_colloidal: section.settings.link_text_colloidal,
+    overline_linoleic: section.settings.overline_linoleic, title_linoleic: section.settings.title_linoleic,
+    link_linoleic: section.settings.link_linoleic, link_text_linoleic: section.settings.link_text_linoleic,
+    enabled: true %}"
+  position: 0..1451
+{%- endcomment -%}

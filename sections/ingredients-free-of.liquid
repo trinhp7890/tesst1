@@ -1,7 +1,4 @@
-{% render 'ingredients-content-free-of' with
-  layout: section.settings.layout
-  show_rss: section.settings.show_rss
-%}
+{% render 'ingredients-content-free-of' with layout, layout: section.settings.layout, show_rss: section.settings.show_rss %}
 
 {% schema %}
   {
@@ -31,4 +28,18 @@
       }
     ]
   }
-{% endschema %}
+{% endschema %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'ingredients-content-free-of' with
+      layout: section.settings.layout
+      show_rss: section.settings.show_rss
+    %}
+  to: "{% render 'ingredients-content-free-of' with layout, layout: section.settings.layout,
+    show_rss: section.settings.show_rss %}"
+  position: 0..124
+{%- endcomment -%}

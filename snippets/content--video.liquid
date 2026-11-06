@@ -14,17 +14,7 @@
   data-component="video"
   class="section video {{ modifiers }}"
 >
-  {% render 'text-block' with
-    id: id,
-    modifiers: 'mb5 animation__staggered-children-fade-in',
-    heading_alignment: heading_alignment,
-    overline: overline,
-    heading: heading,
-    subheading: subheading,
-    text_max_width: text_max_width,
-    link: link,
-    link_text: link_text
-  %}
+  {% render 'text-block' with id, id: id, modifiers: 'mb5 animation__staggered-children-fade-in', heading_alignment: heading_alignment, overline: overline, heading: heading, subheading: subheading, text_max_width: text_max_width, link: link, link_text: link_text %}
 
   <div class="video__wrapper">
     <div class="video__overlay{% unless image == blank %} visible{% endunless %}">
@@ -61,4 +51,26 @@
     {% endif %}
 
   </div>
-</section>
+</section>{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'text-block' with
+        id: id,
+        modifiers: 'mb5 animation__staggered-children-fade-in',
+        heading_alignment: heading_alignment,
+        overline: overline,
+        heading: heading,
+        subheading: subheading,
+        text_max_width: text_max_width,
+        link: link,
+        link_text: link_text
+      %}
+  to: "{% render 'text-block' with id, id: id, modifiers: 'mb5 animation__staggered-children-fade-in',
+    heading_alignment: heading_alignment, overline: overline, heading: heading, subheading:
+    subheading, text_max_width: text_max_width, link: link, link_text: link_text %}"
+  position: 443..706
+{%- endcomment -%}

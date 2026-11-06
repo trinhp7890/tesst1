@@ -1,9 +1,4 @@
-{% render 'content--slideshow' with
-  id: section.id,
-  aspect_ratio: section.settings.aspect_ratio,
-  timer: section.settings.timer,
-  slides: section.blocks,
-%}
+{% render 'content--slideshow' with id, id: section.id, aspect_ratio: section.settings.aspect_ratio, timer: section.settings.timer, slides: section.blocks %}
 
 {% schema %}
   {
@@ -168,4 +163,20 @@
       }
     ]
   }
-{% endschema %}
+{% endschema %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'content--slideshow' with
+      id: section.id,
+      aspect_ratio: section.settings.aspect_ratio,
+      timer: section.settings.timer,
+      slides: section.blocks,
+    %}
+  to: "{% render 'content--slideshow' with id, id: section.id, aspect_ratio: section.settings.aspect_ratio,
+    timer: section.settings.timer, slides: section.blocks %}"
+  position: 0..157
+{%- endcomment -%}

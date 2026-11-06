@@ -1,14 +1,4 @@
-{% render 'pages--ingredients' with
-  id: section.id,
-  section_style: section.settings.section_style,
-  alignment: section.settings.alignment,
-  overline: section.settings.overline,
-  title: section.settings.title,
-  text: section.settings.text,
-  text_max_width: section.settings.text_max_width,
-  link: section.settings.link,
-  link_text: section.settings.link_text
-%}
+{% render 'pages--ingredients' with id, id: section.id, section_style: section.settings.section_style, alignment: section.settings.alignment, overline: section.settings.overline, title: section.settings.title, text: section.settings.text, text_max_width: section.settings.text_max_width, link: section.settings.link, link_text: section.settings.link_text %}
 {% schema %}
   {
     "name": "INGREDIENTS",
@@ -37,4 +27,27 @@
       }
     ]
   }
-{% endschema %}
+{% endschema %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'pages--ingredients' with
+      id: section.id,
+      section_style: section.settings.section_style,
+      alignment: section.settings.alignment,
+      overline: section.settings.overline,
+      title: section.settings.title,
+      text: section.settings.text,
+      text_max_width: section.settings.text_max_width,
+      link: section.settings.link,
+      link_text: section.settings.link_text
+    %}
+  to: "{% render 'pages--ingredients' with id, id: section.id, section_style: section.settings.section_style,
+    alignment: section.settings.alignment, overline: section.settings.overline, title:
+    section.settings.title, text: section.settings.text, text_max_width: section.settings.text_max_width,
+    link: section.settings.link, link_text: section.settings.link_text %}"
+  position: 0..357
+{%- endcomment -%}

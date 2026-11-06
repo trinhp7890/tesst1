@@ -1,7 +1,4 @@
-{% render 'pages--blog' with
-  layout: section.settings.layout
-  show_rss: section.settings.show_rss
-%}
+{% render 'pages--blog' with layout, layout: section.settings.layout, show_rss: section.settings.show_rss %}
 
 {% schema %}
   {
@@ -32,3 +29,18 @@
     ]
   }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'pages--blog' with
+      layout: section.settings.layout
+      show_rss: section.settings.show_rss
+    %}
+  to: "{% render 'pages--blog' with layout, layout: section.settings.layout, show_rss:
+    section.settings.show_rss %}"
+  position: 0..108
+{% endcomment %}

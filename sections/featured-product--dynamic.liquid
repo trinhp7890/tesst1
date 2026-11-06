@@ -1,15 +1,4 @@
-{% render 'content--featured-product' with
-  id: section.id,
-  section_style: section.settings.section_style,
-  product: all_products[section.settings.product],
-  show_vendor: section.settings.show_vendor,
-  show_swatches: section.settings.show_swatches,
-  show_share_buttons: section.settings.show_share_buttons,
-  show_description: section.settings.show_description,
-  show_quantity_input: section.settings.show_quantity_input,
-  enable_payment_button: section.settings.enable_payment_button,
-  enable_video_looping: section.settings.enable_video_looping,
-%}
+{% render 'content--featured-product' with id, id: section.id, section_style: section.settings.section_style, product: all_products[section.settings.product], show_vendor: section.settings.show_vendor, show_swatches: section.settings.show_swatches, show_share_buttons: section.settings.show_share_buttons, show_description: section.settings.show_description, show_quantity_input: section.settings.show_quantity_input, enable_payment_button: section.settings.enable_payment_button, enable_video_looping: section.settings.enable_video_looping %}
 
 {% schema %}
   {
@@ -98,3 +87,31 @@
     ]
   }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'content--featured-product' with
+      id: section.id,
+      section_style: section.settings.section_style,
+      product: all_products[section.settings.product],
+      show_vendor: section.settings.show_vendor,
+      show_swatches: section.settings.show_swatches,
+      show_share_buttons: section.settings.show_share_buttons,
+      show_description: section.settings.show_description,
+      show_quantity_input: section.settings.show_quantity_input,
+      enable_payment_button: section.settings.enable_payment_button,
+      enable_video_looping: section.settings.enable_video_looping,
+    %}
+  to: "{% render 'content--featured-product' with id, id: section.id, section_style:
+    section.settings.section_style, product: all_products[section.settings.product],
+    show_vendor: section.settings.show_vendor, show_swatches: section.settings.show_swatches,
+    show_share_buttons: section.settings.show_share_buttons, show_description: section.settings.show_description,
+    show_quantity_input: section.settings.show_quantity_input, enable_payment_button:
+    section.settings.enable_payment_button, enable_video_looping: section.settings.enable_video_looping
+    %}"
+  position: 0..543
+{% endcomment %}

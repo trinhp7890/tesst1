@@ -1,11 +1,4 @@
-{% render 'conten-section-services' with
-  id: section.id,
-  section_style: section.settings.section_style,
-  columns: section.settings.columns,
-  heading: section.settings.title,
-  subheading: section.settings.subheading,
-  blocks: section.blocks,
-%}
+{% render 'conten-section-services' with id, id: section.id, section_style: section.settings.section_style, columns: section.settings.columns, heading: section.settings.title, subheading: section.settings.subheading, blocks: section.blocks %}
 
 {% schema %}
   {
@@ -90,3 +83,23 @@
     ]
   }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'conten-section-services' with
+      id: section.id,
+      section_style: section.settings.section_style,
+      columns: section.settings.columns,
+      heading: section.settings.title,
+      subheading: section.settings.subheading,
+      blocks: section.blocks,
+    %}
+  to: "{% render 'conten-section-services' with id, id: section.id, section_style:
+    section.settings.section_style, columns: section.settings.columns, heading: section.settings.title,
+    subheading: section.settings.subheading, blocks: section.blocks %}"
+  position: 0..242
+{% endcomment %}

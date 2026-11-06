@@ -13,15 +13,7 @@
   class="section {{ modifiers }}"
 >
 
-  {% render 'text-block' with
-    id: id,
-    modifiers: 'mb5 animation__staggered-children-fade-in',
-    heading_alignment: heading_alignment,
-    text_max_width: text_max_width,
-    overline: overline,
-    heading: heading,
-    subheading: subheading
-  %}
+  {% render 'text-block' with id, id: id, modifiers: 'mb5 animation__staggered-children-fade-in', heading_alignment: heading_alignment, text_max_width: text_max_width, overline: overline, heading: heading, subheading: subheading %}
 
   <div class="collage">
 
@@ -62,27 +54,7 @@
             </div>
 
             {% if s.overline != blank or s.heading != blank or s.subheading != blank or s.link_text != blank %}
-              {% render 'overlay' with
-                section_id: id,
-                id: block.id
-                overlay_opacity: s.overlay_opacity,
-                overlay_color: s.overlay_color,
-
-                text_container_color: text_container_color,
-                alignment: s.alignment,
-                overline: s.overline,
-                heading: s.heading,
-                subheading: s.subheading,
-                text_color: text_color,
-                text_max_width: s.text_max_width,
-
-
-                parent_block_is_link: parent_block_is_link,
-                link: s.link,
-                link_label: s.link_text,
-                link_text_color: button_text_color
-                link_border_color: button_border_color
-              %}
+              {% render 'overlay' with section_id, section_id: id, id: block.id, overlay_opacity: s.overlay_opacity, overlay_color: s.overlay_color, text_container_color: text_container_color, alignment: s.alignment, overline: s.overline, heading: s.heading, subheading: s.subheading, text_color: text_color, text_max_width: s.text_max_width, parent_block_is_link: parent_block_is_link, link: s.link, link_label: s.link_text, link_text_color: button_text_color, link_border_color: button_border_color %}
             {% endif %}
           </div>
 
@@ -106,4 +78,53 @@
     {% endfor %}
 
   </div>
-</section>
+</section>{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'text-block' with
+        id: id,
+        modifiers: 'mb5 animation__staggered-children-fade-in',
+        heading_alignment: heading_alignment,
+        text_max_width: text_max_width,
+        overline: overline,
+        heading: heading,
+        subheading: subheading
+      %}
+  to: "{% render 'text-block' with id, id: id, modifiers: 'mb5 animation__staggered-children-fade-in',
+    heading_alignment: heading_alignment, text_max_width: text_max_width, overline:
+    overline, heading: heading, subheading: subheading %}"
+  position: 395..624
+- from: |-
+    {% render 'overlay' with
+                    section_id: id,
+                    id: block.id
+                    overlay_opacity: s.overlay_opacity,
+                    overlay_color: s.overlay_color,
+
+                    text_container_color: text_container_color,
+                    alignment: s.alignment,
+                    overline: s.overline,
+                    heading: s.heading,
+                    subheading: s.subheading,
+                    text_color: text_color,
+                    text_max_width: s.text_max_width,
+
+
+                    parent_block_is_link: parent_block_is_link,
+                    link: s.link,
+                    link_label: s.link_text,
+                    link_text_color: button_text_color
+                    link_border_color: button_border_color
+                  %}
+  to: "{% render 'overlay' with section_id, section_id: id, id: block.id, overlay_opacity:
+    s.overlay_opacity, overlay_color: s.overlay_color, text_container_color: text_container_color,
+    alignment: s.alignment, overline: s.overline, heading: s.heading, subheading:
+    s.subheading, text_color: text_color, text_max_width: s.text_max_width, parent_block_is_link:
+    parent_block_is_link, link: s.link, link_label: s.link_text, link_text_color:
+    button_text_color, link_border_color: button_border_color %}"
+  position: 2333..2822
+{%- endcomment -%}

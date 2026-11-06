@@ -38,17 +38,7 @@
   data-section-type="collection-list-grid"
   class="section collection-list-grid{{ modifiers }}"
 >
-  {% render 'text-block' with
-    id: id,
-    modifiers: 'mb5 animation__staggered-children-fade-in',
-    heading_alignment: heading_alignment,
-    text_max_width: text_max_width,
-    overline: overline,
-    heading: heading,
-    subheading: subheading,
-    link: featured_collection.url,
-    link_text: link_text
-  %}
+  {% render 'text-block' with id, id: id, modifiers: 'mb5 animation__staggered-children-fade-in', heading_alignment: heading_alignment, text_max_width: text_max_width, overline: overline, heading: heading, subheading: subheading, link: featured_collection.url, link_text: link_text %}
 
   <div class="grid-display{{ grid_modifiers }}">
       {% if blocks.size > 0 %}
@@ -63,10 +53,7 @@
 
               {% unless image_object == blank %}
                 <div class="collection-list-grid__image grid-display__image">
-                  {% render 'image' with
-                    image: image_object,
-                    disable_style: includes_aspect_ratio
-                  %}
+                  {% render 'image' with image, image: image_object, disable_style: includes_aspect_ratio %}
                 </div>
               {% endunless %}
 
@@ -104,3 +91,35 @@
       {% endif %}
   </div>
 </section>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'text-block' with
+        id: id,
+        modifiers: 'mb5 animation__staggered-children-fade-in',
+        heading_alignment: heading_alignment,
+        text_max_width: text_max_width,
+        overline: overline,
+        heading: heading,
+        subheading: subheading,
+        link: featured_collection.url,
+        link_text: link_text
+      %}
+  to: "{% render 'text-block' with id, id: id, modifiers: 'mb5 animation__staggered-children-fade-in',
+    heading_alignment: heading_alignment, text_max_width: text_max_width, overline:
+    overline, heading: heading, subheading: subheading, link: featured_collection.url,
+    link_text: link_text %}"
+  position: 1255..1537
+- from: |-
+    {% render 'image' with
+                        image: image_object,
+                        disable_style: includes_aspect_ratio
+                      %}
+  to: "{% render 'image' with image, image: image_object, disable_style: includes_aspect_ratio
+    %}"
+  position: 2182..2272
+{% endcomment %}

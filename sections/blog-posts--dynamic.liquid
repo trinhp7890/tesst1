@@ -1,15 +1,4 @@
-{% include 'content--blog-posts' with
-  id: section.id,
-  section_style: section.settings.section_style,
-
-  columns: section.settings.columns,
-  aspect_ratio: section.settings.aspect_ratio,
-  overline: section.settings.title,
-  link_text: section.settings.link_text,
-  text_max_width: section.settings.text_max_width,
-
-  blocks: section.blocks,
-%}
+{% include 'content--blog-posts' with id, id: section.id, section_style: section.settings.section_style, columns: section.settings.columns, aspect_ratio: section.settings.aspect_ratio, overline: section.settings.title, link_text: section.settings.link_text, text_max_width: section.settings.text_max_width, blocks: section.blocks %}
 
 {% schema %}
   {
@@ -105,3 +94,28 @@
     ]
   }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% include 'content--blog-posts' with
+      id: section.id,
+      section_style: section.settings.section_style,
+
+      columns: section.settings.columns,
+      aspect_ratio: section.settings.aspect_ratio,
+      overline: section.settings.title,
+      link_text: section.settings.link_text,
+      text_max_width: section.settings.text_max_width,
+
+      blocks: section.blocks,
+    %}
+  to: "{% include 'content--blog-posts' with id, id: section.id, section_style: section.settings.section_style,
+    columns: section.settings.columns, aspect_ratio: section.settings.aspect_ratio,
+    overline: section.settings.title, link_text: section.settings.link_text, text_max_width:
+    section.settings.text_max_width, blocks: section.blocks %}"
+  position: 0..332
+{% endcomment %}

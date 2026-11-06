@@ -1,9 +1,4 @@
-{% render 'content--static-accordion' with
-  id: section.id,
-  enabled: true,
-  heading: section.settings.title,
-  text: section.settings.text,
-%}
+{% render 'content--static-accordion' with id, id: section.id, enabled: true, heading: section.settings.title, text: section.settings.text %}
 
 {% schema %}
   {
@@ -30,3 +25,20 @@
     ]
   }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'content--static-accordion' with
+      id: section.id,
+      enabled: true,
+      heading: section.settings.title,
+      text: section.settings.text,
+    %}
+  to: "{% render 'content--static-accordion' with id, id: section.id, enabled: true,
+    heading: section.settings.title, text: section.settings.text %}"
+  position: 0..141
+{% endcomment %}

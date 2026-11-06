@@ -41,7 +41,7 @@
         {% for block in blocks %}
           <div class="gallery-grid__image grid-display__image">
             {% if block.settings.image != blank %}
-              {% render 'image' with image: block.settings.image %}
+              {% render 'image' with image, image: block.settings.image %}
             {% else %}
               {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
             {% endif %}
@@ -65,4 +65,13 @@
       </div>
     {%- endunless -%}
   </section>
-{% endif %}
+{% endif %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'image' with image: block.settings.image %}"
+  to: "{% render 'image' with image, image: block.settings.image %}"
+  position: 1382..1442
+{%- endcomment -%}

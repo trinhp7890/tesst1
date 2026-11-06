@@ -1,25 +1,4 @@
-{% render 'pages--collection' with
-  id: section.id,
-  show_collection_image: section.settings.show_collection_image,
-  show_heading: section.settings.show_heading,
-  overlay_opacity: section.settings.overlay_opacity,
-  overlay_color: section.settings.overlay_color,
-  text_color: section.settings.text_color,
-  show_description: section.settings.show_description,
-  show_border: section.settings.show_border,
-  heading_alignment: section.settings.heading_alignment,
-  text_max_width: section.settings.text_max_width,
-  show_small_heading: section.settings.show_small_heading,
-  show_swatches: section.settings.show_swatches,
-  products_per_row: section.settings.products_per_row,
-  per_page: section.settings.per_page,
-  pagination: section.settings.pagination,
-  aspect_ratio: section.settings.aspect_ratio,
-  show_filters: section.settings.show_filters,
-  show_sort: section.settings.show_sort,
-  filter_style: section.settings.filter_style,
-  filter_type: section.settings.filter_type,
-%}
+{% render 'pages--collection' with id, id: section.id, show_collection_image: section.settings.show_collection_image, show_heading: section.settings.show_heading, overlay_opacity: section.settings.overlay_opacity, overlay_color: section.settings.overlay_color, text_color: section.settings.text_color, show_description: section.settings.show_description, show_border: section.settings.show_border, heading_alignment: section.settings.heading_alignment, text_max_width: section.settings.text_max_width, show_small_heading: section.settings.show_small_heading, show_swatches: section.settings.show_swatches, products_per_row: section.settings.products_per_row, per_page: section.settings.per_page, pagination: section.settings.pagination, aspect_ratio: section.settings.aspect_ratio, show_filters: section.settings.show_filters, show_sort: section.settings.show_sort, filter_style: section.settings.filter_style, filter_type: section.settings.filter_type %}
 
 {% schema %}
   {
@@ -213,4 +192,45 @@
       }
     ]
   }
-{% endschema %}
+{% endschema %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'pages--collection' with
+      id: section.id,
+      show_collection_image: section.settings.show_collection_image,
+      show_heading: section.settings.show_heading,
+      overlay_opacity: section.settings.overlay_opacity,
+      overlay_color: section.settings.overlay_color,
+      text_color: section.settings.text_color,
+      show_description: section.settings.show_description,
+      show_border: section.settings.show_border,
+      heading_alignment: section.settings.heading_alignment,
+      text_max_width: section.settings.text_max_width,
+      show_small_heading: section.settings.show_small_heading,
+      show_swatches: section.settings.show_swatches,
+      products_per_row: section.settings.products_per_row,
+      per_page: section.settings.per_page,
+      pagination: section.settings.pagination,
+      aspect_ratio: section.settings.aspect_ratio,
+      show_filters: section.settings.show_filters,
+      show_sort: section.settings.show_sort,
+      filter_style: section.settings.filter_style,
+      filter_type: section.settings.filter_type,
+    %}
+  to: "{% render 'pages--collection' with id, id: section.id, show_collection_image:
+    section.settings.show_collection_image, show_heading: section.settings.show_heading,
+    overlay_opacity: section.settings.overlay_opacity, overlay_color: section.settings.overlay_color,
+    text_color: section.settings.text_color, show_description: section.settings.show_description,
+    show_border: section.settings.show_border, heading_alignment: section.settings.heading_alignment,
+    text_max_width: section.settings.text_max_width, show_small_heading: section.settings.show_small_heading,
+    show_swatches: section.settings.show_swatches, products_per_row: section.settings.products_per_row,
+    per_page: section.settings.per_page, pagination: section.settings.pagination,
+    aspect_ratio: section.settings.aspect_ratio, show_filters: section.settings.show_filters,
+    show_sort: section.settings.show_sort, filter_style: section.settings.filter_style,
+    filter_type: section.settings.filter_type %}"
+  position: 0..955
+{%- endcomment -%}

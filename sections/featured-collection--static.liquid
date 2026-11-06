@@ -1,19 +1,5 @@
 {% if section.settings.enabled %}
-  {% include 'content--featured-collection' with
-    id: section.id,
-
-    section_style: "default",
-    text_position: section.settings.text_position,
-
-    featured_collection: collections[section.settings.collection],
-    columns: section.settings.columns,
-    aspect_ratio: section.settings.aspect_ratio,
-    overline: section.settings.overline,
-    heading: section.settings.title,
-    subheading: section.settings.subheading,
-    text_max_width: section.settings.text_max_width,
-    link_text: section.settings.link_text,
-  %}
+  {% include 'content--featured-collection' with id, id: section.id, section_style: "default", text_position: section.settings.text_position, featured_collection: collections[section.settings.collection], columns: section.settings.columns, aspect_ratio: section.settings.aspect_ratio, overline: section.settings.overline, heading: section.settings.title, subheading: section.settings.subheading, text_max_width: section.settings.text_max_width, link_text: section.settings.link_text %}
 {% endif %}
 
 {% schema %}
@@ -110,3 +96,33 @@
     ]
   }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% include 'content--featured-collection' with
+        id: section.id,
+
+        section_style: "default",
+        text_position: section.settings.text_position,
+
+        featured_collection: collections[section.settings.collection],
+        columns: section.settings.columns,
+        aspect_ratio: section.settings.aspect_ratio,
+        overline: section.settings.overline,
+        heading: section.settings.title,
+        subheading: section.settings.subheading,
+        text_max_width: section.settings.text_max_width,
+        link_text: section.settings.link_text,
+      %}
+  to: '{% include ''content--featured-collection'' with id, id: section.id, section_style:
+    "default", text_position: section.settings.text_position, featured_collection:
+    collections[section.settings.collection], columns: section.settings.columns, aspect_ratio:
+    section.settings.aspect_ratio, overline: section.settings.overline, heading: section.settings.title,
+    subheading: section.settings.subheading, text_max_width: section.settings.text_max_width,
+    link_text: section.settings.link_text %}'
+  position: 36..519
+{% endcomment %}

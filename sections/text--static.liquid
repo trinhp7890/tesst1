@@ -1,9 +1,4 @@
-{% render 'content--static-text' with
-  id: section.id,
-  enabled: section.settings.enabled,
-  heading: section.settings.title,
-  text: section.settings.text,
-%}
+{% render 'content--static-text' with id, id: section.id, enabled: section.settings.enabled, heading: section.settings.title, text: section.settings.text %}
 
 {% schema %}
   {
@@ -30,3 +25,20 @@
     ]
   }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'content--static-text' with
+      id: section.id,
+      enabled: section.settings.enabled,
+      heading: section.settings.title,
+      text: section.settings.text,
+    %}
+  to: "{% render 'content--static-text' with id, id: section.id, enabled: section.settings.enabled,
+    heading: section.settings.title, text: section.settings.text %}"
+  position: 0..156
+{% endcomment %}

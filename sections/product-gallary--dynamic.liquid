@@ -1,20 +1,4 @@
-{% include 'content--product-gallery' with
-  id: section.id,
-
-  section_style: section.settings.section_style,
-  text_position: section.settings.text_position,
-
-  columns: section.settings.columns,
-  aspect_ratio: section.settings.aspect_ratio,
-  overline: section.settings.overline,
-  heading: section.settings.title,
-  subheading: section.settings.subheading,
-  text_max_width: section.settings.text_max_width,
-  link: section.settings.link,
-  link_text: section.settings.link_text,
-
-  blocks: section.blocks
-%}
+{% include 'content--product-gallery' with id, id: section.id, section_style: section.settings.section_style, text_position: section.settings.text_position, columns: section.settings.columns, aspect_ratio: section.settings.aspect_ratio, overline: section.settings.overline, heading: section.settings.title, subheading: section.settings.subheading, text_max_width: section.settings.text_max_width, link: section.settings.link, link_text: section.settings.link_text, blocks: section.blocks %}
 {% schema %}
   {
     "name": "Gallary of Products",
@@ -160,3 +144,36 @@
 
 {% javascript %}
 {% endjavascript %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% include 'content--product-gallery' with
+      id: section.id,
+
+      section_style: section.settings.section_style,
+      text_position: section.settings.text_position,
+
+      columns: section.settings.columns,
+      aspect_ratio: section.settings.aspect_ratio,
+      overline: section.settings.overline,
+      heading: section.settings.title,
+      subheading: section.settings.subheading,
+      text_max_width: section.settings.text_max_width,
+      link: section.settings.link,
+      link_text: section.settings.link_text,
+
+      blocks: section.blocks
+    %}
+  to: "{% include 'content--product-gallery' with id, id: section.id, section_style:
+    section.settings.section_style, text_position: section.settings.text_position,
+    columns: section.settings.columns, aspect_ratio: section.settings.aspect_ratio,
+    overline: section.settings.overline, heading: section.settings.title, subheading:
+    section.settings.subheading, text_max_width: section.settings.text_max_width,
+    link: section.settings.link, link_text: section.settings.link_text, blocks: section.blocks
+    %}"
+  position: 0..490
+{% endcomment %}

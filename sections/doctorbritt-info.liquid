@@ -1,10 +1,5 @@
 
-{% render 'doctorbritt-info--content' with
-id: section.id,
-enabled: section.settings.enabled,
-title: section.settings.title,
-text: section.settings.text,
-%}
+{% render 'doctorbritt-info--content' with id, id: section.id, enabled: section.settings.enabled, title: section.settings.title, text: section.settings.text %}
 
 {% schema %}
 {
@@ -23,4 +18,20 @@ text: section.settings.text,
     }
   ]
 }
-{% endschema %}
+{% endschema %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'doctorbritt-info--content' with
+    id: section.id,
+    enabled: section.settings.enabled,
+    title: section.settings.title,
+    text: section.settings.text,
+    %}
+  to: "{% render 'doctorbritt-info--content' with id, id: section.id, enabled: section.settings.enabled,
+    title: section.settings.title, text: section.settings.text %}"
+  position: 1..160
+{%- endcomment -%}

@@ -1,18 +1,4 @@
-{% render 'content--collage' with
-  id: section.id,
-  section_style: section.settings.section_style,
-  enable_animation: section.settings.enable_animation,
-  heading_alignment: section.settings.heading_alignment,
-  overline: section.settings.overline,
-  heading: section.settings.title,
-  subheading: section.settings.subheading,
-  text_max_width: section.settings.text_max_width,
-  text_color: section.settings.text_color,
-  text_container_color: section.settings.text_container_color,
-  button_text_color: section.settings.button_text_color,
-  button_border_color: section.settings.button_border_color,
-  blocks: section.blocks
-%}
+{% render 'content--collage' with id, id: section.id, section_style: section.settings.section_style, enable_animation: section.settings.enable_animation, heading_alignment: section.settings.heading_alignment, overline: section.settings.overline, heading: section.settings.title, subheading: section.settings.subheading, text_max_width: section.settings.text_max_width, text_color: section.settings.text_color, text_container_color: section.settings.text_container_color, button_text_color: section.settings.button_text_color, button_border_color: section.settings.button_border_color, blocks: section.blocks %}
 
 {% schema %}
   {
@@ -270,4 +256,34 @@
       }
     ]
   }
-{% endschema %}
+{% endschema %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'content--collage' with
+      id: section.id,
+      section_style: section.settings.section_style,
+      enable_animation: section.settings.enable_animation,
+      heading_alignment: section.settings.heading_alignment,
+      overline: section.settings.overline,
+      heading: section.settings.title,
+      subheading: section.settings.subheading,
+      text_max_width: section.settings.text_max_width,
+      text_color: section.settings.text_color,
+      text_container_color: section.settings.text_container_color,
+      button_text_color: section.settings.button_text_color,
+      button_border_color: section.settings.button_border_color,
+      blocks: section.blocks
+    %}
+  to: "{% render 'content--collage' with id, id: section.id, section_style: section.settings.section_style,
+    enable_animation: section.settings.enable_animation, heading_alignment: section.settings.heading_alignment,
+    overline: section.settings.overline, heading: section.settings.title, subheading:
+    section.settings.subheading, text_max_width: section.settings.text_max_width,
+    text_color: section.settings.text_color, text_container_color: section.settings.text_container_color,
+    button_text_color: section.settings.button_text_color, button_border_color: section.settings.button_border_color,
+    blocks: section.blocks %}"
+  position: 0..610
+{%- endcomment -%}

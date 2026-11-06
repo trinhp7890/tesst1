@@ -1,17 +1,4 @@
-{% include 'content--collection-list' with
-  id: section.id,
-
-  section_style: section.settings.section_style,
-  text_position: section.settings.text_position,
-
-  columns: section.settings.columns,
-  aspect_ratio: section.settings.aspect_ratio,
-  overline: section.settings.overline,
-  heading: section.settings.title,
-  subheading: section.settings.subheading,
-  text_max_width: section.settings.text_max_width,
-  blocks: section.blocks
-%}
+{% include 'content--collection-list' with id, id: section.id, section_style: section.settings.section_style, text_position: section.settings.text_position, columns: section.settings.columns, aspect_ratio: section.settings.aspect_ratio, overline: section.settings.overline, heading: section.settings.title, subheading: section.settings.subheading, text_max_width: section.settings.text_max_width, blocks: section.blocks %}
 
 {% schema %}
   {
@@ -125,3 +112,32 @@
     ]
   }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% include 'content--collection-list' with
+      id: section.id,
+
+      section_style: section.settings.section_style,
+      text_position: section.settings.text_position,
+
+      columns: section.settings.columns,
+      aspect_ratio: section.settings.aspect_ratio,
+      overline: section.settings.overline,
+      heading: section.settings.title,
+      subheading: section.settings.subheading,
+      text_max_width: section.settings.text_max_width,
+      blocks: section.blocks
+    %}
+  to: "{% include 'content--collection-list' with id, id: section.id, section_style:
+    section.settings.section_style, text_position: section.settings.text_position,
+    columns: section.settings.columns, aspect_ratio: section.settings.aspect_ratio,
+    overline: section.settings.overline, heading: section.settings.title, subheading:
+    section.settings.subheading, text_max_width: section.settings.text_max_width,
+    blocks: section.blocks %}"
+  position: 0..422
+{% endcomment %}

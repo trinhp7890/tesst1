@@ -34,15 +34,7 @@
                   {% assign url = url[1] %}
                 {% endif %}
 
-                {% render 'filter-item' with
-                  type: 'checkbox',
-                  label: label,
-                  active: is_active,
-                  url: url,
-
-                  key: 'tag',
-                  val: tag
-                %}
+                {% render 'filter-item' with type, type: 'checkbox', label: label, active: is_active, url: url, key: 'tag', val: tag %}
               {% endif %}
             {% endfor %}
           </ul>
@@ -89,15 +81,7 @@
               {% assign url = url[1] %}
             {% endif %}
 
-            {% render 'filter-item' with
-              type: 'checkbox',
-              label: tag_text,
-              active: is_active,
-              url: url,
-
-              key: 'tag',
-              val: tag
-            %}
+            {% render 'filter-item' with type, type: 'checkbox', label: tag_text, active: is_active, url: url, key: 'tag', val: tag %}
           {% endfor %}
         </ul>
       </div>
@@ -121,15 +105,7 @@
           {%- if option.value == collection.sort_by -%}
             {%- assign is_active = true -%}
           {%- endif -%}
-          {% render 'filter-item' with
-            label: option.name,
-            type: 'radio',
-            active: is_active,
-            url: '#',
-
-            key: 'sort',
-            val: option.value
-          %}
+          {% render 'filter-item' with label, label: option.name, type: 'radio', active: is_active, url: '#', key: 'sort', val: option.value %}
         {% endfor %}
       </ul>
     </div>
@@ -138,3 +114,49 @@
 {% endif %}
 
 <div class="collection-flyout__wash" data-filter-wash></div>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'filter-item' with
+                      type: 'checkbox',
+                      label: label,
+                      active: is_active,
+                      url: url,
+
+                      key: 'tag',
+                      val: tag
+                    %}
+  to: "{% render 'filter-item' with type, type: 'checkbox', label: label, active:
+    is_active, url: url, key: 'tag', val: tag %}"
+  position: 1555..1674
+- from: |-
+    {% render 'filter-item' with
+                  type: 'checkbox',
+                  label: tag_text,
+                  active: is_active,
+                  url: url,
+
+                  key: 'tag',
+                  val: tag
+                %}
+  to: "{% render 'filter-item' with type, type: 'checkbox', label: tag_text, active:
+    is_active, url: url, key: 'tag', val: tag %}"
+  position: 3280..3402
+- from: |-
+    {% render 'filter-item' with
+                label: option.name,
+                type: 'radio',
+                active: is_active,
+                url: '#',
+
+                key: 'sort',
+                val: option.value
+              %}
+  to: "{% render 'filter-item' with label, label: option.name, type: 'radio', active:
+    is_active, url: '#', key: 'sort', val: option.value %}"
+  position: 4140..4273
+{% endcomment %}

@@ -1,11 +1,4 @@
-{% render 'pages--product' with
-  show_vendor: section.settings.show_vendor,
-  show_swatches: section.settings.show_swatches,
-  show_quantity_input: section.settings.show_quantity_input,
-  show_share_buttons: section.settings.show_share_buttons,
-  enable_payment_button: section.settings.enable_payment_button,
-  enable_video_looping: section.settings.enable_video_looping,
-%}
+{% render 'pages--product' with show_vendor, show_vendor: section.settings.show_vendor, show_swatches: section.settings.show_swatches, show_quantity_input: section.settings.show_quantity_input, show_share_buttons: section.settings.show_share_buttons, enable_payment_button: section.settings.enable_payment_button, enable_video_looping: section.settings.enable_video_looping %}
 
 {% schema %}
   {
@@ -58,4 +51,25 @@
       }
     ]
   }
-{% endschema %}
+{% endschema %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'pages--product' with
+      show_vendor: section.settings.show_vendor,
+      show_swatches: section.settings.show_swatches,
+      show_quantity_input: section.settings.show_quantity_input,
+      show_share_buttons: section.settings.show_share_buttons,
+      enable_payment_button: section.settings.enable_payment_button,
+      enable_video_looping: section.settings.enable_video_looping,
+    %}
+  to: "{% render 'pages--product' with show_vendor, show_vendor: section.settings.show_vendor,
+    show_swatches: section.settings.show_swatches, show_quantity_input: section.settings.show_quantity_input,
+    show_share_buttons: section.settings.show_share_buttons, enable_payment_button:
+    section.settings.enable_payment_button, enable_video_looping: section.settings.enable_video_looping
+    %}"
+  position: 0..376
+{%- endcomment -%}

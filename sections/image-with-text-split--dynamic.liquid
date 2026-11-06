@@ -1,22 +1,4 @@
-{% include 'content--image-with-text-split' with
-  id: section.id,
-
-  feature_background_color: section.settings.background_color,
-  feature_image: section.settings.feature_image,
-  feature_link: section.settings.feature_link,
-  feature_description: section.settings.feature_description,
-  feature_text_color: section.settings.feature_text_color,
-  feature_alignment: section.settings.feature_alignment,
-
-  overlay_image: section.settings.overlay_image,
-  image_text: section.settings.image_text,
-  link: section.settings.link,
-  detail_alignment: section.settings.detail_alignment,
-  text_color: section.settings.text_color,
-  text_max_width: section.settings.text_max_width,
-  gradient_color: section.settings.gradient_color,
-  gradient_length: section.settings.gradient_length,
-%}
+{% include 'content--image-with-text-split' with id, id: section.id, feature_background_color: section.settings.background_color, feature_image: section.settings.feature_image, feature_link: section.settings.feature_link, feature_description: section.settings.feature_description, feature_text_color: section.settings.feature_text_color, feature_alignment: section.settings.feature_alignment, overlay_image: section.settings.overlay_image, image_text: section.settings.image_text, link: section.settings.link, detail_alignment: section.settings.detail_alignment, text_color: section.settings.text_color, text_max_width: section.settings.text_max_width, gradient_color: section.settings.gradient_color, gradient_length: section.settings.gradient_length %}
 
 {% schema %}
   {
@@ -141,4 +123,40 @@
       }
     ]
   }
-{% endschema %}
+{% endschema %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% include 'content--image-with-text-split' with
+      id: section.id,
+
+      feature_background_color: section.settings.background_color,
+      feature_image: section.settings.feature_image,
+      feature_link: section.settings.feature_link,
+      feature_description: section.settings.feature_description,
+      feature_text_color: section.settings.feature_text_color,
+      feature_alignment: section.settings.feature_alignment,
+
+      overlay_image: section.settings.overlay_image,
+      image_text: section.settings.image_text,
+      link: section.settings.link,
+      detail_alignment: section.settings.detail_alignment,
+      text_color: section.settings.text_color,
+      text_max_width: section.settings.text_max_width,
+      gradient_color: section.settings.gradient_color,
+      gradient_length: section.settings.gradient_length,
+    %}
+  to: "{% include 'content--image-with-text-split' with id, id: section.id, feature_background_color:
+    section.settings.background_color, feature_image: section.settings.feature_image,
+    feature_link: section.settings.feature_link, feature_description: section.settings.feature_description,
+    feature_text_color: section.settings.feature_text_color, feature_alignment: section.settings.feature_alignment,
+    overlay_image: section.settings.overlay_image, image_text: section.settings.image_text,
+    link: section.settings.link, detail_alignment: section.settings.detail_alignment,
+    text_color: section.settings.text_color, text_max_width: section.settings.text_max_width,
+    gradient_color: section.settings.gradient_color, gradient_length: section.settings.gradient_length
+    %}"
+  position: 0..754
+{%- endcomment -%}

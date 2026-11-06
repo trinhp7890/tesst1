@@ -1,21 +1,4 @@
-{% render 'content--slideshow-split' with
-  id: section.id,
-  timer: section.settings.timer,
-
-  overline: section.settings.overline,
-  title: section.settings.title,
-  subheading: section.settings.subheading,
-  link: section.settings.link,
-  link_text: section.settings.link_text,
-
-  overlay_opacity: section.settings.overlay_opacity,
-  overlay_color: section.settings.overlay_color,
-  text_color: section.settings.text_color,
-  text_max_width: section.settings.text_max_width,
-  horizontal_text_position: section.settings.horizontal_text_position,
-  vertical_text_position: section.settings.vertical_text_position,
-  blocks: section.blocks,
-%}
+{% render 'content--slideshow-split' with id, id: section.id, timer: section.settings.timer, overline: section.settings.overline, title: section.settings.title, subheading: section.settings.subheading, link: section.settings.link, link_text: section.settings.link_text, overlay_opacity: section.settings.overlay_opacity, overlay_color: section.settings.overlay_color, text_color: section.settings.text_color, text_max_width: section.settings.text_max_width, horizontal_text_position: section.settings.horizontal_text_position, vertical_text_position: section.settings.vertical_text_position, blocks: section.blocks %}
 
 {% schema %}
   {
@@ -162,4 +145,37 @@
       }
     ]
   }
-{% endschema %}
+{% endschema %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'content--slideshow-split' with
+      id: section.id,
+      timer: section.settings.timer,
+
+      overline: section.settings.overline,
+      title: section.settings.title,
+      subheading: section.settings.subheading,
+      link: section.settings.link,
+      link_text: section.settings.link_text,
+
+      overlay_opacity: section.settings.overlay_opacity,
+      overlay_color: section.settings.overlay_color,
+      text_color: section.settings.text_color,
+      text_max_width: section.settings.text_max_width,
+      horizontal_text_position: section.settings.horizontal_text_position,
+      vertical_text_position: section.settings.vertical_text_position,
+      blocks: section.blocks,
+    %}
+  to: "{% render 'content--slideshow-split' with id, id: section.id, timer: section.settings.timer,
+    overline: section.settings.overline, title: section.settings.title, subheading:
+    section.settings.subheading, link: section.settings.link, link_text: section.settings.link_text,
+    overlay_opacity: section.settings.overlay_opacity, overlay_color: section.settings.overlay_color,
+    text_color: section.settings.text_color, text_max_width: section.settings.text_max_width,
+    horizontal_text_position: section.settings.horizontal_text_position, vertical_text_position:
+    section.settings.vertical_text_position, blocks: section.blocks %}"
+  position: 0..617
+{%- endcomment -%}

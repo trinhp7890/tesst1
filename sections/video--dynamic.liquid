@@ -1,18 +1,4 @@
-{% render 'content--video' with
-  id: section.id,
-  section_style: section.settings.section_style,
-  heading_alignment: section.settings.heading_alignment,
-  text_max_width: section.settings.text_max_width,
-  overline: section.settings.overline,
-  heading: section.settings.title,
-  subheading: section.settings.subheading,
-  link: section.settings.link,
-  link_text: section.settings.link_text,
-  video: section.settings.video_url,
-  image: section.settings.image,
-  overlay_opacity: section.settings.overlay_opacity,
-  overlay_color: section.settings.overlay_color
-%}
+{% render 'content--video' with id, id: section.id, section_style: section.settings.section_style, heading_alignment: section.settings.heading_alignment, text_max_width: section.settings.text_max_width, overline: section.settings.overline, heading: section.settings.title, subheading: section.settings.subheading, link: section.settings.link, link_text: section.settings.link_text, video: section.settings.video_url, image: section.settings.image, overlay_opacity: section.settings.overlay_opacity, overlay_color: section.settings.overlay_color %}
 
 {% schema %}
   {
@@ -144,3 +130,34 @@
     ]
   }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'content--video' with
+      id: section.id,
+      section_style: section.settings.section_style,
+      heading_alignment: section.settings.heading_alignment,
+      text_max_width: section.settings.text_max_width,
+      overline: section.settings.overline,
+      heading: section.settings.title,
+      subheading: section.settings.subheading,
+      link: section.settings.link,
+      link_text: section.settings.link_text,
+      video: section.settings.video_url,
+      image: section.settings.image,
+      overlay_opacity: section.settings.overlay_opacity,
+      overlay_color: section.settings.overlay_color
+    %}
+  to: "{% render 'content--video' with id, id: section.id, section_style: section.settings.section_style,
+    heading_alignment: section.settings.heading_alignment, text_max_width: section.settings.text_max_width,
+    overline: section.settings.overline, heading: section.settings.title, subheading:
+    section.settings.subheading, link: section.settings.link, link_text: section.settings.link_text,
+    video: section.settings.video_url, image: section.settings.image, overlay_opacity:
+    section.settings.overlay_opacity, overlay_color: section.settings.overlay_color
+    %}"
+  position: 0..547
+{% endcomment %}

@@ -4,7 +4,7 @@
     {%- if filter_type == 'by_tag' -%}
       <div class="collection-sidebar__group" data-group="{{ 'collections.tags.title' | t }}">
         {%- assign heading = 'collections.tags.title' | t -%}
-        {% render 'collection-sidebar-heading' with heading: heading %}
+        {% render 'collection-sidebar-heading' with heading, heading: heading %}
         <ul>
         {% for tag in collection.all_tags %}
           {% assign is_in_category = false %}
@@ -33,15 +33,7 @@
             {% assign url = url[1] %}
           {% endif %}
 
-          {% render 'filter-item' with
-            type: 'checkbox',
-            label: tag_text,
-            active: is_active,
-            url: url,
-
-            key: 'tag',
-            val: tag
-          %}
+          {% render 'filter-item' with type, type: 'checkbox', label: tag_text, active: is_active, url: url, key: 'tag', val: tag %}
         {% endfor %}
         </ul>
       </div>
@@ -52,7 +44,7 @@
       {% for category in categories %}
         {%- assign heading = category -%}
         <div class="collection-sidebar__group" data-group="{{ heading }}">
-          {% render 'collection-sidebar-heading' with heading: heading %}
+          {% render 'collection-sidebar-heading' with heading, heading: heading %}
           <ul>
             {% for tag in collection.all_tags %}
               {% assign cat = tag | split: '_' | first %}
@@ -70,15 +62,7 @@
                   {% assign url = url[1] %}
                 {% endif %}
 
-                {% render 'filter-item' with
-                  type: 'checkbox',
-                  label: label,
-                  active: is_active,
-                  url: url,
-
-                  key: 'tag',
-                  val: tag
-                %}
+                {% render 'filter-item' with type, type: 'checkbox', label: label, active: is_active, url: url, key: 'tag', val: tag %}
               {% endif %}
             {% endfor %}
           </ul>
@@ -92,25 +76,72 @@
   {% if show_sort %}
     {%- assign heading = 'collections.sorting.title' | t -%}
     <div class="collection-sidebar__group" data-group="{{ heading }}">
-      {% render 'collection-sidebar-heading' with heading: heading %}
+      {% render 'collection-sidebar-heading' with heading, heading: heading %}
       <ul>
         {% for option in collection.sort_options %}
           {%- assign is_active = false -%}
           {%- if option.value == collection.sort_by -%}
             {%- assign is_active = true -%}
           {%- endif -%}
-          {% render 'filter-item' with
-            label: option.name,
-            type: 'radio',
-            active: is_active,
-            url: '#',
-
-            key: 'sort',
-            val: option.value
-          %}
+          {% render 'filter-item' with label, label: option.name, type: 'radio', active: is_active, url: '#', key: 'sort', val: option.value %}
         {% endfor %}
       </ul>
     </div>
   {% endif %}
 
 </div>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'collection-sidebar-heading' with heading: heading %}"
+  to: "{% render 'collection-sidebar-heading' with heading, heading: heading %}"
+  position: 294..366
+- from: |-
+    {% render 'filter-item' with
+                type: 'checkbox',
+                label: tag_text,
+                active: is_active,
+                url: url,
+
+                key: 'tag',
+                val: tag
+              %}
+  to: "{% render 'filter-item' with type, type: 'checkbox', label: tag_text, active:
+    is_active, url: url, key: 'tag', val: tag %}"
+  position: 1355..1477
+- from: "{% render 'collection-sidebar-heading' with heading: heading %}"
+  to: "{% render 'collection-sidebar-heading' with heading, heading: heading %}"
+  position: 1753..1825
+- from: |-
+    {% render 'filter-item' with
+                      type: 'checkbox',
+                      label: label,
+                      active: is_active,
+                      url: url,
+
+                      key: 'tag',
+                      val: tag
+                    %}
+  to: "{% render 'filter-item' with type, type: 'checkbox', label: label, active:
+    is_active, url: url, key: 'tag', val: tag %}"
+  position: 2554..2673
+- from: "{% render 'collection-sidebar-heading' with heading: heading %}"
+  to: "{% render 'collection-sidebar-heading' with heading, heading: heading %}"
+  position: 2969..3041
+- from: |-
+    {% render 'filter-item' with
+                label: option.name,
+                type: 'radio',
+                active: is_active,
+                url: '#',
+
+                key: 'sort',
+                val: option.value
+              %}
+  to: "{% render 'filter-item' with label, label: option.name, type: 'radio', active:
+    is_active, url: '#', key: 'sort', val: option.value %}"
+  position: 3282..3415
+{% endcomment %}

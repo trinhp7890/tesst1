@@ -1,13 +1,4 @@
-{% render 'content-section-services-page-left' with
-  id: section.id,
-  section_style: section.settings.section_style,
-  columns: section.settings.columns,
-  heading: section.settings.title,
-  subheading: section.settings.subheading,
-  linkimage: section.settings.linkimage,
-  linkvideo: section.settings.linkvideo,
-  blocks: section.blocks,
-%}
+{% render 'content-section-services-page-left' with id, id: section.id, section_style: section.settings.section_style, columns: section.settings.columns, heading: section.settings.title, subheading: section.settings.subheading, linkimage: section.settings.linkimage, linkvideo: section.settings.linkvideo, blocks: section.blocks %}
 
 {% schema %}
   {
@@ -104,3 +95,26 @@
     ]
   }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'content-section-services-page-left' with
+      id: section.id,
+      section_style: section.settings.section_style,
+      columns: section.settings.columns,
+      heading: section.settings.title,
+      subheading: section.settings.subheading,
+      linkimage: section.settings.linkimage,
+      linkvideo: section.settings.linkvideo,
+      blocks: section.blocks,
+    %}
+  to: "{% render 'content-section-services-page-left' with id, id: section.id, section_style:
+    section.settings.section_style, columns: section.settings.columns, heading: section.settings.title,
+    subheading: section.settings.subheading, linkimage: section.settings.linkimage,
+    linkvideo: section.settings.linkvideo, blocks: section.blocks %}"
+  position: 0..331
+{% endcomment %}

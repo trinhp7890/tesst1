@@ -1,19 +1,4 @@
-{% include 'content--location' with
-  id: section.id,
-  section_style: section.settings.section_style,
-  heading_alignment: section.settings.heading_alignment,
-  text_max_width: section.settings.text_max_width,
-  overline: section.settings.overline,
-  heading: section.settings.title,
-  subheading: section.settings.subheading,
-  address: section.settings.address,
-  hours: section.settings.hours,
-  image: section.settings.image,
-  map_address: section.settings.map_address,
-  map_link_text: section.settings.map_link_text,
-  api_key: section.settings.api_key,
-  map_json: section.settings.map_json
-%}
+{% include 'content--location' with id, id: section.id, section_style: section.settings.section_style, heading_alignment: section.settings.heading_alignment, text_max_width: section.settings.text_max_width, overline: section.settings.overline, heading: section.settings.title, subheading: section.settings.subheading, address: section.settings.address, hours: section.settings.hours, image: section.settings.image, map_address: section.settings.map_address, map_link_text: section.settings.map_link_text, api_key: section.settings.api_key, map_json: section.settings.map_json %}
 
 {% schema %}
   {
@@ -137,4 +122,35 @@
       }
     ]
   }
-{% endschema %}
+{% endschema %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% include 'content--location' with
+      id: section.id,
+      section_style: section.settings.section_style,
+      heading_alignment: section.settings.heading_alignment,
+      text_max_width: section.settings.text_max_width,
+      overline: section.settings.overline,
+      heading: section.settings.title,
+      subheading: section.settings.subheading,
+      address: section.settings.address,
+      hours: section.settings.hours,
+      image: section.settings.image,
+      map_address: section.settings.map_address,
+      map_link_text: section.settings.map_link_text,
+      api_key: section.settings.api_key,
+      map_json: section.settings.map_json
+    %}
+  to: "{% include 'content--location' with id, id: section.id, section_style: section.settings.section_style,
+    heading_alignment: section.settings.heading_alignment, text_max_width: section.settings.text_max_width,
+    overline: section.settings.overline, heading: section.settings.title, subheading:
+    section.settings.subheading, address: section.settings.address, hours: section.settings.hours,
+    image: section.settings.image, map_address: section.settings.map_address, map_link_text:
+    section.settings.map_link_text, api_key: section.settings.api_key, map_json: section.settings.map_json
+    %}"
+  position: 0..578
+{%- endcomment -%}

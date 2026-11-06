@@ -77,14 +77,7 @@
       </div>
 
       {% if product != blank %}
-        {% render 'product-form' with
-          product: product,
-          show_vendor: show_vendor,
-          current_variant: current_variant,
-          show_dynamic_checkout: enable_payment_button,
-          show_swatches: show_swatches,
-          show_quantity_input: show_quantity_input,
-        %}
+        {% render 'product-form' with product, product: product, show_vendor: show_vendor, current_variant: current_variant, show_dynamic_checkout: enable_payment_button, show_swatches: show_swatches, show_quantity_input: show_quantity_input %}
       {% endif %}
 
       {%- comment -%}
@@ -194,4 +187,23 @@
     ]
   {% endif %}
 }
-</script>
+</script>{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'product-form' with
+              product: product,
+              show_vendor: show_vendor,
+              current_variant: current_variant,
+              show_dynamic_checkout: enable_payment_button,
+              show_swatches: show_swatches,
+              show_quantity_input: show_quantity_input,
+            %}
+  to: "{% render 'product-form' with product, product: product, show_vendor: show_vendor,
+    current_variant: current_variant, show_dynamic_checkout: enable_payment_button,
+    show_swatches: show_swatches, show_quantity_input: show_quantity_input %}"
+  position: 2564..2800
+{%- endcomment -%}

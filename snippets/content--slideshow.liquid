@@ -17,18 +17,10 @@
   <div class="js-slideshow">
     {% if slides.size == 2 %}
       {% for i in (1..2) %}
-        {% render 'slideshow-blocks' with
-          id: id,
-          blocks: slides,
-          aspect_ratio: aspect_ratio
-        %}
+        {% render 'slideshow-blocks' with id, id: id, blocks: slides, aspect_ratio: aspect_ratio %}
       {% endfor %}
     {% else %}
-      {% render 'slideshow-blocks' with
-        id: id,
-        blocks: slides
-        aspect_ratio: aspect_ratio
-      %}
+      {% render 'slideshow-blocks' with id, id: id, blocks: slides, aspect_ratio: aspect_ratio %}
     {% endif %}
   </div>
 
@@ -36,4 +28,28 @@
     <li class="slideshow__pseudo-dot prev is-selected"></li>
     <li class="slideshow__pseudo-dot next"></li>
   </ol>
-</section>
+</section>{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'slideshow-blocks' with
+              id: id,
+              blocks: slides,
+              aspect_ratio: aspect_ratio
+            %}
+  to: "{% render 'slideshow-blocks' with id, id: id, blocks: slides, aspect_ratio:
+    aspect_ratio %}"
+  position: 456..547
+- from: |-
+    {% render 'slideshow-blocks' with
+            id: id,
+            blocks: slides
+            aspect_ratio: aspect_ratio
+          %}
+  to: "{% render 'slideshow-blocks' with id, id: id, blocks: slides, aspect_ratio:
+    aspect_ratio %}"
+  position: 588..679
+{%- endcomment -%}

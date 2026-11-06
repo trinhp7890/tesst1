@@ -1,9 +1,4 @@
-{% render 'frame--announcement-bar' with
-  id: section.id,
-  announcement_bar_enabled: section.settings.announcement_bar_enabled,
-  announcement_bar_timing: section.settings.announcement_bar_timing,
-  blocks: section.blocks,
-%}
+{% render 'frame--announcement-bar' with id, id: section.id, announcement_bar_enabled: section.settings.announcement_bar_enabled, announcement_bar_timing: section.settings.announcement_bar_timing, blocks: section.blocks %}
 
 {% schema %}
   {
@@ -69,4 +64,21 @@
       ]
     }
   }
-{% endschema %}
+{% endschema %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'frame--announcement-bar' with
+      id: section.id,
+      announcement_bar_enabled: section.settings.announcement_bar_enabled,
+      announcement_bar_timing: section.settings.announcement_bar_timing,
+      blocks: section.blocks,
+    %}
+  to: "{% render 'frame--announcement-bar' with id, id: section.id, announcement_bar_enabled:
+    section.settings.announcement_bar_enabled, announcement_bar_timing: section.settings.announcement_bar_timing,
+    blocks: section.blocks %}"
+  position: 0..222
+{%- endcomment -%}

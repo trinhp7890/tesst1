@@ -1,15 +1,4 @@
-{% render 'content--title-header' with
-  id: section.id,
-  section_style: section.settings.section_style,
-  alignment: section.settings.alignment,
-  overline: section.settings.overline,
-  title: section.settings.title,
-  text: section.settings.text,
-  text_max_width: section.settings.text_max_width,
-  link: section.settings.link,
-  link_text: section.settings.link_text,
-  enabled: true
-%}
+{% render 'content--title-header' with id, id: section.id, section_style: section.settings.section_style, alignment: section.settings.alignment, overline: section.settings.overline, title: section.settings.title, text: section.settings.text, text_max_width: section.settings.text_max_width, link: section.settings.link, link_text: section.settings.link_text, enabled: true %}
 
 {% schema %}
   {
@@ -98,4 +87,29 @@
         "category": "Text"
     }]
   }
-{% endschema %}
+{% endschema %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'content--title-header' with
+      id: section.id,
+      section_style: section.settings.section_style,
+      alignment: section.settings.alignment,
+      overline: section.settings.overline,
+      title: section.settings.title,
+      text: section.settings.text,
+      text_max_width: section.settings.text_max_width,
+      link: section.settings.link,
+      link_text: section.settings.link_text,
+      enabled: true
+    %}
+  to: "{% render 'content--title-header' with id, id: section.id, section_style: section.settings.section_style,
+    alignment: section.settings.alignment, overline: section.settings.overline, title:
+    section.settings.title, text: section.settings.text, text_max_width: section.settings.text_max_width,
+    link: section.settings.link, link_text: section.settings.link_text, enabled: true
+    %}"
+  position: 0..375
+{%- endcomment -%}

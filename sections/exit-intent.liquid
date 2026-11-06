@@ -1,15 +1,5 @@
 {% if section.settings.enable_exit_intent %}
-  {% render 'frame--exit-intent' with
-    id: section.id,
-    exit_intent_position: section.settings.exit_intent_position,
-    exit_intent_image: section.settings.exit_intent_image,
-    exit_intent_heading: section.settings.exit_intent_heading,
-    exit_intent_text: section.settings.exit_intent_text,
-    text_color: section.settings.text_color,
-    bg_color: section.settings.bg_color,
-    border_color: section.settings.border_color,
-    input_text_color: section.settings.input_text_color
-  %}
+  {% render 'frame--exit-intent' with id, id: section.id, exit_intent_position: section.settings.exit_intent_position, exit_intent_image: section.settings.exit_intent_image, exit_intent_heading: section.settings.exit_intent_heading, exit_intent_text: section.settings.exit_intent_text, text_color: section.settings.text_color, bg_color: section.settings.bg_color, border_color: section.settings.border_color, input_text_color: section.settings.input_text_color %}
 {% endif %}
 
 {% schema %}
@@ -79,3 +69,29 @@
     ]
   }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'frame--exit-intent' with
+        id: section.id,
+        exit_intent_position: section.settings.exit_intent_position,
+        exit_intent_image: section.settings.exit_intent_image,
+        exit_intent_heading: section.settings.exit_intent_heading,
+        exit_intent_text: section.settings.exit_intent_text,
+        text_color: section.settings.text_color,
+        bg_color: section.settings.bg_color,
+        border_color: section.settings.border_color,
+        input_text_color: section.settings.input_text_color
+      %}
+  to: "{% render 'frame--exit-intent' with id, id: section.id, exit_intent_position:
+    section.settings.exit_intent_position, exit_intent_image: section.settings.exit_intent_image,
+    exit_intent_heading: section.settings.exit_intent_heading, exit_intent_text: section.settings.exit_intent_text,
+    text_color: section.settings.text_color, bg_color: section.settings.bg_color,
+    border_color: section.settings.border_color, input_text_color: section.settings.input_text_color
+    %}"
+  position: 47..508
+{% endcomment %}

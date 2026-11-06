@@ -30,17 +30,7 @@
   class="section featured-collection-grid{{ modifiers }}"
 >
 
-  {% render 'text-block' with
-    id: id,
-    modifiers: 'mb5 animation__staggered-children-fade-in',
-    heading_alignment: heading_alignment,
-    text_max_width: text_max_width,
-    overline: overline,
-    heading: heading,
-    subheading: subheading,
-    link: featured_collection.url,
-    link_text: link_text
-  %}
+  {% render 'text-block' with id, id: id, modifiers: 'mb5 animation__staggered-children-fade-in', heading_alignment: heading_alignment, text_max_width: text_max_width, overline: overline, heading: heading, subheading: subheading, link: featured_collection.url, link_text: link_text %}
 
   <div class="grid-display{{ grid_modifiers }}">
     {% if featured_collection != blank %}
@@ -73,3 +63,27 @@
   </div>
 </section>
 
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'text-block' with
+        id: id,
+        modifiers: 'mb5 animation__staggered-children-fade-in',
+        heading_alignment: heading_alignment,
+        text_max_width: text_max_width,
+        overline: overline,
+        heading: heading,
+        subheading: subheading,
+        link: featured_collection.url,
+        link_text: link_text
+      %}
+  to: "{% render 'text-block' with id, id: id, modifiers: 'mb5 animation__staggered-children-fade-in',
+    heading_alignment: heading_alignment, text_max_width: text_max_width, overline:
+    overline, heading: heading, subheading: subheading, link: featured_collection.url,
+    link_text: link_text %}"
+  position: 1023..1305
+{% endcomment %}

@@ -1,11 +1,4 @@
-{% render 'pages--page' with
-  id: section.id,
-
-  overline: section.settings.overline,
-  subheading: section.settings.subheading,
-
-  blocks: section.blocks
-%}
+{% render 'pages--page' with id, id: section.id, overline: section.settings.overline, subheading: section.settings.subheading, blocks: section.blocks %}
 
 {% schema %}
   {
@@ -47,4 +40,22 @@
       }
     ]
   }
-{% endschema %}
+{% endschema %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'pages--page' with
+      id: section.id,
+
+      overline: section.settings.overline,
+      subheading: section.settings.subheading,
+
+      blocks: section.blocks
+    %}
+  to: "{% render 'pages--page' with id, id: section.id, overline: section.settings.overline,
+    subheading: section.settings.subheading, blocks: section.blocks %}"
+  position: 0..152
+{%- endcomment -%}

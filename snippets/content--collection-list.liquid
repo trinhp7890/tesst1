@@ -36,16 +36,7 @@
   data-text-position={{ carousel_text_position }}
   data-text-alignment={{ carousel_text_alignment }}
 >
-  {% render 'text-block' with
-    id: id,
-    modifiers: 'mb5 animation__staggered-children-fade-in',
-    heading_alignment: carousel_text_alignment,
-    overline: overline,
-    heading: heading,
-    subheading: subheading,
-    text_max_width: text_max_width,
-    link_text: link_text
-  %}
+  {% render 'text-block' with id, id: id, modifiers: 'mb5 animation__staggered-children-fade-in', heading_alignment: carousel_text_alignment, overline: overline, heading: heading, subheading: subheading, text_max_width: text_max_width, link_text: link_text %}
 
   {% render 'carousel-navigation' %}
 
@@ -60,10 +51,7 @@
 
             {% unless image_object == blank %}
               <div class="collection-list__image carousel__slide-image">
-                {% render 'image' with
-                  image: image_object,
-                  disable_style: image_is_constrained
-                %}
+                {% render 'image' with image, image: image_object, disable_style: image_is_constrained %}
               </div>
             {% endunless %}
 
@@ -100,3 +88,33 @@
   </div>
 </section>
 
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'text-block' with
+        id: id,
+        modifiers: 'mb5 animation__staggered-children-fade-in',
+        heading_alignment: carousel_text_alignment,
+        overline: overline,
+        heading: heading,
+        subheading: subheading,
+        text_max_width: text_max_width,
+        link_text: link_text
+      %}
+  to: "{% render 'text-block' with id, id: id, modifiers: 'mb5 animation__staggered-children-fade-in',
+    heading_alignment: carousel_text_alignment, overline: overline, heading: heading,
+    subheading: subheading, text_max_width: text_max_width, link_text: link_text %}"
+  position: 1561..1818
+- from: |-
+    {% render 'image' with
+                      image: image_object,
+                      disable_style: image_is_constrained
+                    %}
+  to: "{% render 'image' with image, image: image_object, disable_style: image_is_constrained
+    %}"
+  position: 2571..2660
+{% endcomment %}

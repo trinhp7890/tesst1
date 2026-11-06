@@ -42,15 +42,7 @@
   class="section location{{ modifiers }}"
 >
   <div class="location__intro animation__staggered-children-fade-in">
-    {% render 'text-block' with
-      id: id,
-      modifiers: 'mb5',
-      heading_alignment: heading_alignment,
-      text_max_width: text_max_width,
-      overline: overline,
-      heading: heading,
-      subheading: subheading,
-    %}
+    {% render 'text-block' with id, id: id, modifiers: 'mb5', heading_alignment: heading_alignment, text_max_width: text_max_width, overline: overline, heading: heading, subheading: subheading %}
 
     {% if hours != blank or address != blank %}
       <div class="location__store-info mb5">
@@ -124,4 +116,24 @@
         {}
       {%- endif -%}
   }
-</script>
+</script>{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'text-block' with
+          id: id,
+          modifiers: 'mb5',
+          heading_alignment: heading_alignment,
+          text_max_width: text_max_width,
+          overline: overline,
+          heading: heading,
+          subheading: subheading,
+        %}
+  to: "{% render 'text-block' with id, id: id, modifiers: 'mb5', heading_alignment:
+    heading_alignment, text_max_width: text_max_width, overline: overline, heading:
+    heading, subheading: subheading %}"
+  position: 1213..1404
+{%- endcomment -%}

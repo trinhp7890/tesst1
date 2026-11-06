@@ -55,41 +55,25 @@
                 <div class="product-item__images">
                   {% comment %} used for size {% endcomment %}
                   <div class="product-item__sizer">
-                    {% render 'image' with
-                      image: product.media[0].preview_image,
-                      id: product.media[0].id,
-                      disable_style: includes_aspect_ratio
-                    %}
+                    {% render 'image' with image, image: product.media[0].preview_image, id: product.media[0].id, disable_style: includes_aspect_ratio %}
                   </div>
                   <div class="product-item__image first">
-                    {% render 'image' with
-                      image: product.media[0].preview_image,
-                      id: product.media[0].id,
-                      disable_style: includes_aspect_ratio
-                    %}
+                    {% render 'image' with image, image: product.media[0].preview_image, id: product.media[0].id, disable_style: includes_aspect_ratio %}
                   </div>
                   <div class="product-item__image not-first">
-                    {% render 'image' with
-                      image: product.media[1].preview_image,
-                      id: product.media[1].id,
-                      disable_style: true
-                    %}
+                    {% render 'image' with image, image: product.media[1].preview_image, id: product.media[1].id, disable_style: true %}
                   </div>
                 </div>
               {% else %}
                 <div class="product-item__image">
-                  {% render 'image' with
-                    image: product.featured_media.preview_image,
-                    id: product.featured_media.id,
-                    disable_style: includes_aspect_ratio
-                  %}
+                  {% render 'image' with image, image: product.featured_media.preview_image, id: product.featured_media.id, disable_style: includes_aspect_ratio %}
                 </div>
               {% endif %}
             </a>
 
             {% if quick_shop_enabled %}
               <div class="quick-shop">
-                {% render 'quick-shop-product-form' with product: product %}
+                {% render 'quick-shop-product-form' with product, product: product %}
               </div>
             {% endif %}
 
@@ -223,3 +207,49 @@
   
 </section>
 
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'image' with
+                          image: product.media[0].preview_image,
+                          id: product.media[0].id,
+                          disable_style: includes_aspect_ratio
+                        %}
+  to: "{% render 'image' with image, image: product.media[0].preview_image, id: product.media[0].id,
+    disable_style: includes_aspect_ratio %}"
+  position: 2378..2511
+- from: |-
+    {% render 'image' with
+                          image: product.media[0].preview_image,
+                          id: product.media[0].id,
+                          disable_style: includes_aspect_ratio
+                        %}
+  to: "{% render 'image' with image, image: product.media[0].preview_image, id: product.media[0].id,
+    disable_style: includes_aspect_ratio %}"
+  position: 2615..2748
+- from: |-
+    {% render 'image' with
+                          image: product.media[1].preview_image,
+                          id: product.media[1].id,
+                          disable_style: true
+                        %}
+  to: "{% render 'image' with image, image: product.media[1].preview_image, id: product.media[1].id,
+    disable_style: true %}"
+  position: 2856..2972
+- from: |-
+    {% render 'image' with
+                        image: product.featured_media.preview_image,
+                        id: product.featured_media.id,
+                        disable_style: includes_aspect_ratio
+                      %}
+  to: "{% render 'image' with image, image: product.featured_media.preview_image,
+    id: product.featured_media.id, disable_style: includes_aspect_ratio %}"
+  position: 3114..3259
+- from: "{% render 'quick-shop-product-form' with product: product %}"
+  to: "{% render 'quick-shop-product-form' with product, product: product %}"
+  position: 3422..3491
+{% endcomment %}

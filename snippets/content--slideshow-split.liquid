@@ -32,16 +32,10 @@
   <div class="slideshow-split__slideshow">
     {% if blocks.size == 2 %}
       {% for i in (1..2) %}
-        {% render 'slideshow-split-blocks' with
-          blocks: blocks,
-          current: current
-        %}
+        {% render 'slideshow-split-blocks' with blocks, blocks: blocks, current: current %}
       {% endfor %}
     {% elsif blocks.size > 0 %}
-      {% render 'slideshow-split-blocks' with
-        blocks: blocks,
-        current: current
-      %}
+      {% render 'slideshow-split-blocks' with blocks, blocks: blocks, current: current %}
     {% else %}
       {% for i in (i..3) %}
         <div class="slideshow-split__slide">
@@ -103,4 +97,26 @@
     </div>
   </div>
 
-</section>
+</section>{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'slideshow-split-blocks' with
+              blocks: blocks,
+              current: current
+            %}
+  to: "{% render 'slideshow-split-blocks' with blocks, blocks: blocks, current: current
+    %}"
+  position: 1066..1149
+- from: |-
+    {% render 'slideshow-split-blocks' with
+            blocks: blocks,
+            current: current
+          %}
+  to: "{% render 'slideshow-split-blocks' with blocks, blocks: blocks, current: current
+    %}"
+  position: 1207..1290
+{%- endcomment -%}

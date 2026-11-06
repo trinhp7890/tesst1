@@ -1,14 +1,4 @@
-{% render 'pages--list-collections' with
-  id: section.id,
-
-  display: section.settings.display_type,
-  columns: section.settings.columns,
-  aspect_ratio: section.settings.aspect_ratio,
-  collection_title_alignment: section.settings.collection_title_alignment,
-  show_product_count: section.settings.show_product_count,
-
-  blocks: section.blocks,
-%}
+{% render 'pages--list-collections' with id, id: section.id, display: section.settings.display_type, columns: section.settings.columns, aspect_ratio: section.settings.aspect_ratio, collection_title_alignment: section.settings.collection_title_alignment, show_product_count: section.settings.show_product_count, blocks: section.blocks %}
 
 {% schema %}
   {
@@ -87,4 +77,27 @@
       }
     ]
   }
-{% endschema %}
+{% endschema %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'pages--list-collections' with
+      id: section.id,
+
+      display: section.settings.display_type,
+      columns: section.settings.columns,
+      aspect_ratio: section.settings.aspect_ratio,
+      collection_title_alignment: section.settings.collection_title_alignment,
+      show_product_count: section.settings.show_product_count,
+
+      blocks: section.blocks,
+    %}
+  to: "{% render 'pages--list-collections' with id, id: section.id, display: section.settings.display_type,
+    columns: section.settings.columns, aspect_ratio: section.settings.aspect_ratio,
+    collection_title_alignment: section.settings.collection_title_alignment, show_product_count:
+    section.settings.show_product_count, blocks: section.blocks %}"
+  position: 0..336
+{%- endcomment -%}

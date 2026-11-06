@@ -38,27 +38,14 @@
     {% assign collection_link = family_of_collection.url %}
   {% endif %}
 
-  {% render 'product-family-text-block' with
-    id: id,
-    modifiers: 'mb5 animation__staggered-children-fade-in',
-    heading_alignment: carousel_text_alignment,
-    overline: overline,
-    heading: heading,
-    subheading: subheading,
-    text_max_width: text_max_width,
-    link: collection_link,
-    link_text: link_text
-  %}
+  {% render 'product-family-text-block' with id, id: id, modifiers: 'mb5 animation__staggered-children-fade-in', heading_alignment: carousel_text_alignment, overline: overline, heading: heading, subheading: subheading, text_max_width: text_max_width, link: collection_link, link_text: link_text %}
 
   {% render 'carousel-navigation' %}
   <div class="featured-collection__slides carousel__slides" data-carousel>
     {% if family_of_collection != blank %} 
       {%- for product in family_of_collection.products limit: max_product_limit -%}
         <div class="featured-collection__slide product-family-carousel__slide carousel__slide animates">
-          {% render 'product-family-item' with
-            product: product
-            aspect_ratio: aspect_ratio
-          %}
+          {% render 'product-family-item' with product, product: product, aspect_ratio: aspect_ratio %}
         </div>
       {%- endfor -%}
     {% else %}
@@ -79,3 +66,35 @@
   </div>
 </section>
 
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'product-family-text-block' with
+        id: id,
+        modifiers: 'mb5 animation__staggered-children-fade-in',
+        heading_alignment: carousel_text_alignment,
+        overline: overline,
+        heading: heading,
+        subheading: subheading,
+        text_max_width: text_max_width,
+        link: collection_link,
+        link_text: link_text
+      %}
+  to: "{% render 'product-family-text-block' with id, id: id, modifiers: 'mb5 animation__staggered-children-fade-in',
+    heading_alignment: carousel_text_alignment, overline: overline, heading: heading,
+    subheading: subheading, text_max_width: text_max_width, link: collection_link,
+    link_text: link_text %}"
+  position: 1719..2014
+- from: |-
+    {% render 'product-family-item' with
+                product: product
+                aspect_ratio: aspect_ratio
+              %}
+  to: "{% render 'product-family-item' with product, product: product, aspect_ratio:
+    aspect_ratio %}"
+  position: 2371..2464
+{% endcomment %}
